@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andrius.petclinic.controller.mainwindowcontrollers.MainDashController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.MainDashController">
    <children>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -66,7 +66,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showVisitScreen" prefHeight="50.0" text="Client visits">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" text="Clients">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -90,7 +90,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showVetScreen" prefHeight="50.0" text="Veterinarians">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showEmployesScreen" prefHeight="50.0" text="Employes">
                <VBox.margin>
                   <Insets bottom="30.0" />
                </VBox.margin>
@@ -108,7 +108,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showPetScreen" prefHeight="50.0" text="Pet data">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -182,12 +182,12 @@
                         <Insets bottom="20.0" left="25.0" right="20.0" top="20.0" />
                      </HBox.margin>
                      <children>
-                        <Label fx:id="vetInfoBlockName" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" text="Vets" textFill="WHITE">
+                        <Label fx:id="reservationInfoBlockName" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" text="Reservation" textFill="WHITE">
                            <font>
                               <Font name="Roboto Black" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="vetNumber" layoutX="18.0" layoutY="37.0" text="1" textFill="#c3deff">
+                        <Label fx:id="reservationNumber" layoutX="18.0" layoutY="37.0" text="1" textFill="#c3deff">
                            <font>
                               <Font name="Roboto Black" size="48.0" />
                            </font>
@@ -199,12 +199,12 @@
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </HBox.margin>
                      <children>
-                        <Label fx:id="petInfoBlockName" layoutX="14.0" layoutY="14.0" text="Pets" textFill="WHITE">
+                        <Label fx:id="chambresInfoBlockName" layoutX="14.0" layoutY="14.0" text="Chambres" textFill="WHITE">
                            <font>
                               <Font name="Roboto Black" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="petNumber" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="18.0" layoutY="37.0" text="1" textAlignment="RIGHT" textFill="#cafffa">
+                        <Label fx:id="chambresNumber" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="18.0" layoutY="37.0" text="1" textAlignment="RIGHT" textFill="#cafffa">
                            <font>
                               <Font name="Roboto Black" size="48.0" />
                            </font>
@@ -216,12 +216,12 @@
                         <Insets bottom="20.0" left="20.0" right="30.0" top="20.0" />
                      </HBox.margin>
                      <children>
-                        <Label fx:id="visitInfoBlockName" alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Visits" textFill="WHITE">
+                        <Label fx:id="employeInfoBlockName" alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Employes" textFill="WHITE">
                            <font>
                               <Font name="Roboto Black" size="18.0" />
                            </font>
                         </Label>
-                        <Label fx:id="visitNumber" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="21.0" layoutY="37.0" text="1" textFill="#ffcdc3">
+                        <Label fx:id="employeNumber" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="21.0" layoutY="37.0" text="1" textFill="#ffcdc3">
                            <font>
                               <Font name="Roboto Black" size="48.0" />
                            </font>
@@ -233,13 +233,13 @@
                   <Insets top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="visitTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="480.0" prefWidth="690.0">
+            <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="480.0" prefWidth="690.0">
               <columns>
-                  <TableColumn fx:id="visitId" editable="false" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
-                <TableColumn id="date_col" fx:id="visitDate" editable="false" maxWidth="-Infinity" minWidth="75.0" prefWidth="75.0" resizable="false" text="DATE" />
-                <TableColumn fx:id="petId" editable="false" maxWidth="-Infinity" minWidth="170.0" prefWidth="150.0" resizable="false" text="PET" />
-                  <TableColumn fx:id="vetId" editable="false" maxWidth="-Infinity" minWidth="150.0" prefWidth="150.0" resizable="false" text="VET" />
-                  <TableColumn fx:id="descriptionId" editable="false" maxWidth="257.0" minWidth="204.0" prefWidth="240.0" resizable="false" text="DESCRIPTION" />
+                  <TableColumn fx:id="clientId" editable="false" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
+                <TableColumn id="date_col" fx:id="clientName" editable="false" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="153.55554580688477" resizable="false" text="FULL NAME" />
+                <TableColumn fx:id="clientCin" editable="false" maxWidth="169.7777862548828" minWidth="66.44444274902344" prefWidth="119.11103820800781" resizable="false" text="CIN" />
+                  <TableColumn fx:id="clientEmail" editable="false" maxWidth="190.88882446289062" minWidth="40.2222900390625" prefWidth="189.99996948242188" text="EMAIL" />
+                  <TableColumn fx:id="clientAdresse" editable="false" maxWidth="335.9999694824219" minWidth="97.11114501953125" prefWidth="185.33340454101562" resizable="false" text="ADDRESS" />
               </columns>
                <VBox.margin>
                   <Insets bottom="10.0" left="25.0" right="25.0" />

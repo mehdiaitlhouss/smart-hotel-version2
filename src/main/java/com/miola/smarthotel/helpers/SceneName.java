@@ -5,9 +5,9 @@ package com.miola.smarthotel.helpers;
  */
 public enum SceneName {
     DASHBOARD("DASHBOARD"),
-    VISITS("CLIENT VISITS"),
-    VETS ("VETERINARIANS"),
-    PETS("PETS DATABASE"),
+    CLIENTS("CLIENT"),
+    EMPLOYES("EMPLOYES"),
+    CHAMBRES("CHAMBRES"),
     SEARCH ("SEARCH RESULTS")
     ;
 

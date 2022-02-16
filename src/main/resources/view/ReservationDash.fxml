@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andrius.petclinic.controller.mainwindowcontrollers.VisitDashController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.ReservationDashController">
     <children>
         <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -64,7 +64,7 @@
                         <Insets left="20.0" />
                     </padding>
                 </Button>
-                <Button alignment="BASELINE_LEFT" defaultButton="true" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" text="Client visits">
+                <Button alignment="BASELINE_LEFT" defaultButton="true" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" text="Réservation">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -85,7 +85,7 @@
                         <Insets bottom="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="vetsWindow" alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showVetsScreen" prefHeight="50.0" text="Veterinarians">
+                <Button fx:id="chmabresWindow" alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
                     <VBox.margin>
                         <Insets bottom="30.0" />
                     </VBox.margin>
@@ -100,7 +100,7 @@
                         <Insets left="20.0" />
                     </padding>
                 </Button>
-                <Button fx:id="petsBtn" alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showPetsScreen" prefHeight="50.0" text="Pet data">
+                <Button fx:id="clientsBtn" alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" text="Clients">
                     <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -136,7 +136,7 @@
                         <Insets />
                     </VBox.margin>
                     <children>
-                        <Label id="title" fx:id="title" layoutX="10.0" styleClass="title" text="Client visits" textFill="#515151">
+                        <Label id="title" fx:id="title" layoutX="10.0" styleClass="title" text="Réseervation" textFill="#515151">
                             <font>
                                 <Font name="Roboto Bold Condensed" size="20.0" />
                             </font>
@@ -206,13 +206,14 @@
                   <Insets bottom="20.0" left="25.0" right="25.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="visitTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="535.0" prefWidth="700.0">
+            <TableView fx:id="reservationTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="535.0" prefWidth="700.0">
               <columns>
-                <TableColumn fx:id="visitId" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
-                <TableColumn fx:id="visitDate" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="DATE" />
-                  <TableColumn fx:id="petId" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="PET" />
-                  <TableColumn fx:id="vetId" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="VET" />
-                  <TableColumn fx:id="descriptionId" maxWidth="284.0" minWidth="200.0" onEditCommit="#changeDescriptionCell" prefWidth="260.0" resizable="false" text="DESCRIPTION" />
+                <TableColumn fx:id="reservationId" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
+                <TableColumn fx:id="reservationDate" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="DATE" />
+                  <TableColumn fx:id="reservationHeure" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="HEURE" />
+                  <TableColumn fx:id="reservationDuree" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="DUREE" />
+                  <TableColumn fx:id="reservationNombrePersonne" maxWidth="284.0" minWidth="144.00003051757812" onEditCommit="#changeDescriptionCell" prefWidth="144.00003051757812" resizable="false" text="NOMBRE PERSONNE" />
+                  <TableColumn fx:id="reservationEtat" prefWidth="75.0" text="ETAT" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" left="25.0" right="25.0" />

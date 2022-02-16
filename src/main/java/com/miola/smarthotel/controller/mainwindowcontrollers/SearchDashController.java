@@ -50,22 +50,22 @@ public class SearchDashController {
 
     @FXML
     void showDashboard(ActionEvent event) throws IOException {
-        SceneController.getMainScene(event);
+        SceneController.getAdminMainScene(event);
     }
 
     @FXML
     void showVisitScreen(ActionEvent event) throws IOException {
-        SceneController.getVisitScene(event);
+        SceneController.getClientsScene(event);
     }
 
     @FXML
     void showPetScreen(ActionEvent event) throws IOException {
-        SceneController.getPetsScene(event);
+        SceneController.getChambresScene(event);
     }
 
     @FXML
     void showVetScreen(ActionEvent event) throws IOException {
-        SceneController.getVetsScene(event);
+        SceneController.getEmployesScene(event);
     }
 
     @FXML

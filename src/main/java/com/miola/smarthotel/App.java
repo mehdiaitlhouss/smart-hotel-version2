@@ -1,7 +1,6 @@
 package com.miola.smarthotel;
 
 import com.miola.smarthotel.controller.mainwindowcontrollers.SceneController;
-import com.miola.smarthotel.util.HibernateUtil;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.hibernate.Session;

@@ -33,20 +33,24 @@ public class SceneController {
         stage.show();
     }
 
-    public static void getMainScene(ActionEvent event) throws IOException {
-        changeScreen(event, ScenePath.HOME.getPath());
+    public static void getAdminMainScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.HOME_ADMIN.getPath());
     }
 
-    public static void getVisitScene(ActionEvent event) throws IOException {
-        changeScreen(event, ScenePath.VISITS.getPath());
+    public static void getRecepMainScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.HOME_RECEPTIONNISTE.getPath());
     }
 
-    public static void getVetsScene(ActionEvent event) throws IOException {
-        changeScreen(event, ScenePath.VETS.getPath());
+    public static void getClientsScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.CLIENTS.getPath());
     }
 
-    public static void getPetsScene(ActionEvent event) throws IOException {
-        changeScreen(event, ScenePath.PETS.getPath());
+    public static void getEmployesScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.EMPLOYES.getPath());
+    }
+
+    public static void getChambresScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.CHAMBRES.getPath());
     }
 
     public static void getSearchScene(ActionEvent event) throws IOException {

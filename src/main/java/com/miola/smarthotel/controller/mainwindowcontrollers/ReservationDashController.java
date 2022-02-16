@@ -1,12 +1,12 @@
 package com.miola.smarthotel.controller.mainwindowcontrollers;
 
 import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
-import com.miola.smarthotel.dao.ConsultDao;
+import com.miola.smarthotel.dao.ReservationDao;
 import com.miola.smarthotel.helpers.CurrentTime;
 import com.miola.smarthotel.helpers.CurrentUser;
 import com.miola.smarthotel.helpers.SceneName;
 import com.miola.smarthotel.helpers.UpdateStatus;
-import com.miola.smarthotel.model.Consult;
+import com.miola.smarthotel.model.Reservation;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,7 +16,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -24,7 +23,7 @@ import java.time.LocalDate;
 /**
  * Code created by Andrius on 2020-09-27
  */
-public class VisitDashController {
+public class ReservationDashController {
 
     @FXML
     private Label title;
@@ -57,25 +56,25 @@ public class VisitDashController {
     private Button clearBtn;
 
     @FXML
-    private TableView<Consult> visitTable;
+    private TableView<Reservation> reservationTable;
 
     @FXML
-    private TableColumn<Consult, Long> visitId;
+    private TableColumn<Reservation, Long> reservationId;
 
     @FXML
-    private TableColumn<Consult, LocalDate> visitDate;
+    private TableColumn<Reservation, LocalDate> reservationDate;
 
     @FXML
-    private TableColumn<Consult, String> petId;
+    private TableColumn<Reservation, String> reservationHeure;
 
     @FXML
-    private TableColumn<Consult, String> vetId;
+    private TableColumn<Reservation, Integer> reservationDuree;
 
     @FXML
-    private TableColumn<Consult, String> descriptionId;
+    private TableColumn<Reservation, Integer> reservationNombrePersonne;
 
-    ConsultDao consultDao = new ConsultDao();
-    ObservableList<Consult> visitObList = FXCollections.observableArrayList();
+    ReservationDao reservationDao = new ReservationDao();
+    ObservableList<Reservation> reservationObList = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
@@ -89,41 +88,41 @@ public class VisitDashController {
 
     private void setTexts() {
         date.setText(LocalDate.now().toString());
-        title.setText(SceneName.VISITS.getName());
+        title.setText(SceneName.CLIENTS.getName());
         updateTime.setText("Last update: " + CurrentTime.getTime());
         setDbInfo();
         setUserInfo();
     }
 
     private void setObList() {
-        visitObList.clear();
-        visitObList.addAll(consultDao.getConsults());
+        reservationObList.clear();
+        reservationObList.addAll(reservationDao.getAll());
     }
 
     private void fillTable() {
-        visitId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        visitDate.setCellValueFactory(new PropertyValueFactory<>("visitDate"));
-        petId.setCellValueFactory(new PropertyValueFactory<>("pet"));
-        vetId.setCellValueFactory(new PropertyValueFactory<>("veterinarian"));
-        descriptionId.setCellValueFactory(new PropertyValueFactory<>("description"));
-        descriptionId.setCellFactory(TextFieldTableCell.forTableColumn());
+        reservationId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        reservationDate.setCellValueFactory(new PropertyValueFactory<>("date"));
+        reservationHeure.setCellValueFactory(new PropertyValueFactory<>("heure"));
+        reservationDuree.setCellValueFactory(new PropertyValueFactory<>("duree"));
+        reservationNombrePersonne.setCellValueFactory(new PropertyValueFactory<>("nombrePersonne"));
+        //descriptionId.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     private void addTableSettings() {
-        visitTable.setEditable(true);
-        visitTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        visitTable.setItems(getSortedList());
+        reservationTable.setEditable(true);
+        reservationTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        reservationTable.setItems(getSortedList());
     }
 
-    private SortedList<Consult> getSortedList() {
-        SortedList<Consult> sortedList = new SortedList<>(getFilteredListByDates());
-        sortedList.comparatorProperty().bind(visitTable.comparatorProperty());
+    private SortedList<Reservation> getSortedList() {
+        SortedList<Reservation> sortedList = new SortedList<>(getFilteredListByDates());
+        sortedList.comparatorProperty().bind(reservationTable.comparatorProperty());
         return sortedList;
     }
 
     @FXML
-    private FilteredList<Consult> getFilteredListByDates() {
-        FilteredList<Consult> filteredItems = new FilteredList<>(getFilteredListByString());
+    private FilteredList<Reservation> getFilteredListByDates() {
+        FilteredList<Reservation> filteredItems = new FilteredList<>(getFilteredListByString());
 
         filteredItems.predicateProperty().bind(Bindings.createObjectBinding(() -> {
                     LocalDate minDate = dateFrom.getValue();
@@ -139,8 +138,8 @@ public class VisitDashController {
         return filteredItems;
     }
 
-    private FilteredList<Consult> getFilteredListByString() {
-        FilteredList<Consult> filteredList = new FilteredList<>(visitObList, b -> true);
+    private FilteredList<Reservation> getFilteredListByString() {
+        FilteredList<Reservation> filteredList = new FilteredList<>(reservationObList, b -> true);
         searchBar.textProperty().addListener((observable, oldValue, newValue) ->
                 filteredList.setPredicate(consult -> {
                     if (newValue == null || newValue.isEmpty()) {
@@ -165,25 +164,25 @@ public class VisitDashController {
             dateFrom.setValue(null);
             dateTo.setValue(null);
             searchBar.setText("");
-            visitTable.setItems(getSortedList());
+            reservationTable.setItems(getSortedList());
         });
     }
 
     @FXML
     private void changeDescriptionCell(TableColumn.CellEditEvent editEvent) {
-        Consult consult = visitTable.getSelectionModel().getSelectedItem();
-        consult.setDescription(editEvent.getNewValue().toString());
-        consultDao.updateConsult(consult);
+        Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
+        reservation.setDescription(editEvent.getNewValue().toString());
+        reservationDao.update(reservation);
     }
 
-    @FXML
-    void deleteVisit(ActionEvent event) throws IOException {
-        ObservableList<Consult> selectedRows = visitTable.getSelectionModel().getSelectedItems();
-        for (Consult consult : selectedRows) {
-            consultDao.deleteConsult(consult);
-        }
-        refreshWindow(event);
-    }
+//    @FXML
+//    void deleteVisit(ActionEvent event) throws IOException {
+//        ObservableList<Reservation> selectedRows = reservationTable.getSelectionModel().getSelectedItems();
+//        for (Reservation reservation : selectedRows) {
+//            reservationDao.delete(reservation.getId());
+//        }
+//        refreshWindow(event);
+//    }
 
     @FXML
     private void newWindow(ActionEvent event) throws IOException {
@@ -195,30 +194,43 @@ public class VisitDashController {
     }
 
     private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentUser.getCurrentUser().getUserName()));
+        userInfo.setText(String.format("User: %s", CurrentUser.getCurrentUser().getPrenom()));
     }
 
     private void setDbInfo() {
-        stats.setText(String.format("Total visits in database: %s", consultDao.getNumberOfVisits()));
+        stats.setText(String.format("Total visits in database: %s", reservationDao.count()));
     }
 
     @FXML
     void refreshWindow(ActionEvent event) throws IOException {
-        SceneController.getVisitScene(event);
+        SceneController.getClientsScene(event);
     }
 
     @FXML
     void showPetsScreen(ActionEvent event) throws IOException {
-        SceneController.getPetsScene(event);
+        SceneController.getChambresScene(event);
     }
 
     @FXML
     void showVetsScreen(ActionEvent event) throws IOException {
-        SceneController.getVetsScene(event);
+        SceneController.getEmployesScene(event);
+    }
+
+    @FXML
+    void showEmployesScreen(ActionEvent event) throws IOException {
+        SceneController.getEmployesScene(event);
     }
 
     @FXML
     void showDashboard(ActionEvent event) throws IOException {
-        SceneController.getMainScene(event);
+        SceneController.getAdminMainScene(event);
+    }
+
+    public void showChambresScreen(ActionEvent event) throws IOException {
+        SceneController.getChambresScene(event);
+    }
+
+    public void showClientsScreen(ActionEvent actionEvent) throws IOException {
+        SceneController.getClientsScene(actionEvent);
     }
 }

@@ -2,10 +2,7 @@ package com.miola.smarthotel.controller.mainwindowcontrollers;
 
 import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
 import com.miola.smarthotel.dao.VetDao;
-import com.miola.smarthotel.helpers.CurrentTime;
-import com.miola.smarthotel.helpers.CurrentUser;
-import com.miola.smarthotel.helpers.SceneName;
-import com.miola.smarthotel.helpers.UpdateStatus;
+import com.miola.smarthotel.helpers.*;
 import com.miola.smarthotel.model.Veterinarian;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -77,7 +74,7 @@ public class VetDashController {
     }
 
     private void setTexts() {
-        title.setText(SceneName.VETS.getName());
+        title.setText(SceneName.EMPLOYES.getName());
         date.setText(LocalDate.now().toString());
         updateTime.setText("Last update: " + CurrentTime.getTime());
         setDbInfo();
@@ -183,7 +180,7 @@ public class VetDashController {
     }
 
     private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentUser.getCurrentUser().getUserName()));
+        userInfo.setText(String.format("User: %s", CurrentEmploye.getCurrentEmploye().getUserName()));
     }
 
     private void setDbInfo() {
@@ -192,21 +189,21 @@ public class VetDashController {
 
     @FXML
     void showDashboard(ActionEvent event) throws IOException {
-        SceneController.getMainScene(event);
+        SceneController.getAdminMainScene(event);
     }
 
     @FXML
     void showVisitScreen(ActionEvent event) throws IOException {
-        SceneController.getVisitScene(event);
+        SceneController.getClientsScene(event);
     }
 
     @FXML
     void showPetScreen(ActionEvent event) throws IOException {
-        SceneController.getPetsScene(event);
+        SceneController.getChambresScene(event);
     }
 
     @FXML
     void refreshScreen(ActionEvent event) throws IOException {
-        SceneController.getVetsScene(event);
+        SceneController.getEmployesScene(event);
     }
 }

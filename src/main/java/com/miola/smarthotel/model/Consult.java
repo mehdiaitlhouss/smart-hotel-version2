@@ -12,7 +12,8 @@ import java.time.LocalDate;
  */
 @Entity
 @Getter @Setter @NoArgsConstructor
-public class Consult {
+public class Consult
+{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

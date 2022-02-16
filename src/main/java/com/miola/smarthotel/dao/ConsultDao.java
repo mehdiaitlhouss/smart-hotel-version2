@@ -1,23 +1,16 @@
 package com.miola.smarthotel.dao;
 
 import com.miola.smarthotel.model.Consult;
-import com.miola.smarthotel.util.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
-
-import javax.persistence.TypedQuery;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Code created by Andrius on 2020-09-26
  */
 public class ConsultDao {
+    public Consult getConsults() {
+        return null;
+    }
 
-    public boolean createConsult(Consult consult) {
+/*    public boolean createConsult(Consult consult) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getSessionFactory().openSession()) {
             transaction = session.beginTransaction();
@@ -99,5 +92,5 @@ public class ConsultDao {
             ex.printStackTrace();
             return 0L;
         }
-    }
+    }*/
 }

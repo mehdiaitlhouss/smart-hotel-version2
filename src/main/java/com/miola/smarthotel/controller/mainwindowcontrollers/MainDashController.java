@@ -1,12 +1,10 @@
 package com.miola.smarthotel.controller.mainwindowcontrollers;
 
-import com.miola.smarthotel.dao.ConsultDao;
-import com.miola.smarthotel.dao.PetDao;
-import com.miola.smarthotel.dao.VetDao;
+import com.miola.smarthotel.dao.*;
+import com.miola.smarthotel.helpers.CurrentEmploye;
 import com.miola.smarthotel.helpers.CurrentTime;
-import com.miola.smarthotel.helpers.CurrentUser;
 import com.miola.smarthotel.helpers.SceneName;
-import com.miola.smarthotel.model.Consult;
+import com.miola.smarthotel.model.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -31,48 +29,48 @@ public class MainDashController {
     private Label date;
 
     @FXML
-    private Label vetInfoBlockName;
+    private Label reservationInfoBlockName;
 
     @FXML
-    private Label vetNumber;
+    private Label reservationNumber;
 
     @FXML
-    private Label petInfoBlockName;
+    private Label chambresInfoBlockName;
 
     @FXML
-    private Label petNumber;
+    private Label chambresNumber;
 
     @FXML
-    private Label visitInfoBlockName;
+    private Label employeInfoBlockName;
 
     @FXML
-    private Label visitNumber;
+    private Label employeNumber;
 
     @FXML
     private Label userInfo;
 
     @FXML
-    private TableView<Consult> visitTable;
+    private TableView<Client> clientTable;
 
     @FXML
-    private TableColumn<Consult, Long> visitId;
+    private TableColumn<Client, Long> clientId;
 
     @FXML
-    private TableColumn<Consult, Long> visitDate;
+    private TableColumn<Client, String> clientName;
 
     @FXML
-    private TableColumn<Consult, String> petId;
+    private TableColumn<Client, String> clientCin;
 
     @FXML
-    private TableColumn<Consult, String> vetId;
+    private TableColumn<Client, String> clientEmail;
 
     @FXML
-    private TableColumn<Consult, String> descriptionId;
+    private TableColumn<Client, String> clientAdresse;
 
     @FXML
     private Label visitInfoText;
 
-    ConsultDao consultDao = new ConsultDao();
+    ClientDao clientDao = new ClientDao();
 
     @FXML
     private void initialize() {
@@ -83,46 +81,46 @@ public class MainDashController {
     private void setTexts() {
         title.setText(SceneName.DASHBOARD.getName());
         date.setText(LocalDate.now().toString());
-        vetNumber.setText(getNumberOfVets());
-        petNumber.setText(getNumberOfPets());
-        visitNumber.setText(getVisitNumber());
-        visitInfoBlockName.setText("Upcoming visits");
-        vetInfoBlockName.setText("Vets in DB");
-        petInfoBlockName.setText("Pets in DB");
+        reservationNumber.setText(getNumberOfReservations());
+        chambresNumber.setText(getNumberOfChambres());
+        employeNumber.setText(getNumberOfEmployes());
+        reservationInfoBlockName.setText("Upcoming Reservation");
+        chambresInfoBlockName.setText("Chambres in DB");
+        employeInfoBlockName.setText("Employes in DB");
         visitInfoText.setText(getCalendarInformation());
         setUserInfo();
     }
 
     private void fillTableWithData() {
-        visitId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        visitDate.setCellValueFactory(new PropertyValueFactory<>("visitDate"));
-        petId.setCellValueFactory(new PropertyValueFactory<>("pet"));
-        vetId.setCellValueFactory(new PropertyValueFactory<>("veterinarian"));
-        descriptionId.setCellValueFactory(new PropertyValueFactory<>("description"));
-        visitTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        visitTable.setItems(getVisitObservableList());
+        clientId.setCellValueFactory(new PropertyValueFactory<>("id"));
+        clientName.setCellValueFactory(new PropertyValueFactory<>("visitDate"));
+        clientCin.setCellValueFactory(new PropertyValueFactory<>("pet"));
+        clientEmail.setCellValueFactory(new PropertyValueFactory<>("veterinarian"));
+        clientAdresse.setCellValueFactory(new PropertyValueFactory<>("description"));
+        clientTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+        clientTable.setItems(getVisitObservableList());
     }
 
-    private ObservableList<Consult> getVisitObservableList() {
-        ObservableList<Consult> consults = FXCollections.observableArrayList();
-        consults.addAll(consultDao.getConsultInterval());
-        return consults;
+    private ObservableList<Client> getVisitObservableList() {
+        ObservableList<Client> clients = FXCollections.observableArrayList();
+        clients.addAll(clientDao.getAll());
+        return clients;
     }
 
-    private String getNumberOfVets() {
-        return String.valueOf(new VetDao().getVetsNumber());
+    private String getNumberOfReservations() {
+        return String.valueOf(new ReservationDao().count());
     }
 
-    private String getNumberOfPets() {
-        return String.valueOf(new PetDao().getNumberOfPets());
+    private String getNumberOfChambres() {
+        return String.valueOf(new ChambreDao().count());
     }
 
-    private String getVisitNumber() {
-        return String.valueOf(consultDao.getConsultInterval().size());
+    private String getNumberOfEmployes() {
+        return String.valueOf(new EmployeDao().count());
     }
 
     private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentUser.getCurrentUser().getUserName()));
+        userInfo.setText(String.format("User: %s", CurrentEmploye.getCurrentEmploye().getUserName()));
     }
 
     private String getCalendarInformation() {
@@ -130,23 +128,23 @@ public class MainDashController {
     }
 
     @FXML
-    void showVisitScreen(ActionEvent event) throws IOException {
-        SceneController.getVisitScene(event);
+    void showClientsScreen(ActionEvent event) throws IOException {
+        SceneController.getClientsScene(event);
     }
 
     @FXML
-    void showVetScreen(ActionEvent event) throws IOException {
-        SceneController.getVetsScene(event);
+    void showEmployesScreen(ActionEvent event) throws IOException {
+        SceneController.getEmployesScene(event);
     }
 
     @FXML
-    void showPetScreen(ActionEvent event) throws IOException {
-        SceneController.getPetsScene(event);
+    void showChambresScreen(ActionEvent event) throws IOException {
+        SceneController.getChambresScene(event);
     }
 
     @FXML
     void refreshWindow(ActionEvent event) throws IOException {
-        SceneController.getMainScene(event);
+        SceneController.getAdminMainScene(event);
     }
 
     @FXML

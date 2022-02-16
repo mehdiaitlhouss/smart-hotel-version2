@@ -1,3 +1,4 @@
+/*
 package com.miola.smarthotel.util;
 
 import com.miola.smarthotel.model.Consult;
@@ -12,9 +13,11 @@ import org.hibernate.service.ServiceRegistry;
 
 import java.util.Properties;
 
+*/
 /**
  * Code created by Andrius on 2020-09-26
- */
+ *//*
+
 public class HibernateUtil {
 
     private static SessionFactory sessionFactory;
@@ -54,3 +57,4 @@ public class HibernateUtil {
         getSessionFactory().close();
     }
 }
+*/

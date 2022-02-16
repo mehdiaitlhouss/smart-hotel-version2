@@ -37,7 +37,7 @@
                         <Insets top="80.0" />
                     </VBox.margin>
                 </Label>
-                <TextField fx:id="username" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter username" styleClass="login-field" />
+                <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter username" styleClass="login-field" />
                 <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginUser" prefHeight="40.0" prefWidth="250.0" promptText="Enter password" styleClass="login-field">
                     <VBox.margin>
                         <Insets />

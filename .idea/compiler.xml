@@ -7,11 +7,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="smart-hotel" />
+        <module name="smart-hotel-version2" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="smart-hotel" target="17" />
+      <module name="smart-hotel-version2" target="17" />
     </bytecodeTargetLevel>
   </component>
 </project>

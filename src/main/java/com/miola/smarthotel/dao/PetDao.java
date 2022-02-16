@@ -1,7 +1,6 @@
 package com.miola.smarthotel.dao;
 
 import com.miola.smarthotel.model.Pet;
-import com.miola.smarthotel.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -15,7 +14,7 @@ import java.util.List;
  */
 public class PetDao {
 
-    Session session = HibernateUtil.getSessionFactory().openSession();
+  /*  Session session = HibernateUtil.getSessionFactory().openSession();
 
     public boolean createPet(Pet pet) {
         Transaction transaction = null;
@@ -87,5 +86,5 @@ public class PetDao {
             ex.printStackTrace();
             return 0L;
         }
-    }
+    }*/
 }

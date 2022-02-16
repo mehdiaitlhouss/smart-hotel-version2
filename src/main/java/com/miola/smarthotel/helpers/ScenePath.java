@@ -8,12 +8,13 @@ public enum ScenePath {
     ADD_PET("/view/addPet.fxml"),
     ADD_VET("/view/addVet.fxml"),
     ADD_VISIT("/view/addVisit.fxml"),
-    HOME("/view/dashboard.fxml"),
+    HOME_ADMIN("/view/dashboardAdmin.fxml"),
+    HOME_RECEPTIONNISTE("/view/dashbordReceptionniste.fxml"),
     LOGIN("/view/login.fxml"),
-    PETS("/view/petDash.fxml"),
+    CHAMBRES("/view/chambresDash.fxml"),
     SEARCH("/view/search.fxml"),
-    VETS("/view/vetsDash.fxml"),
-    VISITS("/view/visitDash.fxml");
+    EMPLOYES("/view/EmployesDash.fxml"),
+    CLIENTS("/view/ReservationDash.fxml");
 
     private final String path;
 

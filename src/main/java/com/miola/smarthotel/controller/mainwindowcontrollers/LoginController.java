@@ -1,8 +1,9 @@
 package com.miola.smarthotel.controller.mainwindowcontrollers;
 
-import com.miola.smarthotel.dao.UserDao;
-import com.miola.smarthotel.helpers.CurrentUser;
-import com.miola.smarthotel.model.User;
+import com.miola.smarthotel.dao.EmployeDao;
+import com.miola.smarthotel.helpers.CurrentEmploye;
+import com.miola.smarthotel.model.Admin;
+import com.miola.smarthotel.model.Employe;
 import javafx.animation.PauseTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,21 +21,21 @@ import java.io.IOException;
 public class LoginController {
 
     @FXML
-    private TextField username;
+    private TextField userName; // login de l'utilisateur
 
     @FXML
-    private PasswordField password;
+    private PasswordField password; // le password de l'utilisateur
 
     @FXML
-    private Label infoLine;
+    private Label infoLine;  // label pour afficher des message pendant le loge  si l'utilisateur a oublier un field
 
     @FXML
-    private Label welcome;
+    private Label welcome; // label qui contient le grande mot LOGIN avant les champs de login et password
 
     @FXML
-    private Button exitBtn;
+    private Button exitBtn; // boutton de sortie
 
-    UserDao userDao = new UserDao();
+    EmployeDao employeDao = new EmployeDao();  // crud du employe
 
     @FXML
     private void initialize() {
@@ -43,11 +44,11 @@ public class LoginController {
 
     @FXML
     private void loginUser(ActionEvent event) throws IOException, InterruptedException {
-        String user = username.getText();
+        String user = userName.getText();
         String pass = password.getText();
 
         if(!validFields()) {
-            infoLine.setText("Username and password can't be empty!");
+            infoLine.setText("login and password can't be empty!");
             return;
         }
 
@@ -56,13 +57,24 @@ public class LoginController {
             return;
         }
 
-        welcome.setText("Welcome, " + CurrentUser.getCurrentUser().getUserName() + "!");
+        welcome.setText("Welcome, " + CurrentEmploye.getCurrentEmploye().getUserName() + "!");
         infoLine.setText("Redirecting to main dashboard...");
 
         PauseTransition delay = new PauseTransition(Duration.seconds(2));
         delay.setOnFinished( event2 -> {
             try {
-                SceneController.getMainScene(event);
+                /*
+                ici la place pour faire la diffrenece entre l'admin et le recep
+                 */
+
+                if(CurrentEmploye.getCurrentEmploye() instanceof Admin)
+                {
+                    SceneController.getAdminMainScene(event);
+                }
+                else
+                {
+                    SceneController.getRecepMainScene(event);
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -71,21 +83,20 @@ public class LoginController {
     }
 
     boolean validFields() {
-        return !username.getText().isEmpty() && !password.getText().isEmpty();
+        // tester si aucun champ est vide
+        return !userName.getText().isEmpty() && !password.getText().isEmpty();
     }
 
     private boolean validateLogin() {
-        User user = userDao.getConnectedUser(username.getText(), password.getText());
-        if (user == null) {
+        Employe empl = employeDao.getConnectedEmploye(userName.getText(), password.getText());
+        if (empl == null) {
             return false;
         }
-        CurrentUser.setCurrentUser(user);
+        CurrentEmploye.setCurrentEmploye(empl);
         return true;
     }
 
     private void close() {
         exitBtn.setOnAction(SceneController::close);
     }
-
-
 }

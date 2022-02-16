@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.andrius.petclinic.controller.mainwindowcontrollers.PetDashController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.ChambresDashController">
     <children>
         <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -66,7 +66,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showVisitScreen" prefHeight="50.0" text="Client visits">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showVisitScreen" prefHeight="50.0" text="Clients">
                     <opaqueInsets>
                         <Insets />
                     </opaqueInsets>
@@ -90,7 +90,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showVetScreen" prefHeight="50.0" text="Veterinarians">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showVetScreen" prefHeight="50.0" text="Employes">
                     <VBox.margin>
                         <Insets bottom="30.0" />
                     </VBox.margin>
@@ -108,7 +108,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
                 </Button>
-                <Button alignment="BASELINE_LEFT" defaultButton="true" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" text="Pet data">
+                <Button alignment="BASELINE_LEFT" defaultButton="true" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" text="Chambres">
                     <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -147,7 +147,7 @@
                         <Insets />
                     </VBox.margin>
                     <children>
-                        <Label id="title" fx:id="title" layoutX="10.0" styleClass="title" text="Pets database" textFill="#515151">
+                        <Label id="title" fx:id="title" layoutX="10.0" styleClass="title" text="Chambres" textFill="#515151">
                             <font>
                                 <Font name="Roboto Bold Condensed" size="20.0" />
                             </font>
@@ -186,10 +186,12 @@
             <TableView fx:id="petTable" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="535.0" prefWidth="700.0">
               <columns>
                 <TableColumn fx:id="idColumn" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" resizable="false" text="ID" />
-                <TableColumn fx:id="dateColumn" maxWidth="100.0" minWidth="100.0" prefWidth="100.0" resizable="false" text="DATE" />
-                  <TableColumn fx:id="typeColumn" maxWidth="120.0" minWidth="120.0" onEditCommit="#changeTypeCell" prefWidth="120.0" resizable="false" text="RACE" />
-                  <TableColumn fx:id="vaccineColumn" maxWidth="95.0" minWidth="95.0" prefWidth="95.0" resizable="false" text="VACCINATED" />
-                  <TableColumn fx:id="ownerColumn" maxWidth="320.0" minWidth="320.0" onEditCommit="#changeOwnerCell" prefWidth="320.0" resizable="false" text="OWNER INFO" />
+                <TableColumn fx:id="etageColumn" maxWidth="76.6666374206543" minWidth="50.0" prefWidth="76.6666374206543" resizable="false" text="ETAGE" />
+                  <TableColumn fx:id="typeColumn" maxWidth="137.33332061767578" minWidth="61.333351135253906" onEditCommit="#changeTypeCell" prefWidth="61.333351135253906" resizable="false" text="TYPE" />
+                  <TableColumn fx:id="nombreLitColumn" maxWidth="320.0" minWidth="0.0" onEditCommit="#changeOwnerCell" prefWidth="105.99998474121094" resizable="false" text="NOMBRE LIT" />
+                  <TableColumn fx:id="nombrePersonneColumn" prefWidth="150.00003051757812" resizable="false" text="NOMBRE PERSONNES" />
+                  <TableColumn fx:id="prixParJourColumn" prefWidth="112.00003051757812" resizable="false" text="PRIX PAR JOUR" />
+                  <TableColumn fx:id="etatChambreColumn" prefWidth="140.6666259765625" resizable="false" text="ETAT CHAMBRE" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" left="25.0" right="25.0" />
