@@ -2,10 +2,7 @@ package com.miola.smarthotel.controller.mainwindowcontrollers;
 
 import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
 import com.miola.smarthotel.dao.ReservationDao;
-import com.miola.smarthotel.helpers.CurrentTime;
-import com.miola.smarthotel.helpers.CurrentUser;
-import com.miola.smarthotel.helpers.SceneName;
-import com.miola.smarthotel.helpers.UpdateStatus;
+import com.miola.smarthotel.helpers.*;
 import com.miola.smarthotel.model.Reservation;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
@@ -18,15 +15,14 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.Time;
 import java.time.LocalDate;
 
 /**
  * Code created by Andrius on 2020-09-27
  */
 public class ReservationDashController {
-
-    @FXML
-    public Button chambresWindow;
 
     @FXML
     private Label title;
@@ -65,10 +61,10 @@ public class ReservationDashController {
     private TableColumn<Reservation, Integer> reservationId;
 
     @FXML
-    private TableColumn<Reservation, LocalDate> reservationDate;
+    private TableColumn<Reservation, Date> reservationDate;
 
     @FXML
-    private TableColumn<Reservation, String> reservationHeure;
+    private TableColumn<Reservation, Time> reservationHeure;
 
     @FXML
     private TableColumn<Reservation, Integer> reservationDuree;
@@ -106,13 +102,14 @@ public class ReservationDashController {
         reservationObList.addAll(reservationDao.getAll());
     }
 
-    private void fillTable() {
+    private void fillTable()
+    {
         reservationId.setCellValueFactory(new PropertyValueFactory<>("id"));
         reservationDate.setCellValueFactory(new PropertyValueFactory<>("dateReservation"));
         reservationHeure.setCellValueFactory(new PropertyValueFactory<>("heureReservation"));
         reservationDuree.setCellValueFactory(new PropertyValueFactory<>("dureeSejour"));
         reservationNombrePersonne.setCellValueFactory(new PropertyValueFactory<>("nombrePersonne"));
-        reservationEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
+        reservationEtat.setCellValueFactory(new PropertyValueFactory<>("etatString"));
         //descriptionId.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
@@ -139,7 +136,7 @@ public class ReservationDashController {
                     final LocalDate finalMin = minDate == null ? LocalDate.MIN : minDate;
                     final LocalDate finalMax = maxDate == null ? LocalDate.MAX : maxDate;
 
-                    return ti -> !finalMin.isAfter(null) && !finalMax.isBefore(null);
+                    return ti -> !finalMin.isAfter(LocalDate.MIN) && !finalMax.isBefore(LocalDate.MAX);
                 },
                 dateFrom.valueProperty(),
                 dateTo.valueProperty()));
@@ -178,19 +175,20 @@ public class ReservationDashController {
 
     @FXML
     private void changeDescriptionCell(TableColumn.CellEditEvent editEvent) {
+        // il faut ajouter onEditCommit="#changeDescriptionCell" dans l'attrinue de la table
         Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
        // reservation.set(editEvent.getNewValue().toString());
         reservationDao.update(reservation);
     }
 
-//    @FXML
-//    void deleteVisit(ActionEvent event) throws IOException {
+    @FXML
+    void deleteVisit(ActionEvent event) throws IOException {
 //        ObservableList<Reservation> selectedRows = reservationTable.getSelectionModel().getSelectedItems();
 //        for (Reservation reservation : selectedRows) {
 //            reservationDao.delete(reservation.getId());
 //        }
 //        refreshWindow(event);
-//    }
+    }
 
     @FXML
     private void newWindow(ActionEvent event) throws IOException {
@@ -202,7 +200,7 @@ public class ReservationDashController {
     }
 
     private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentUser.getCurrentUser().getPrenom()));
+        userInfo.setText(String.format("User: %s", CurrentEmploye.getCurrentEmploye().getNom()));
     }
 
     private void setDbInfo() {
@@ -215,16 +213,6 @@ public class ReservationDashController {
     }
 
     @FXML
-    void showPetsScreen(ActionEvent event) throws IOException {
-        SceneController.getChambresScene(event);
-    }
-
-    @FXML
-    void showVetsScreen(ActionEvent event) throws IOException {
-        SceneController.getEmployesScene(event);
-    }
-
-    @FXML
     void showEmployesScreen(ActionEvent event) throws IOException {
         SceneController.getEmployesScene(event);
     }
@@ -234,10 +222,12 @@ public class ReservationDashController {
         SceneController.getAdminMainScene(event);
     }
 
+    @FXML
     public void showChambresScreen(ActionEvent event) throws IOException {
         SceneController.getChambresScene(event);
     }
 
+    @FXML
     public void showClientsScreen(ActionEvent actionEvent) throws IOException {
         SceneController.getReservationsScene(actionEvent);
     }

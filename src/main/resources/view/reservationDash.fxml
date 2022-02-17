@@ -85,7 +85,7 @@
                         <Insets bottom="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="chambresWindow" alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
                     <VBox.margin>
                         <Insets bottom="30.0" />
                     </VBox.margin>
@@ -100,7 +100,7 @@
                         <Insets left="20.0" />
                     </padding>
                 </Button>
-                <Button fx:id="clientsBtn" alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" text="Clients">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" text="Clients">
                     <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -208,11 +208,11 @@
             </HBox>
             <TableView fx:id="reservationTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="535.0" prefWidth="700.0">
               <columns>
-                <TableColumn fx:id="reservationId" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
-                <TableColumn fx:id="reservationDate" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="DATE" />
+                  <TableColumn fx:id="reservationId" maxWidth="50.0" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
+                  <TableColumn fx:id="reservationDate" maxWidth="75.0" minWidth="75.0" prefWidth="75.0" resizable="false" text="DATE" />
                   <TableColumn fx:id="reservationHeure" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="HEURE" />
                   <TableColumn fx:id="reservationDuree" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="DUREE" />
-                  <TableColumn fx:id="reservationNombrePersonne" maxWidth="284.0" minWidth="144.00003051757812" onEditCommit="#changeDescriptionCell" prefWidth="144.00003051757812" resizable="false" text="NOMBRE PERSONNE" />
+                  <TableColumn fx:id="reservationNombrePersonne" maxWidth="284.0" minWidth="144.00003051757812"  prefWidth="144.00003051757812" resizable="false" text="NOMBRE PERSONNE" />
                   <TableColumn fx:id="reservationEtat" prefWidth="122.0" text="ETAT" />
               </columns>
                <VBox.margin>

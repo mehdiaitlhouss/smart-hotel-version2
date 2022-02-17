@@ -146,37 +146,37 @@ public class ChambresDashController {
         return filteredList;
     }
 
-//    @FXML
-//    private void changeOwnerCell(TableColumn.CellEditEvent<Chambre, String> editEvent) {
+    @FXML
+    private void changeOwnerCell(TableColumn.CellEditEvent<Chambre, String> editEvent) {
 //        Chambre selectedChambre = chambreTable.getSelectionModel().getSelectedItem();
 //        selectedChambre.setOwnerName(editEvent.getNewValue());
 //        chambreDao.updateChambre(selectedChambre);
-//    }
-//
-//    @FXML
-//    private void changeTypeCell(TableColumn.CellEditEvent<Chambre, String> editEvent) {
+    }
+
+    @FXML
+    private void changeTypeCell(TableColumn.CellEditEvent<Chambre, String> editEvent) {
 //        Chambre selectedChambre = chambreTable.getSelectionModel().getSelectedItem();
 //        selectedChambre.setRace(editEvent.getNewValue());
 //        chambreDao.updateChambre(selectedChambre);
-//    }
-//
-//    @FXML
-//    private void deleteChambres(ActionEvent event) throws Exception {
+    }
+
+    @FXML
+    private void deleteChambres(ActionEvent event) throws Exception {
 //        ObservableList<Chambre> selectedRows = chambreTable.getSelectionModel().getSelectedItems();
 //        for (Chambre Chambre : selectedRows) {
 //            chambreDao.deleteChambre(Chambre);
 //        }
 //        refreshScreen(event);
-//    }
-//
-//    @FXML
-//    private void newWindow(ActionEvent event) throws IOException {
+    }
+
+    @FXML
+    private void newWindow(ActionEvent event) throws IOException {
 //        NewWindowController.getNewChambreWindow();
 //        if(UpdateStatus.isChambreAdded()) {
 //            refreshScreen(event);
 //            UpdateStatus.setIsChambreAdded(false);
 //        }
-//    }
+    }
 
     private void setUserInfo() {
         userInfo.setText(String.format("User: %s", CurrentUser.getCurrentUser().getPrenom()));

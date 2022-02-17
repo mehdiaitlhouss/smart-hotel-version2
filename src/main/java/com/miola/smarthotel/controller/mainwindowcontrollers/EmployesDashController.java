@@ -20,7 +20,7 @@ import java.time.LocalDate;
 /**
  * Code created by Andrius on 2020-09-27
  */
-public class VetDashController {
+public class EmployesDashController {
 
     @FXML
     private Label title;

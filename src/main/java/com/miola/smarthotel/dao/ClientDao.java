@@ -111,12 +111,12 @@ public class ClientDao implements Dao<Client>
         return count;
     }
 
-    public Client get(int id)
+    public Client get(int id) // l'id de la table client
     {
         Client client = null;
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sqlQuery = "SELECT c.idUser AS idUser, nom, prenom, telephone, email, cin, adresse, ville, pays" +
+        String sqlQuery = "SELECT c.idUser AS idUser, nom, prenom, telephone, email, cin, adresse, ville, pays " +
                             "FROM client AS c INNER JOIN user AS u ON c.idUser = u.id WHERE c.id = ?";
 
         try {

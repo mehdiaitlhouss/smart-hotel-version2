@@ -15,6 +15,7 @@ public class Reservation
     private Employe employe;
     private Client client;
     private EtatReservation etat;
+    private String etatString;
 
     public Reservation(int id, Date dateReservation, Time heureReservation, int dureeSejour, int nombrePersonne, Employe employe, Client client, EtatReservation etat) {
         this.id = id;
@@ -35,6 +36,7 @@ public class Reservation
         this.employe = employe;
         this.client = client;
         this.etat = etat;
+        this.etatString = etat.getEtat();
     }
 
     public int getId() {
@@ -75,5 +77,19 @@ public class Reservation
 
     public void setNombrePersonne(int nombrePersonne) {
         this.nombrePersonne = nombrePersonne;
+    }
+
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "id=" + id +
+                ", dateReservation=" + dateReservation +
+                ", heureReservation=" + heureReservation +
+                ", dureeSejour=" + dureeSejour +
+                ", nombrePersonne=" + nombrePersonne +
+                ", employe=" + employe +
+                ", client=" + client +
+                ", etat=" + etat +
+                '}';
     }
 }

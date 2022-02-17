@@ -74,15 +74,8 @@ public class ReservationDao implements Dao<Reservation>
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sqlQuery = "SELECT  r.id AS id," +
-                            "date," +
-                            "heure," +
-                            "duree," +
-                            "nombrePersonne," +
-                            "idEmploye," +
-                            "idClient," +
-                            "etat" +
-                            "FROM reservation AS r" +
+        String sqlQuery = "SELECT r.id AS id, date, heure, duree, nombrePersonne, idEmploye, idClient, etat " +
+                            "FROM reservation AS r " +
                             "INNER JOIN etatreservation AS et ON et.id = r.idEtatReservation";
 
         try {

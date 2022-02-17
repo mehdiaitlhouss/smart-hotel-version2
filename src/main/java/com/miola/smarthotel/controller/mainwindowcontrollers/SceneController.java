@@ -23,16 +23,6 @@ public class SceneController {
 
     private static Parent main;
 
-    public static void getInitialScene(Stage stage) throws IOException {
-        main = FXMLLoader.load((SceneController.class.getResource(ScenePath.LOGIN.getPath())));
-        Scene scene = new Scene(main);
-        controlDrag(stage);
-        stage.initStyle(StageStyle.UNDECORATED);
-        stage.setTitle("SMART HOTEL");
-        stage.setScene(scene);
-        stage.show();
-    }
-
     public static void getAdminMainScene(ActionEvent event) throws IOException {
         changeScreen(event, ScenePath.HOME_ADMIN.getPath());
     }
@@ -59,6 +49,16 @@ public class SceneController {
 
     public static void getSearchScene(ActionEvent event) throws IOException {
         changeScreen(event, ScenePath.SEARCH.getPath());
+    }
+
+    public static void getInitialScene(Stage stage) throws IOException {
+        main = FXMLLoader.load((SceneController.class.getResource(ScenePath.LOGIN.getPath())));
+        Scene scene = new Scene(main);
+        controlDrag(stage);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.setTitle("SMART HOTEL");
+        stage.setScene(scene);
+        stage.show();
     }
 
     private static void changeScreen(ActionEvent event, String path) throws IOException {
