@@ -55,7 +55,7 @@ public class SearchDashController {
 
     @FXML
     void showVisitScreen(ActionEvent event) throws IOException {
-        SceneController.getClientsScene(event);
+        SceneController.getReservationsScene(event);
     }
 
     @FXML

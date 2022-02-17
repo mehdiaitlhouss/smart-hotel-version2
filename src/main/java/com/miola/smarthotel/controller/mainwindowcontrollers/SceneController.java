@@ -41,8 +41,8 @@ public class SceneController {
         changeScreen(event, ScenePath.HOME_RECEPTIONNISTE.getPath());
     }
 
-    public static void getClientsScene(ActionEvent event) throws IOException {
-        changeScreen(event, ScenePath.CLIENTS.getPath());
+    public static void getReservationsScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.RESERVATIONS.getPath());
     }
 
     public static void getEmployesScene(ActionEvent event) throws IOException {
@@ -51,6 +51,10 @@ public class SceneController {
 
     public static void getChambresScene(ActionEvent event) throws IOException {
         changeScreen(event, ScenePath.CHAMBRES.getPath());
+    }
+
+    public static void getClientsScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.CLIENTS.getPath());
     }
 
     public static void getSearchScene(ActionEvent event) throws IOException {

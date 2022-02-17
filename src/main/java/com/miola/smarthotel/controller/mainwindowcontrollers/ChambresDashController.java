@@ -1,6 +1,5 @@
 package com.miola.smarthotel.controller.mainwindowcontrollers;
 
-import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
 import com.miola.smarthotel.dao.ChambreDao;
 import com.miola.smarthotel.helpers.*;
 import com.miola.smarthotel.model.Chambre;
@@ -12,11 +11,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.io.IOException;
 import java.time.LocalDate;
-import java.util.Locale;
 
 /**
  * Code created by Andrius on 2020-09-27
@@ -196,7 +193,7 @@ public class ChambresDashController {
 
     @FXML
     private void showVisitScreen(ActionEvent event) throws IOException {
-        SceneController.getClientsScene(event);
+        SceneController.getReservationsScene(event);
     }
 
     @FXML

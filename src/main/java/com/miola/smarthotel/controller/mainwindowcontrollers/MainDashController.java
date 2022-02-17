@@ -152,4 +152,9 @@ public class MainDashController {
     void exitProgram(ActionEvent event) {
         SceneController.close(event);
     }
+
+    @FXML
+    public void showReservationsScreen(ActionEvent event) throws IOException {
+        SceneController.getReservationsScene(event);
+    }
 }

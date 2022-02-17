@@ -66,7 +66,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" text="Clients">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showReservationsScreen" prefHeight="50.0" text="Réservation">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>

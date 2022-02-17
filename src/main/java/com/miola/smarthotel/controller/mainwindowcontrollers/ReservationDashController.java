@@ -26,6 +26,9 @@ import java.time.LocalDate;
 public class ReservationDashController {
 
     @FXML
+    public Button chambresWindow;
+
+    @FXML
     private Label title;
 
     @FXML
@@ -92,7 +95,7 @@ public class ReservationDashController {
 
     private void setTexts() {
         date.setText(LocalDate.now().toString());
-        title.setText(SceneName.CLIENTS.getName());
+        title.setText(SceneName.RESERVATIONS.getName());
         updateTime.setText("Last update: " + CurrentTime.getTime());
         setDbInfo();
         setUserInfo();
@@ -203,12 +206,12 @@ public class ReservationDashController {
     }
 
     private void setDbInfo() {
-        stats.setText(String.format("Total visits in database: %s", reservationDao.count()));
+        stats.setText(String.format("Total reservations in database: %s", reservationDao.count()));
     }
 
     @FXML
     void refreshWindow(ActionEvent event) throws IOException {
-        SceneController.getClientsScene(event);
+        SceneController.getReservationsScene(event);
     }
 
     @FXML
@@ -236,6 +239,9 @@ public class ReservationDashController {
     }
 
     public void showClientsScreen(ActionEvent actionEvent) throws IOException {
-        SceneController.getClientsScene(actionEvent);
+        SceneController.getReservationsScene(actionEvent);
+    }
+
+    public void deleteReservation(ActionEvent event) {
     }
 }

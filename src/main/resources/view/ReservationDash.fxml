@@ -85,7 +85,7 @@
                         <Insets bottom="30.0" />
                     </VBox.margin>
                 </Button>
-                <Button fx:id="chmabresWindow" alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
+                <Button fx:id="chambresWindow" alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
                     <VBox.margin>
                         <Insets bottom="30.0" />
                     </VBox.margin>
@@ -213,7 +213,7 @@
                   <TableColumn fx:id="reservationHeure" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="HEURE" />
                   <TableColumn fx:id="reservationDuree" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" resizable="false" text="DUREE" />
                   <TableColumn fx:id="reservationNombrePersonne" maxWidth="284.0" minWidth="144.00003051757812" onEditCommit="#changeDescriptionCell" prefWidth="144.00003051757812" resizable="false" text="NOMBRE PERSONNE" />
-                  <TableColumn fx:id="reservationEtat" prefWidth="75.0" text="ETAT" />
+                  <TableColumn fx:id="reservationEtat" prefWidth="122.0" text="ETAT" />
               </columns>
                <VBox.margin>
                   <Insets bottom="20.0" left="25.0" right="25.0" />
@@ -228,7 +228,7 @@
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="745.0">
                <children>
                   <Button alignment="CENTER" layoutX="25.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Add new visit..." />
-                  <Button layoutX="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteVisit" prefHeight="31.0" prefWidth="80.0" styleClass="deletebutton" text="Delete" />
+                  <Button layoutX="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteReservation" prefHeight="31.0" prefWidth="80.0" styleClass="deletebutton" text="Delete" />
                   <Button layoutX="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshWindow" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Refresh" />
                </children>
             </AnchorPane>
