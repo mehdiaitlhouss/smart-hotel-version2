@@ -37,16 +37,16 @@ public class AddVisitController {
     private ComboBox<Veterinarian> selectVet;
 
     @FXML
-    private void initialize() {
-        selectPet.setItems(getPetObservableList());
-        selectVet.setItems(getVetObservableList());
-    }
+//    private void initialize() {
+//        selectPet.setItems(getPetObservableList());
+//        selectVet.setItems(getVetObservableList());
+//    }
 
-    private ObservableList<Pet> getPetObservableList() {
+/*    private ObservableList<Pet> getPetObservableList() {
         ObservableList<Pet> list = FXCollections.observableArrayList();
         list.addAll(new PetDao().getPets());
         return list;
-    }
+    }*/
 
     private ObservableList<Veterinarian> getVetObservableList() {
         ObservableList<Veterinarian> list = FXCollections.observableArrayList();
@@ -54,7 +54,7 @@ public class AddVisitController {
         return list;
     }
 
-    @FXML
+/*    @FXML
     private void saveNewVisitToDb(ActionEvent event) {
         if(validateInputs()) {
             Consult consult = createConsultFromInput();
@@ -65,7 +65,7 @@ public class AddVisitController {
                 delayWindowClose(event);
             }
         }
-    }
+    }*/
 
     private Consult createConsultFromInput() {
         Consult visit = new Consult();

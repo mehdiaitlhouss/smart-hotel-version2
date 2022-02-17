@@ -11,6 +11,4 @@ public class Receptionniste extends Employe
     {
         super(idEmploye, prenom, nom, cin, email, telephone, adresse, userName, password);
     }
-
-
 }

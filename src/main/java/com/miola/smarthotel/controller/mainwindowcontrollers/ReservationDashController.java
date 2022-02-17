@@ -131,7 +131,7 @@ public class ReservationDashController {
                     final LocalDate finalMin = minDate == null ? LocalDate.MIN : minDate;
                     final LocalDate finalMax = maxDate == null ? LocalDate.MAX : maxDate;
 
-                    return ti -> !finalMin.isAfter(ti.getVisitDate()) && !finalMax.isBefore(ti.getVisitDate());
+                    return ti -> !finalMin.isAfter(null) && !finalMax.isBefore(null);
                 },
                 dateFrom.valueProperty(),
                 dateTo.valueProperty()));
@@ -141,20 +141,20 @@ public class ReservationDashController {
     private FilteredList<Reservation> getFilteredListByString() {
         FilteredList<Reservation> filteredList = new FilteredList<>(reservationObList, b -> true);
         searchBar.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(consult -> {
+                filteredList.setPredicate(reservation -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
 
                     String lowerCaseFilter = newValue.toLowerCase();
 
-                    if (consult.getDescription().toLowerCase().contains(lowerCaseFilter)) {
+                    if (reservation.getDateReservation().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (consult.getPet().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (reservation.getDateReservation().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (consult.getVeterinarian().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (reservation.getDateReservation().toString().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else return consult.getId().toString().contains(lowerCaseFilter);
+                    } else return reservation.getDateReservation().toString().contains(lowerCaseFilter);
                 }));
         return filteredList;
     }
@@ -171,7 +171,7 @@ public class ReservationDashController {
     @FXML
     private void changeDescriptionCell(TableColumn.CellEditEvent editEvent) {
         Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
-        reservation.setDescription(editEvent.getNewValue().toString());
+       // reservation.set(editEvent.getNewValue().toString());
         reservationDao.update(reservation);
     }
 

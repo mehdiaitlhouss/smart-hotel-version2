@@ -25,7 +25,7 @@ public class EmployeDao implements Dao<Employe>
 
         PreparedStatement pstmt;
         ResultSet rs = null;
-        String sqlQuery = "SELECT e.id AS idEmloye, e.idUser AS idUser, prenom, nom, cin, email, telephone, adresse, type, userName, password" +
+        String sqlQuery = "SELECT e.id AS idEmploye, e.idUser AS idUser, prenom, nom, cin, email, telephone, adresse, type, userName, password" +
                           " FROM employe AS e INNER JOIN user AS u ON e.idUser = u.id WHERE userName = ? AND password = ?";
 
         try {
@@ -173,15 +173,20 @@ public class EmployeDao implements Dao<Employe>
     public int count()
     {
         Statement stm = null;
-        ResultSet resultat = null;
+        ResultSet rs = null;
         int count = 0;
 
         try
         {
             stm = BDSingleton.getConn().createStatement();
-            resultat = stm.executeQuery("SELECT COUNT(*) FROM employe WHERE type = \"recep\"");
-            count = resultat.getInt(1);
-            resultat.close();
+            rs = stm.executeQuery("SELECT COUNT(*) FROM employe WHERE type = \"recep\"");
+
+            if(rs.next())
+            {
+                count = rs.getInt(1);
+            }
+
+            rs.close();
         }
         catch(Exception e)
         {

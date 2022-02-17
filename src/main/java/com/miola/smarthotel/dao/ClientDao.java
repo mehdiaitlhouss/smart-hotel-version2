@@ -17,26 +17,6 @@ public class ClientDao implements Dao<Client>
 
     public boolean update(Client client)
     {
-        PreparedStatement ps = null;
-        ResultSet rs = null;
-        boolean tmp1 = false, tmp2 = false;
-
-        try
-        {
-            ps = BDSingleton.getConn().prepareStatement("UPDATE FROM client WHERE idUser = ?");
-            ps.setInt();
-            tmp1 = ps.executeUpdate() > 0;
-
-            ps = BDSingleton.getConn().prepareStatement("DELETE FROM user WHERE id = ?");
-            ps.setInt(1, id);
-            tmp2 = ps.executeUpdate() > 0;
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-        return tmp1 && tmp2;
-
         return false;
     }
 

@@ -7,39 +7,37 @@ import java.util.Date;
 
 public class Reservation
 {
-    private long id;
+    private int id;
     private Date dateReservation;
     private Time heureReservation;
     private int dureeSejour;
     private int nombrePersonne;
-    private Receptionniste receptionniste;
+    private Employe employe;
     private Client client;
     private EtatReservation etat;
 
-    public Reservation(long id, Date dateReservation, Time heureReservation, int dureeSejour, int nombrePersonne, Receptionniste receptionniste, Client client, EtatReservation etat) {
+    public Reservation(int id, Date dateReservation, Time heureReservation, int dureeSejour, int nombrePersonne, Employe employe, Client client, EtatReservation etat) {
         this.id = id;
         this.dateReservation = dateReservation;
         this.heureReservation = heureReservation;
         this.dureeSejour = dureeSejour;
         this.nombrePersonne = nombrePersonne;
-        this.receptionniste = receptionniste;
+        this.employe = employe;
         this.client = client;
         this.etat = etat;
     }
 
-
-
-    public Reservation(Date dateReservation, Time heureReservation, int dureeSejour, int nombrePersonne, Receptionniste receptionniste, Client client, EtatReservation etat) {
+    public Reservation(Date dateReservation, Time heureReservation, int dureeSejour, int nombrePersonne, Employe employe, Client client, EtatReservation etat) {
         this.dateReservation = dateReservation;
         this.heureReservation = heureReservation;
         this.dureeSejour = dureeSejour;
         this.nombrePersonne = nombrePersonne;
-        this.receptionniste = receptionniste;
+        this.employe = employe;
         this.client = client;
         this.etat = etat;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
@@ -59,7 +57,7 @@ public class Reservation
         return nombrePersonne;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -32,18 +32,18 @@ public class AddPetController {
     @FXML
     private Label alertText;
 
-    @FXML
-    private void createNewPet(ActionEvent event) throws IOException {
-        if (validateInputs()) {
-            Pet pet = createPetFromInput();
-            boolean isSaved = new PetDao().createPet(pet);
-            if (isSaved) {
-                UpdateStatus.setIsPetAdded(true);
-                alertText.setText("Pet is added!");
-                delayWindowClose(event);
-            }
-        }
-    }
+//    @FXML
+//    private void createNewPet(ActionEvent event) throws IOException {
+//        if (validateInputs()) {
+//            Pet pet = createPetFromInput();
+//            boolean isSaved = new PetDao().createPet(pet);
+//            if (isSaved) {
+//                UpdateStatus.setIsPetAdded(true);
+//                alertText.setText("Pet is added!");
+//                delayWindowClose(event);
+//            }
+//        }
+//    }
 
     private Pet createPetFromInput() {
         Pet pet = new Pet();

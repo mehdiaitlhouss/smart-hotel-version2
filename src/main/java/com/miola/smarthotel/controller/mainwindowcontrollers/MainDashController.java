@@ -74,6 +74,7 @@ public class MainDashController {
 
     @FXML
     private void initialize() {
+        System.out.println(getVisitObservableList());
         setTexts();
         fillTableWithData();
     }
@@ -92,11 +93,11 @@ public class MainDashController {
     }
 
     private void fillTableWithData() {
-        clientId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        clientName.setCellValueFactory(new PropertyValueFactory<>("visitDate"));
-        clientCin.setCellValueFactory(new PropertyValueFactory<>("pet"));
-        clientEmail.setCellValueFactory(new PropertyValueFactory<>("veterinarian"));
-        clientAdresse.setCellValueFactory(new PropertyValueFactory<>("description"));
+        clientId.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+        clientName.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        clientCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
+        clientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        clientAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
         clientTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
         clientTable.setItems(getVisitObservableList());
     }

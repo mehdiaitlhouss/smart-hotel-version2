@@ -1,7 +1,7 @@
 package com.miola.smarthotel.dao;
 
-import com.miola.smarthotel.model.BDSingleton;
-import com.miola.smarthotel.model.Reservation;
+import com.miola.smarthotel.helpers.EtatReservation;
+import com.miola.smarthotel.model.*;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,8 +40,13 @@ public class ReservationDao implements Dao<Reservation>
         try
         {
             statement = BDSingleton.getConn().createStatement();
-            rs = statement.executeQuery("SELECT COUNT(*) FROM Reservartion");
-            count = rs.getInt(1);
+            rs = statement.executeQuery("SELECT COUNT(*) FROM Reservation");
+
+            if(rs.next())
+            {
+                count = rs.getInt(1);
+            }
+
             rs.close();
         }
         catch(Exception e)
@@ -62,17 +67,21 @@ public class ReservationDao implements Dao<Reservation>
     {
         ArrayList<Reservation> reservations = new ArrayList<>();
         Reservation reservation = null;
+        Client client = null;
+        Employe employe = null;
+        ClientDao clientDao = new ClientDao();
+        EmployeDao employeDao = new EmployeDao();
 
         PreparedStatement pstmt = null;
         ResultSet rs = null;
-        String sqlQuery = "SELECT  r.id," +
-                            "r.date," +
-                            "r.heure," +
-                            "r.duree," +
-                            "r.nombrePersonne," +
-                            "r.idReceptionniste," +
-                            "r.idClient," +
-                            "et.etat" +
+        String sqlQuery = "SELECT  r.id AS id," +
+                            "date," +
+                            "heure," +
+                            "duree," +
+                            "nombrePersonne," +
+                            "idEmploye," +
+                            "idClient," +
+                            "etat" +
                             "FROM reservation AS r" +
                             "INNER JOIN etatreservation AS et ON et.id = r.idEtatReservation";
 
@@ -82,12 +91,23 @@ public class ReservationDao implements Dao<Reservation>
 
             while (rs.next())
             {
+                employe = employeDao.get(rs.getInt("idEmploye"));
+                client = clientDao.get(rs.getInt("idClient"));
 
+                reservation = new Reservation(rs.getDate("date"),
+                                              rs.getTime("heure"),
+                                              rs.getInt("duree"),
+                                              rs.getInt("nombrePersonne"),
+                                              employe,
+                                              client,
+                                              EtatReservation.valueOf(rs.getString("etat")));
+                reservation.setId(rs.getInt("id"));
+                reservations.add(reservation);
             }
         }
         catch(Exception e){
             e.printStackTrace();
         }
-        return map;
+        return reservations;
     }
 }
