@@ -39,6 +39,38 @@ public class Reservation
         this.etatString = etat.getEtat();
     }
 
+    public Employe getEmploye() {
+        return employe;
+    }
+
+    public void setEmploye(Employe employe) {
+        this.employe = employe;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public EtatReservation getEtat() {
+        return etat;
+    }
+
+    public void setEtat(EtatReservation etat) {
+        this.etat = etat;
+    }
+
+    public String getEtatString() {
+        return etatString;
+    }
+
+    public void setEtatString(String etatString) {
+        this.etatString = etatString;
+    }
+
     public int getId() {
         return id;
     }

@@ -73,7 +73,7 @@ public class ReservationDashController {
     private TableColumn<Reservation, Integer> reservationNombrePersonne;
 
     @FXML
-    private TableColumn<Reservation, String> reservationEtat;
+    private TableColumn<Reservation, EtatReservation> reservationEtat;
 
 
     ReservationDao reservationDao = new ReservationDao();
@@ -95,6 +95,11 @@ public class ReservationDashController {
         updateTime.setText("Last update: " + CurrentTime.getTime());
         setDbInfo();
         setUserInfo();
+
+        for (Reservation r: reservationDao.getAll())
+        {
+            System.out.println(r);
+        }
     }
 
     private void setObList() {
@@ -109,7 +114,7 @@ public class ReservationDashController {
         reservationHeure.setCellValueFactory(new PropertyValueFactory<>("heureReservation"));
         reservationDuree.setCellValueFactory(new PropertyValueFactory<>("dureeSejour"));
         reservationNombrePersonne.setCellValueFactory(new PropertyValueFactory<>("nombrePersonne"));
-        reservationEtat.setCellValueFactory(new PropertyValueFactory<>("etatString"));
+        reservationEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         //descriptionId.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
