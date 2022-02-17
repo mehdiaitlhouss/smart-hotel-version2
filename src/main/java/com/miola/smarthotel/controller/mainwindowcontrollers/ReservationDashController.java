@@ -59,7 +59,7 @@ public class ReservationDashController {
     private TableView<Reservation> reservationTable;
 
     @FXML
-    private TableColumn<Reservation, Long> reservationId;
+    private TableColumn<Reservation, Integer> reservationId;
 
     @FXML
     private TableColumn<Reservation, LocalDate> reservationDate;
@@ -72,6 +72,10 @@ public class ReservationDashController {
 
     @FXML
     private TableColumn<Reservation, Integer> reservationNombrePersonne;
+
+    @FXML
+    private TableColumn<Reservation, String> reservationEtat;
+
 
     ReservationDao reservationDao = new ReservationDao();
     ObservableList<Reservation> reservationObList = FXCollections.observableArrayList();
@@ -101,10 +105,11 @@ public class ReservationDashController {
 
     private void fillTable() {
         reservationId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        reservationDate.setCellValueFactory(new PropertyValueFactory<>("date"));
-        reservationHeure.setCellValueFactory(new PropertyValueFactory<>("heure"));
-        reservationDuree.setCellValueFactory(new PropertyValueFactory<>("duree"));
+        reservationDate.setCellValueFactory(new PropertyValueFactory<>("dateReservation"));
+        reservationHeure.setCellValueFactory(new PropertyValueFactory<>("heureReservation"));
+        reservationDuree.setCellValueFactory(new PropertyValueFactory<>("dureeSejour"));
         reservationNombrePersonne.setCellValueFactory(new PropertyValueFactory<>("nombrePersonne"));
+        reservationEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
         //descriptionId.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 

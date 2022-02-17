@@ -235,7 +235,7 @@
             </HBox>
             <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="480.0" prefWidth="690.0">
               <columns>
-                  <TableColumn fx:id="clientId" editable="false" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
+                  <TableColumn fx:id="idClient" editable="false" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
                 <TableColumn id="date_col" fx:id="clientName" editable="false" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="153.55554580688477" resizable="false" text="FULL NAME" />
                 <TableColumn fx:id="clientCin" editable="false" maxWidth="169.7777862548828" minWidth="66.44444274902344" prefWidth="119.11103820800781" resizable="false" text="CIN" />
                   <TableColumn fx:id="clientEmail" editable="false" maxWidth="190.88882446289062" minWidth="40.2222900390625" prefWidth="189.99996948242188" text="EMAIL" />

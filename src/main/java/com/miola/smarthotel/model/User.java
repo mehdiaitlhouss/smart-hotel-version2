@@ -30,7 +30,7 @@ private String password;
 */
 public abstract class User
 {
-    private long idUser; // l'id primaire de la table user
+    private int idUser; // l'id primaire de la table user
     private String prenom;
     private String nom;
     private String cin;
@@ -43,7 +43,7 @@ public abstract class User
 
     }
 
-    public User(long idUser, String prenom, String nom, String cin, String email, String telephone, String adresse)
+    public User(int idUser, String prenom, String nom, String cin, String email, String telephone, String adresse)
     {
         this.idUser = idUser;
         this.prenom = prenom;
@@ -94,7 +94,7 @@ public abstract class User
         return prenom;
     }
 
-    public void setIdUser(long idUser) {
+    public void setIdUser(int idUser) {
         this.idUser = idUser;
     }
 
@@ -125,11 +125,13 @@ public abstract class User
     @Override
     public String toString() {
         return "User{" +
-                "idUser = " + idUser +
-                ", prenom = '" + prenom + '\'' +
-                ", nom = '" + nom + '\'' +
-                ", email = '" + email + '\'' +
-                ", cin = '" + cin + '\'' +
+                "idUser=" + idUser +
+                ", prenom='" + prenom + '\'' +
+                ", nom='" + nom + '\'' +
+                ", cin='" + cin + '\'' +
+                ", email='" + email + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", adresse='" + adresse + '\'' +
                 '}';
     }
 }

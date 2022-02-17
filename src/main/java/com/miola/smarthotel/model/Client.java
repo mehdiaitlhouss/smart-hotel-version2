@@ -1,8 +1,10 @@
 package com.miola.smarthotel.model;
 
+
 public class Client extends User
 {
-    private long idClient; // l'id primaire de la table client
+
+    private int idClient; // l'id primaire de la table client
     private String pays;
     private String ville;
 
@@ -13,7 +15,7 @@ public class Client extends User
         this.ville = ville;
     }
 
-    public Client(long idUser, String prenom, String nom, String cin, String email, String telephone, String adresse, long idClient, String pays, String ville) {
+    public Client(int idUser, String prenom, String nom, String cin, String email, String telephone, String adresse, int idClient, String pays, String ville) {
         super(idUser, prenom, nom, cin, email, telephone, adresse);
         this.idClient = idClient;
         this.pays = pays;
@@ -24,7 +26,7 @@ public class Client extends User
         return idClient;
     }
 
-    public void setIdClient(long idClient) {
+    public void setIdClient(int idClient) {
         this.idClient = idClient;
     }
 
@@ -46,7 +48,9 @@ public class Client extends User
 
     @Override
     public String toString() {
-        return "Client{" +super.toString()+
+        return "Client{" +
+                super.toString() +
+                "idClient=" + idClient +
                 ", pays='" + pays + '\'' +
                 ", ville='" + ville + '\'' +
                 '}';

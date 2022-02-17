@@ -46,7 +46,7 @@ public class EmployeDao implements Dao<Employe>
                             rs.getString("adresse"),
                             rs.getString("userName"),
                             rs.getString("password"));
-                    employe.setIdUser(rs.getLong("idUser"));
+                    employe.setIdUser(rs.getInt("idUser"));
                     employe.setIdEmploye(rs.getLong("idEmploye"));
                 }
                 else
@@ -59,7 +59,7 @@ public class EmployeDao implements Dao<Employe>
                             rs.getString("adresse"),
                             rs.getString("userName"),
                             rs.getString("password"));
-                    employe.setIdUser(rs.getLong("idUser"));
+                    employe.setIdUser(rs.getInt("idUser"));
                     employe.setIdEmploye(rs.getLong("idEmploye"));
                 }
             }
@@ -103,7 +103,7 @@ public class EmployeDao implements Dao<Employe>
                             rs.getString("adresse"),
                             rs.getString("userName"),
                             rs.getString("password"));
-                    employe.setIdUser(rs.getLong("idUser"));
+                    employe.setIdUser(rs.getInt("idUser"));
                     employe.setIdEmploye(id);
             }
             rs.close();
@@ -138,7 +138,7 @@ public class EmployeDao implements Dao<Employe>
                             rs.getString("adresse"),
                             rs.getString("userName"),
                             rs.getString("password"));
-                    employe.setIdUser(rs.getLong("idUser")); // c'est l'id de la table user
+                    employe.setIdUser(rs.getInt("idUser")); // c'est l'id de la table user
                 employe.setIdEmploye(rs.getLong("idEmploye"));
                     employes.add(employe);
             }

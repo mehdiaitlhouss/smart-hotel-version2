@@ -20,4 +20,6 @@ module com.miola.smarthotel
         exports com.miola.smarthotel;
         opens com.miola.smarthotel.controller.mainwindowcontrollers to javafx.fxml;
         exports com.miola.smarthotel.controller.mainwindowcontrollers;
+
+        opens com.miola.smarthotel.model to javafx.base;
         }

@@ -53,7 +53,7 @@ public class MainDashController {
     private TableView<Client> clientTable;
 
     @FXML
-    private TableColumn<Client, Long> clientId;
+    private TableColumn<Client, Integer> idClient;
 
     @FXML
     private TableColumn<Client, String> clientName;
@@ -74,7 +74,6 @@ public class MainDashController {
 
     @FXML
     private void initialize() {
-        System.out.println(getVisitObservableList());
         setTexts();
         fillTableWithData();
     }
@@ -92,8 +91,9 @@ public class MainDashController {
         setUserInfo();
     }
 
-    private void fillTableWithData() {
-        clientId.setCellValueFactory(new PropertyValueFactory<>("idClient"));
+    private void fillTableWithData()
+    {
+        idClient.setCellValueFactory(new PropertyValueFactory<>("idClient"));
         clientName.setCellValueFactory(new PropertyValueFactory<>("nom"));
         clientCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         clientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));

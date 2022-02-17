@@ -89,15 +89,20 @@ public class ClientDao implements Dao<Client>
     public int count()
     {
         Statement stm = null;
-        ResultSet resultat = null;
+        ResultSet rs = null;
         int count = 0;
 
         try
         {
             stm = BDSingleton.getConn().createStatement();
-            resultat = stm.executeQuery("SELECT COUNT(*) FROM client");
-            count = resultat.getInt(1);
-            resultat.close();
+            rs = stm.executeQuery("SELECT COUNT(*) FROM client");
+
+            if(rs.next())
+            {
+                count = rs.getInt(1);
+            }
+
+            rs.close();
         }
         catch(Exception e)
         {
@@ -159,8 +164,8 @@ public class ClientDao implements Dao<Client>
                         rs.getString("nom"),
                         rs.getString("cin"),
                         rs.getString("email"),
-                        rs.getString("adresse"),
                         rs.getString("telephone"),
+                        rs.getString("adresse"),
                         rs.getString("pays"),
                         rs.getString("ville"));
                 client.setIdUser(rs.getInt("idUser")); // c'est l'id de la table user
