@@ -36,4 +36,15 @@ public final class UpdateStatus {
     public static void setIsPetAdded(boolean isPet) {
         UpdateStatus.isPetAdded = isPet;
     }
+
+    private static boolean isClientAdded;
+
+
+    public static boolean isClientAdded() {
+        return isClientAdded;
+    }
+
+    public static void setIsClientAdded(boolean isClientAdded) {
+        UpdateStatus.isClientAdded = isClientAdded;
+    }
 }

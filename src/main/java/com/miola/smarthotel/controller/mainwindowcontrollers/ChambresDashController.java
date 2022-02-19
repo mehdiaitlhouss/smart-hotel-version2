@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Screen;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -63,7 +64,7 @@ public class ChambresDashController {
     private TableColumn<Chambre, Double> prixParJourColumn;
 
     @FXML
-    private TableColumn<Chambre, String> etatChambreColumn;
+    private TableColumn<Chambre, EtatChambre> etatChambreColumn;
 
     ChambreDao chambreDao = new ChambreDao();
     ObservableList<Chambre> chambresObList = FXCollections.observableArrayList();
@@ -96,7 +97,7 @@ public class ChambresDashController {
         typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
         nombreLitColumn.setCellValueFactory(new PropertyValueFactory<>("nombreLit"));
         nombrePersonneColumn.setCellValueFactory(new PropertyValueFactory<>("nombrePersonne"));
-        prixParJourColumn.setCellValueFactory(new PropertyValueFactory<>("prixParJour"));
+        prixParJourColumn.setCellValueFactory(new PropertyValueFactory<>("prixParjour"));
         etatChambreColumn.setCellValueFactory(new PropertyValueFactory<>("etat"));
 
 
@@ -179,7 +180,7 @@ public class ChambresDashController {
     }
 
     private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentUser.getCurrentUser().getPrenom()));
+        userInfo.setText(String.format("User: %s", CurrentEmploye.getCurrentEmploye().getUserName()));
     }
 
     private void setDbInfo() {
@@ -192,17 +193,25 @@ public class ChambresDashController {
     }
 
     @FXML
-    private void showVisitScreen(ActionEvent event) throws IOException {
+    private void showReservationsScreen(ActionEvent event) throws IOException {
         SceneController.getReservationsScene(event);
     }
 
     @FXML
-    private void showVetScreen(ActionEvent event) throws IOException {
+    private void showScreen(ActionEvent event) throws IOException {
         SceneController.getEmployesScene(event);
     }
 
     @FXML
     private void showDashboard(ActionEvent event) throws IOException {
         SceneController.getAdminMainScene(event);
+    }
+    @FXML
+    void showClientsScreen(ActionEvent event) throws IOException {
+        SceneController.getClientsScene(event);
+    }
+    @FXML
+    void showEmployesScreen(ActionEvent event) throws IOException {
+        SceneController.getEmployesScene(event);
     }
 }

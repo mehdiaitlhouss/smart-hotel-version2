@@ -5,17 +5,47 @@ import com.miola.smarthotel.helpers.TypeChambre;
 
 public class Chambre
 {
-    private long id;
+    private int id;
     private TypeChambre type;
+    private int nombreLit;
+    private int nombrePersonne;
+    private double prixParjour;
     private int etage;
     private EtatChambre etat;
 
-    public Chambre(long id, TypeChambre type, int etage, EtatChambre etat)
+    public Chambre(int id, TypeChambre type, int etage, EtatChambre etat)
     {
         this.id = id;
         this.etage = etage;
         this.type = type;
         this.etat = etat;
+        this.nombreLit = type.getNombreLit();
+        this.nombrePersonne = type.getNombrePersonne();
+        this.prixParjour = type.getPrixParJour();
+    }
+
+    public int getNombreLit() {
+        return nombreLit;
+    }
+
+    public void setNombreLit(int nombreLit) {
+        this.nombreLit = nombreLit;
+    }
+
+    public int getNombrePersonne() {
+        return nombrePersonne;
+    }
+
+    public void setNombrePersonne(int nombrePersonne) {
+        this.nombrePersonne = nombrePersonne;
+    }
+
+    public double getPrixParjour() {
+        return prixParjour;
+    }
+
+    public void setPrixParjour(double prixParjour) {
+        this.prixParjour = prixParjour;
     }
 
     public long getId() {
@@ -34,7 +64,7 @@ public class Chambre
         return etat;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

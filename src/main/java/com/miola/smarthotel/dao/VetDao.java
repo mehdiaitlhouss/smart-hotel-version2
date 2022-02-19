@@ -2,12 +2,7 @@ package com.miola.smarthotel.dao;
 
 import com.miola.smarthotel.model.Veterinarian;
 // import com.miola.smarthotel.util.HibernateUtil;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
-import org.hibernate.resource.transaction.spi.TransactionStatus;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

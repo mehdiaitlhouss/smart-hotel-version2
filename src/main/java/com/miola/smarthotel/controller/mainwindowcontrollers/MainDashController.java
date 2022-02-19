@@ -130,18 +130,22 @@ public class MainDashController {
     }
 
     @FXML
-    void showClientsScreen(ActionEvent event) throws IOException {
-        SceneController.getClientsScene(event);
-    }
-
-    @FXML
-    void showEmployesScreen(ActionEvent event) throws IOException {
-        SceneController.getEmployesScene(event);
+    void showReservationsScreen(ActionEvent event) throws IOException {
+        SceneController.getReservationsScene(event);
     }
 
     @FXML
     void showChambresScreen(ActionEvent event) throws IOException {
         SceneController.getChambresScene(event);
+    }
+
+    @FXML
+    void showClientsScreen(ActionEvent event) throws IOException {
+        SceneController.getClientsScene(event);
+    }
+    @FXML
+    void showEmployesScreens(ActionEvent event) throws IOException {
+        SceneController.getEmployesScene(event);
     }
 
     @FXML
@@ -154,8 +158,4 @@ public class MainDashController {
         SceneController.close(event);
     }
 
-    @FXML
-    void showReservationsScreen(ActionEvent event) throws IOException {
-        SceneController.getReservationsScene(event);
-    }
 }

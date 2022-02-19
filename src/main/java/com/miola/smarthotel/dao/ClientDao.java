@@ -48,11 +48,11 @@ public class ClientDao implements Dao<Client>
         PreparedStatement ps = null;
         ResultSet rs = null;
         int id;
-        boolean res =false;
+        boolean res = false;
 
         try
         {
-            ps = BDSingleton.getConn().prepareStatement("INSERT INTO user(nom, prenom, email, cin, telephone, adresse) VALUES(?,?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+            ps = BDSingleton.getConn().prepareStatement("INSERT INTO user(nom, prenom, email, cin, telephone, adresse) VALUES(?, ?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
             ps.setString(1,client.getNom());
             ps.setString(2,client.getPrenom());
             ps.setString(3,client.getEmail());
@@ -60,7 +60,10 @@ public class ClientDao implements Dao<Client>
             ps.setString(5,client.getTelephone());
             ps.setString(6,client.getAdresse());
 
-            ps.executeUpdate();
+            if(ps.executeUpdate() != 1)
+            {
+                System.out.println("la ligne non inserer");
+            }
 
             rs = ps.getGeneratedKeys();
 
@@ -74,7 +77,7 @@ public class ClientDao implements Dao<Client>
                 ps.setString(2,client.getVille());
                 ps.setString(3, client.getPays());
 
-                ps.executeQuery();
+                ps.executeUpdate();
                 res=true;
             }
         }

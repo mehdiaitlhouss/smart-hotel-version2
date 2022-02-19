@@ -1,8 +1,11 @@
 package com.miola.smarthotel.dao;
 
-import com.miola.smarthotel.model.BDSingleton;
-import com.miola.smarthotel.model.Chambre;
+import com.miola.smarthotel.helpers.EtatChambre;
+import com.miola.smarthotel.helpers.EtatReservation;
+import com.miola.smarthotel.helpers.TypeChambre;
+import com.miola.smarthotel.model.*;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -62,7 +65,32 @@ public class ChambreDao implements Dao<Chambre>
     }
 
     @Override
-    public ArrayList<Chambre> getAll() {
-        return null;
+    public ArrayList<Chambre> getAll()
+    {
+        ArrayList<Chambre> chambres = new ArrayList<>();
+        Chambre chambre = null;
+        PreparedStatement pstmt = null;
+        ResultSet rs = null;
+        String sqlQuery = "SELECT c.id AS id, etage, type, etat FROM chambre AS c " +
+                            "INNER JOIN etatchambre AS e ON e.id = c.idEtatChambre " +
+                            "INNER JOIN typechambre AS t ON t.id = c.idTypeChambre ";
+
+        try {
+            pstmt= BDSingleton.getConn().prepareStatement(sqlQuery);
+            rs = pstmt.executeQuery();
+
+            while (rs.next())
+            {
+                chambre = new Chambre(rs.getInt("id"),
+                                      TypeChambre.valueOf(rs.getString("type")),
+                                      rs.getInt("etage"),
+                                      EtatChambre.valueOf(rs.getString("etat")));
+                 chambres.add(chambre);
+            }
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return chambres;
     }
 }

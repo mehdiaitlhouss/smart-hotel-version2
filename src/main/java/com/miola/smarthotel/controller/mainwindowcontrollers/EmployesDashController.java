@@ -1,8 +1,12 @@
 package com.miola.smarthotel.controller.mainwindowcontrollers;
 
 import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
+import com.miola.smarthotel.dao.ClientDao;
+import com.miola.smarthotel.dao.EmployeDao;
 import com.miola.smarthotel.dao.VetDao;
 import com.miola.smarthotel.helpers.*;
+import com.miola.smarthotel.model.Client;
+import com.miola.smarthotel.model.Employe;
 import com.miola.smarthotel.model.Veterinarian;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -44,25 +48,25 @@ public class EmployesDashController {
     private TextField searchBar;
 
     @FXML
-    private TableView<Veterinarian> vetsTable;
+    private TableView<Employe> employesTable;
 
     @FXML
-    private TableColumn<Veterinarian, Long> idColumn;
+    private TableColumn<Employe, Long> idEmploye;
 
     @FXML
-    private TableColumn<Veterinarian, String> nameColumn;
+    private TableColumn<Employe, String> employeName;
 
     @FXML
-    private TableColumn<Veterinarian, String> lastNameColumn;
+    private TableColumn<Employe, String> employeCin;
 
     @FXML
-    private TableColumn<Veterinarian, String> specialityColumn;
+    private TableColumn<Employe, String> employeEmail;
 
     @FXML
-    private TableColumn<Veterinarian, String> addressColumn;
+    private TableColumn<Employe, String> employeAdresse;
 
-    VetDao vetDao = new VetDao();
-    ObservableList<Veterinarian> vetsObList = FXCollections.observableArrayList();
+    EmployeDao employeDao = new EmployeDao();
+    ObservableList<Employe> employesObList = FXCollections.observableArrayList();
 
     @FXML
     private void initialize() {
@@ -82,83 +86,83 @@ public class EmployesDashController {
     }
 
     private void setObList() {
-        vetsObList.clear();
-        vetsObList.addAll(vetDao.getVets());
+        employesObList.clear();
+        employesObList.addAll(employeDao.getAll());
     }
 
     private void fillTable() {
-        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
-        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
-        specialityColumn.setCellValueFactory(new PropertyValueFactory<>("speciality"));
-        addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));
-        nameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        lastNameColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        specialityColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        addressColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        idEmploye.setCellValueFactory(new PropertyValueFactory<>("idEmploye"));
+        employeName.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        employeCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
+        employeEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+        employeAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        employeName.setCellFactory(TextFieldTableCell.forTableColumn());
+        employeCin.setCellFactory(TextFieldTableCell.forTableColumn());
+        employeEmail.setCellFactory(TextFieldTableCell.forTableColumn());
+        employeAdresse.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     private void addTableSettings() {
-        vetsTable.setEditable(true);
-        vetsTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-        vetsTable.setItems(getSortedList());
+        employesTable.setEditable(true);
+        employesTable.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
+        employesTable.setItems(getSortedList());
     }
 
-    private SortedList<Veterinarian> getSortedList() {
-        SortedList<Veterinarian> sortedList = new SortedList<>(getFilteredList());
-        sortedList.comparatorProperty().bind(vetsTable.comparatorProperty());
+    private SortedList<Employe> getSortedList() {
+        SortedList<Employe> sortedList = new SortedList<>(getFilteredList());
+        sortedList.comparatorProperty().bind(employesTable.comparatorProperty());
         return sortedList;
     }
 
-    private FilteredList<Veterinarian> getFilteredList() {
-        FilteredList<Veterinarian> filteredList = new FilteredList<>(vetsObList, b -> true);
+    private FilteredList<Employe> getFilteredList() {
+        FilteredList<Employe> filteredList = new FilteredList<>(employesObList, b -> true);
         searchBar.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(veterinarian -> {
+                filteredList.setPredicate(Employe -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
 
                     String lowerCaseFilter = newValue.toLowerCase();
 
-                    if (veterinarian.getFirstName().toLowerCase().contains(lowerCaseFilter)) {
+                    if (Employe.getNom().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (veterinarian.getLastName().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (Employe.getNom().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (veterinarian.getSpeciality().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (Employe.getNom().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (veterinarian.getAddress().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (Employe.getNom().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else return veterinarian.getId().toString().contains(lowerCaseFilter);
+                    } else return Employe.getNom().toString().contains(lowerCaseFilter);
                 }));
         return filteredList;
     }
 
     @FXML
-    private void changeNameCell(TableColumn.CellEditEvent<Veterinarian, String> editEvent) {
-        Veterinarian selectedVet = vetsTable.getSelectionModel().getSelectedItem();
-        selectedVet.setFirstName(editEvent.getNewValue().toString());
-        vetDao.updateVet(selectedVet);
+    private void changeNameCell(TableColumn.CellEditEvent<Client, String> editEvent) {
+        Employe selectedVet = employesTable.getSelectionModel().getSelectedItem();
+        selectedVet.setNom(editEvent.getNewValue().toString());
+        // clientDao.updateVet(selectedVet);
     }
 
     @FXML
-    private void changeLastNameCell(TableColumn.CellEditEvent<Veterinarian, String> editEvent) {
-        Veterinarian selectedVet = vetsTable.getSelectionModel().getSelectedItem();
-        selectedVet.setLastName(editEvent.getNewValue().toString());
-        vetDao.updateVet(selectedVet);
+    private void changeLastNameCell(TableColumn.CellEditEvent<Client, String> editEvent) {
+        Employe selectedVet = employesTable.getSelectionModel().getSelectedItem();
+        selectedVet.setNom(editEvent.getNewValue().toString());
+        // clientDao.updateVet(selectedVet);
     }
 
     @FXML
-    private void changeSpecCell(TableColumn.CellEditEvent<Veterinarian, String> editEvent) {
-        Veterinarian selectedVet = vetsTable.getSelectionModel().getSelectedItem();
-        selectedVet.setSpeciality(editEvent.getNewValue().toString());
-        vetDao.updateVet(selectedVet);
+    private void changeSpecCell(TableColumn.CellEditEvent<Client, String> editEvent) {
+        Employe selectedVet = employesTable.getSelectionModel().getSelectedItem();
+        selectedVet.setNom(editEvent.getNewValue().toString());
+        // clientDao.updateVet(selectedVet);
     }
 
     @FXML
-    private void changeAddressCell(TableColumn.CellEditEvent<Veterinarian, String> editEvent) {
-        Veterinarian selectedVet = vetsTable.getSelectionModel().getSelectedItem();
-        selectedVet.setAddress(editEvent.getNewValue().toString());
-        vetDao.updateVet(selectedVet);
+    private void changeAddressCell(TableColumn.CellEditEvent<Client, String> editEvent) {
+        Employe selectedVet = employesTable.getSelectionModel().getSelectedItem();
+        selectedVet.setNom(editEvent.getNewValue().toString());
+        //  clientDao.updateVet(selectedVet);
     }
 
     @FXML
@@ -172,9 +176,9 @@ public class EmployesDashController {
 
     @FXML
     void deleteVets(ActionEvent event) throws IOException {
-        ObservableList<Veterinarian> selectedRows = vetsTable.getSelectionModel().getSelectedItems();
-        for (Veterinarian vet : selectedRows) {
-            vetDao.deleteVet(vet);
+        ObservableList<Employe> selectedRows = employesTable.getSelectionModel().getSelectedItems();
+        for (Employe emp : selectedRows) {
+            //    clientDao.deleteVet(vet);
         }
         refreshScreen(event);
     }
@@ -184,7 +188,7 @@ public class EmployesDashController {
     }
 
     private void setDbInfo() {
-        stats.setText(String.format("Total vets in database: %s", vetDao.getVetsNumber()));
+        stats.setText(String.format("Total vets in database: %s", employeDao.count()));
     }
 
     @FXML
@@ -193,15 +197,18 @@ public class EmployesDashController {
     }
 
     @FXML
-    void showVisitScreen(ActionEvent event) throws IOException {
+    void showReservationsScreen(ActionEvent event) throws IOException {
         SceneController.getReservationsScene(event);
     }
 
     @FXML
-    void showPetScreen(ActionEvent event) throws IOException {
+    void showChambresScreen(ActionEvent event) throws IOException {
         SceneController.getChambresScene(event);
     }
-
+    @FXML
+    void showClientsScreen(ActionEvent event) throws IOException {
+        SceneController.getClientsScene(event);
+    }
     @FXML
     void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getEmployesScene(event);

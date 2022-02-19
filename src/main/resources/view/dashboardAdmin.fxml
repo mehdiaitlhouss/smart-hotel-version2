@@ -90,7 +90,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showEmployesScreen" prefHeight="50.0" text="Employes">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
                <VBox.margin>
                   <Insets bottom="30.0" />
                </VBox.margin>
@@ -108,7 +108,25 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" text="Clients">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/cat-16.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="30.0" />
+               </VBox.margin>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showEmployesScreens" prefHeight="50.0" text="Employés">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -236,10 +254,10 @@
             <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="480.0" prefWidth="690.0">
               <columns>
                   <TableColumn fx:id="idClient" editable="false" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
-                <TableColumn id="date_col" fx:id="clientName" editable="false" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="153.55554580688477" resizable="false" text="FULL NAME" />
-                <TableColumn fx:id="clientCin" editable="false" maxWidth="169.7777862548828" minWidth="66.44444274902344" prefWidth="119.11103820800781" resizable="false" text="CIN" />
-                  <TableColumn fx:id="clientEmail" editable="false" maxWidth="190.88882446289062" minWidth="40.2222900390625" prefWidth="189.99996948242188" text="EMAIL" />
-                  <TableColumn fx:id="clientAdresse" editable="false" maxWidth="335.9999694824219" minWidth="97.11114501953125" prefWidth="185.33340454101562" resizable="false" text="ADDRESS" />
+                <TableColumn id="date_col" fx:id="clientName" editable="false" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
+                <TableColumn fx:id="clientCin" editable="false" maxWidth="177.33326721191406" minWidth="38.666656494140625" prefWidth="88.66665649414062" resizable="false" text="CIN" />
+                  <TableColumn fx:id="clientEmail" editable="false" maxWidth="263.99998474121094" minWidth="40.2222900390625" prefWidth="213.33335876464844" resizable="false" text="EMAIL" />
+                  <TableColumn fx:id="clientAdresse" editable="false" maxWidth="335.9999694824219" minWidth="75.33331298828125" prefWidth="234.66665649414062" resizable="false" text="ADDRESS" />
               </columns>
                <VBox.margin>
                   <Insets bottom="10.0" left="25.0" right="25.0" />

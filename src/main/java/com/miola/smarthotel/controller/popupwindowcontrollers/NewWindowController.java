@@ -69,4 +69,8 @@ public class NewWindowController {
             }
         });
     }
+
+    public static void getNewClientWindow() throws IOException {
+        getPopUpWindow(ScenePath.ADD_CLIENT.getPath());
+    }
 }

@@ -1,9 +1,6 @@
 package com.miola.smarthotel.controller.popupwindowcontrollers;
 
-import com.miola.smarthotel.dao.ConsultDao;
-import com.miola.smarthotel.dao.PetDao;
 import com.miola.smarthotel.dao.VetDao;
-import com.miola.smarthotel.helpers.UpdateStatus;
 import com.miola.smarthotel.model.Consult;
 import com.miola.smarthotel.model.Pet;
 import com.miola.smarthotel.model.Veterinarian;

@@ -234,9 +234,11 @@ public class ReservationDashController {
 
     @FXML
     public void showClientsScreen(ActionEvent actionEvent) throws IOException {
-        SceneController.getReservationsScene(actionEvent);
+        SceneController.getClientsScene(actionEvent);
     }
 
     public void deleteReservation(ActionEvent event) {
     }
+
+
 }
