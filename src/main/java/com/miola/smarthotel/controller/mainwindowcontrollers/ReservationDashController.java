@@ -200,7 +200,7 @@ public class ReservationDashController {
         NewWindowController.getNewVisitWindow();
         if (UpdateStatus.isEmployeAdded()) {
             refreshWindow(event);
-            UpdateStatus.setIsVisitAdded(false);
+            UpdateStatus.setIsEmployeAdded(false);
         }
     }
 

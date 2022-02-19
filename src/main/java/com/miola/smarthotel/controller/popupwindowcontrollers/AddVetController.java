@@ -36,7 +36,7 @@ public class AddVetController {
             Veterinarian vet = createVetFromInput();
             boolean isSaved = new VetDao().createVet(vet);
             if (isSaved) {
-                UpdateStatus.setIsVetAdded(true);
+                UpdateStatus.setIsEmployeAdded(true);
                 alertText.setText("Vet is added!");
                 delayWindowClose(event);
             }
