@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1100.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.ClientDashController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.ClientDashController">
     <children>
         <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -158,7 +158,7 @@
                 </Button>
             </children>
         </VBox>
-        <VBox layoutX="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="945.0">
+        <VBox layoutX="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="750.0">
             <children>
                 <Pane layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="745.0" styleClass="header">
                     <VBox.margin>
@@ -201,16 +201,16 @@
                         <Insets bottom="20.0" left="25.0" right="25.0" />
                     </VBox.margin>
                 </TextField>
-                <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="480.0" prefWidth="940.0">
+                <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="480.0" prefWidth="745.0">
                     <columns>
-                        <TableColumn fx:id="idClient" editable="false" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
-                        <TableColumn id="date_col" fx:id="clientName" editable="false" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
-                        <TableColumn fx:id="clientCin" editable="false" maxWidth="177.33326721191406" minWidth="38.666656494140625" prefWidth="62.000030517578125" resizable="false" text="CIN" />
-                        <TableColumn fx:id="clientEmail" editable="false" maxWidth="263.99998474121094" minWidth="40.2222900390625" prefWidth="124.22218322753906" resizable="false" text="EMAIL" />
-                         <TableColumn fx:id="clientTelephone" editable="false" minWidth="0.0" prefWidth="176.00006103515625" resizable="false" text="TELEPHONE" />
-                        <TableColumn fx:id="clientAdresse" maxWidth="335.9999694824219" minWidth="0.0" prefWidth="227.99996948242188" resizable="false" text="ADDRESS" />
-                  <TableColumn fx:id="clientsVille" editable="false" minWidth="0.0" prefWidth="90.0" resizable="false" text="VILLE" />
-                  <TableColumn fx:id="clientPays" editable="false" minWidth="0.0" prefWidth="71.55548095703125" resizable="false" text="PAYS" />
+                        <TableColumn fx:id="idClient" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
+                        <TableColumn id="date_col" fx:id="clientName" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
+                        <TableColumn fx:id="clientCin" maxWidth="177.33326721191406" minWidth="38.666656494140625" prefWidth="62.000030517578125" resizable="false" text="CIN" />
+                        <TableColumn fx:id="clientEmail" maxWidth="263.99998474121094" minWidth="40.2222900390625" prefWidth="72.00001525878906" resizable="false" text="EMAIL" />
+                         <TableColumn fx:id="clientTelephone" minWidth="0.0" prefWidth="136.88885498046875" resizable="false" text="TELEPHONE" />
+                        <TableColumn fx:id="clientAdresse" maxWidth="335.9999694824219" minWidth="0.0" prefWidth="118.66671752929688" resizable="false" text="ADDRESS" />
+                  <TableColumn fx:id="clientsVille" minWidth="0.0" prefWidth="76.22216796875" resizable="false" text="VILLE" />
+                  <TableColumn fx:id="clientPays" minWidth="50.0" prefWidth="87.33331298828125" resizable="false" text="PAYS" />
                     </columns>
                     <VBox.margin>
                         <Insets bottom="10.0" left="25.0" right="25.0" />

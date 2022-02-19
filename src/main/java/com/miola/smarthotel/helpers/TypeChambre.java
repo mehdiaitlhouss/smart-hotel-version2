@@ -22,6 +22,17 @@ public enum TypeChambre
         this.prixParJour = prixParJour;
     }
 
+    public String[] getTableString()
+    {
+        String[] str = new String[TypeChambre.values().length];
+
+        for (int i = 0; i < TypeChambre.values().length; i++)
+        {
+            str[i] = TypeChambre.values()[i].toString();
+        }
+        return str;
+    }
+
     public String getDescription() {
         return description;
     }

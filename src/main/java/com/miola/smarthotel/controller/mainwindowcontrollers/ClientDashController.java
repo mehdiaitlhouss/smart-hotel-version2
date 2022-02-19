@@ -188,18 +188,19 @@ public class ClientDashController {
     @FXML
     void deleteClient(ActionEvent event) throws IOException {
         ObservableList<Client> selectedRows = clientTable.getSelectionModel().getSelectedItems();
-        for (Client client : selectedRows) {
-        //    clientDao.deleteVet(vet);
+        for (Client client : selectedRows)
+        {
+            clientDao.delete(client.getIdUser());
         }
         refreshScreen(event);
     }
 
     private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentEmploye.getCurrentEmploye().getUserName()));
+        userInfo.setText(String.format("User : %s", CurrentEmploye.getCurrentEmploye().getUserName()));
     }
 
     private void setDbInfo() {
-        stats.setText(String.format("Total vets in database: %s", clientDao.count()));
+        stats.setText(String.format("Total client in database: %s", clientDao.count()));
     }
 
     @FXML

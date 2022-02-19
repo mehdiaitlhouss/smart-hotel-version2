@@ -1,6 +1,7 @@
 package com.miola.smarthotel;
 
 import com.miola.smarthotel.controller.mainwindowcontrollers.SceneController;
+import com.miola.smarthotel.helpers.TypeChambre;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import org.hibernate.Session;

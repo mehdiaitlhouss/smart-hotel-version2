@@ -74,7 +74,7 @@ public abstract class User
         return telephone;
     }
 
-    public long getIdUser() {
+    public int getIdUser() {
         return idUser;
     }
 

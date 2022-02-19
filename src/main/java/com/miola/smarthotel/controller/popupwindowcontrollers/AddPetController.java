@@ -15,7 +15,8 @@ import java.io.IOException;
 /**
  * Code created by Andrius on 2020-10-01
  */
-public class AddPetController {
+public class AddPetController
+{
 
     @FXML
     private TextField petRace;
