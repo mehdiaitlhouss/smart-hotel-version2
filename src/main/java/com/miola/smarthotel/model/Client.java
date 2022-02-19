@@ -22,7 +22,7 @@ public class Client extends User
         this.ville = ville;
     }
 
-    public long getIdClient() {
+    public int getIdClient() {
         return idClient;
     }
 

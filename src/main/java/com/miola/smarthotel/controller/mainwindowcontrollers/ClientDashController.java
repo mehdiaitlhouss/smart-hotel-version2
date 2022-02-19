@@ -64,7 +64,8 @@ public class ClientDashController {
     ObservableList<Client> clientsObList = FXCollections.observableArrayList();
 
     @FXML
-    private void initialize() {
+    private void initialize()
+    {
         setTexts();
         setObList();
         fillTable();
@@ -109,25 +110,26 @@ public class ClientDashController {
         return sortedList;
     }
 
-    private FilteredList<Client> getFilteredList() {
+    private FilteredList<Client> getFilteredList()
+    {
         FilteredList<Client> filteredList = new FilteredList<>(clientsObList, b -> true);
         searchBar.textProperty().addListener((observable, oldValue, newValue) ->
-                filteredList.setPredicate(Client -> {
+                filteredList.setPredicate(client -> {
                     if (newValue == null || newValue.isEmpty()) {
                         return true;
                     }
 
                     String lowerCaseFilter = newValue.toLowerCase();
 
-                    if (Client.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    if (client.getNom().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (Client.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (client.getPrenom().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (Client.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (client.getCin().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (Client.getNom().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (client.getEmail().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else return Client.getNom().toString().contains(lowerCaseFilter);
+                    } else return Integer.toString(client.getIdClient()).contains(lowerCaseFilter);
                 }));
         return filteredList;
     }

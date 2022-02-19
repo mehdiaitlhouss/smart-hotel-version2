@@ -48,7 +48,6 @@ public class ClientDao implements Dao<Client>
         PreparedStatement ps = null;
         ResultSet rs = null;
         int id;
-        boolean res = false;
 
         try
         {
@@ -62,7 +61,8 @@ public class ClientDao implements Dao<Client>
 
             if(ps.executeUpdate() != 1)
             {
-                System.out.println("la ligne non inserer");
+                System.out.println("user non inserer");
+                return false;
             }
 
             rs = ps.getGeneratedKeys();
@@ -77,16 +77,18 @@ public class ClientDao implements Dao<Client>
                 ps.setString(2,client.getVille());
                 ps.setString(3, client.getPays());
 
-                ps.executeUpdate();
-                res=true;
+               if(ps.executeUpdate() != 1)
+               {
+                   System.out.println("client non inserer");
+                   return false;
+               }
             }
         }
         catch (Exception e)
         {
             e.printStackTrace();
-
         }
-        return res;
+        return true;
     }
 
     public int count()
