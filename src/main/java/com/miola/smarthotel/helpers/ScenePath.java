@@ -16,7 +16,8 @@ public enum ScenePath {
     EMPLOYES("/view/EmployesDash.fxml"),
     RESERVATIONS("/view/reservationDash.fxml"),
     CLIENTS("/view/clientsDash.fxml"),
-    ADD_CLIENT("/view/addClient.fxml");
+    ADD_CLIENT("/view/addClient.fxml"),
+    ADD_Employe("/view/addEmploye.fxml");
 
     private final String path;
 

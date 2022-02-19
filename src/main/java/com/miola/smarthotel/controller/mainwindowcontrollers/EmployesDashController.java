@@ -167,10 +167,11 @@ public class EmployesDashController {
 
     @FXML
     private void newWindow(ActionEvent event) throws IOException {
-        NewWindowController.getNewVetWindow();
-        if(UpdateStatus.isVetAdded()) {
+        NewWindowController.getNewEmploye();
+        if(UpdateStatus.isEmployeAdded())
+        {
             refreshScreen(event);
-            UpdateStatus.setIsVetAdded(false);
+            UpdateStatus.setIsEmployeAdded(false);
         }
     }
 
