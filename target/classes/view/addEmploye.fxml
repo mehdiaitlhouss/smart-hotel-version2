@@ -61,7 +61,11 @@
                                 <Label fx:id="alertText" layoutY="15.0" nodeOrientation="LEFT_TO_RIGHT" styleClass="alertText" />
                             </children>
                         </AnchorPane>
+<<<<<<< HEAD
                         <Button mnemonicParsing="false" onAction="#saveNewClient" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Save">
+=======
+                        <Button mnemonicParsing="false" onAction="#saveNewEmpoye" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Save">
+>>>>>>> origin/master
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></Button>

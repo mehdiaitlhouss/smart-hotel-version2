@@ -197,11 +197,11 @@ public class ReservationDashController {
 
     @FXML
     private void newWindow(ActionEvent event) throws IOException {
-//        NewWindowController.getNewVisitWindow();
-//        if (UpdateStatus.isEmployeAdded()) {
-//            refreshWindow(event);
-//            UpdateStatus.setIsVisitAdded(false);
-//        }
+        NewWindowController.getNewVisitWindow();
+        if (UpdateStatus.isEmployeAdded()) {
+            refreshWindow(event);
+            UpdateStatus.setIsEmployeAdded(false);
+        }
     }
 
     private void setUserInfo() {
