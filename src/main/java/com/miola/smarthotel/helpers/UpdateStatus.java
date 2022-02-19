@@ -12,6 +12,7 @@ public final class UpdateStatus {
     private static boolean isPetAdded;
     private static boolean isVetAdded;
     private static boolean isEmployeAdded;
+    private static boolean IsChambreAdded;
 
     public static boolean isVetAdded() {
         return isVetAdded;
@@ -44,6 +45,14 @@ public final class UpdateStatus {
 
     public static boolean isEmployeAdded() {
         return isEmployeAdded;
+    }
+
+    public static void setIsChambreAdded(boolean IsChambreAdded) {
+        UpdateStatus.IsChambreAdded = IsChambreAdded;
+    }
+
+    public static boolean IsChambreAdded() {
+        return IsChambreAdded;
     }
 
 
