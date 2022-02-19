@@ -24,23 +24,30 @@ public class ClientDao implements Dao<Client>
     {
         PreparedStatement ps = null;
         ResultSet rs = null;
-        boolean tmp1 = false, tmp2 = false;
 
         try
         {
             ps = BDSingleton.getConn().prepareStatement("DELETE FROM client WHERE idUser = ?");
             ps.setInt(1, id);
-            tmp1 = ps.executeUpdate() > 0;
+
+            if(ps.executeUpdate() != 1)
+            {
+                return false;
+            }
 
             ps = BDSingleton.getConn().prepareStatement("DELETE FROM user WHERE id = ?");
             ps.setInt(1, id);
-            tmp2 = ps.executeUpdate() > 0;
+
+            if(ps.executeUpdate() != 1)
+            {
+                return false;
+            }
         }
         catch (Exception e)
         {
             e.printStackTrace();
         }
-        return tmp1 && tmp2;
+        return true;
     }
 
     @Override

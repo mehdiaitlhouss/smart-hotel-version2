@@ -44,12 +44,12 @@ public class AddClientController {
     private ComboBox<String> selectVille;
 
     @FXML
-    private void initialize() {
+    private void initialize()
+    {
         ObservableList<String> list = FXCollections.observableArrayList();
-        String[] villes = {"agadir","Marrakech","Rabat"};
+        String[] villes = {"agadir", "Marrakech", "Rabat"};
         list.addAll(villes);
         selectVille.setItems(list);
-
     }
 
     @FXML

@@ -24,6 +24,9 @@ public class Chambre
         this.prixParjour = type.getPrixParJour();
     }
 
+    public Chambre() {
+    }
+
     public int getNombreLit() {
         return nombreLit;
     }
