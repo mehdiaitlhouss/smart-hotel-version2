@@ -32,15 +32,15 @@ public class AddVetController {
 
     @FXML
     private void saveNewVetToDb(ActionEvent event) throws IOException {
-        if (validateInputs()) {
-            Veterinarian vet = createVetFromInput();
-            boolean isSaved = new VetDao().createVet(vet);
-            if (isSaved) {
-                UpdateStatus.setIsVetAdded(true);
-                alertText.setText("Vet is added!");
-                delayWindowClose(event);
-            }
-        }
+//        if (validateInputs()) {
+//            Veterinarian vet = createVetFromInput();
+//            boolean isSaved = new VetDao().createVet(vet);
+//            if (isSaved) {
+//                UpdateStatus.setIsVetAdded(true);
+//                alertText.setText("Vet is added!");
+//                delayWindowClose(event);
+//            }
+//        }
     }
 
     private boolean validateInputs() {

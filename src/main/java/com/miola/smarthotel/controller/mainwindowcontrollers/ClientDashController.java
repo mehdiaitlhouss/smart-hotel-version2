@@ -60,6 +60,15 @@ public class ClientDashController {
     @FXML
     private TableColumn<Client, String> clientAdresse;
 
+    @FXML
+    private TableColumn<Client, String> clientTelephone;
+
+    @FXML
+    private TableColumn<Client, String> clientPays;
+
+    @FXML
+    private TableColumn<Client, String> clientsVille;
+
     ClientDao clientDao = new ClientDao();
     ObservableList<Client> clientsObList = FXCollections.observableArrayList();
 
@@ -92,6 +101,10 @@ public class ClientDashController {
         clientCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         clientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         clientAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
+        clientTelephone.setCellValueFactory(new PropertyValueFactory<>("telephone"));
+        clientPays.setCellValueFactory(new PropertyValueFactory<>("pays"));
+        clientsVille.setCellValueFactory(new PropertyValueFactory<>("ville"));
+
         clientName.setCellFactory(TextFieldTableCell.forTableColumn());
         clientCin.setCellFactory(TextFieldTableCell.forTableColumn());
         clientEmail.setCellFactory(TextFieldTableCell.forTableColumn());

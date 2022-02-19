@@ -105,7 +105,7 @@
                         <Insets left="20.0" />
                     </padding>
                 </Button>
-                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" onAction="#showClientsScreen" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" text="Clients">
+                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" text="Clients">
                     <graphic>
                         <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                             <image>
@@ -218,16 +218,16 @@
                 </TableView>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="745.0">
                <children>
-                  <Button alignment="CENTER" layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Add new vet...">
+                  <Button alignment="CENTER" layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Ajouter">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteVets" prefHeight="31.0" prefWidth="80.0" styleClass="deletebutton" text="Delete">
+                  <Button layoutX="534.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteVets" prefHeight="31.0" prefWidth="96.0" styleClass="deletebutton" text="Supprimer">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button layoutX="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Refresh">
+                  <Button layoutX="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Actualiser">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
