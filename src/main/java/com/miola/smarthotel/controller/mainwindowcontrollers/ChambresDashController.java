@@ -1,5 +1,6 @@
 package com.miola.smarthotel.controller.mainwindowcontrollers;
 
+import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
 import com.miola.smarthotel.dao.ChambreDao;
 import com.miola.smarthotel.helpers.*;
 import com.miola.smarthotel.model.Chambre;
@@ -172,11 +173,11 @@ public class ChambresDashController {
 
     @FXML
     private void newWindow(ActionEvent event) throws IOException {
-//        NewWindowController.getNewChambreWindow();
-//        if(UpdateStatus.isChambreAdded()) {
-//            refreshScreen(event);
-//            UpdateStatus.setIsChambreAdded(false);
-//        }
+      NewWindowController.getNewChambreWindow();
+       if(UpdateStatus.IsChambreAdded()) {
+            refreshScreen(event);
+            UpdateStatus.setIsChambreAdded(false);
+        }
     }
 
     private void setUserInfo() {

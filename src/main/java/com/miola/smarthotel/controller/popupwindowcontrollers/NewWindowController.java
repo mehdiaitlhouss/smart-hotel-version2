@@ -75,7 +75,12 @@ public class NewWindowController {
     }
 
     public static void getNewEmploye() throws IOException {
-        getPopUpWindow(ScenePath.ADD_Employe.getPath());
+        getPopUpWindow(ScenePath.ADD_EMPLOYE.getPath());
+
+    }
+
+    public static void getNewChambreWindow() throws IOException {
+        getPopUpWindow(ScenePath.ADD_CHAMBRE.getPath());
 
     }
 }

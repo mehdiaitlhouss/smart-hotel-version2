@@ -220,16 +220,16 @@
             </TableView>
             <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="745.0">
                <children>
-                  <Button layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Add new pet...">
+                  <Button layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Ajouter">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteChambres" prefHeight="31.0" prefWidth="80.0" styleClass="deletebutton" text="Delete">
+                  <Button layoutX="535.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteChambres" prefHeight="31.0" prefWidth="95.0" styleClass="deletebutton" text="Supprimer">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button layoutX="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Refresh">
+                  <Button layoutX="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Actualiser">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
