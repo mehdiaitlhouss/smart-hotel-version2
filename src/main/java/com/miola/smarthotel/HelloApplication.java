@@ -7,11 +7,13 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class HelloApplication extends Application {
+public class HelloApplication extends Application
+{
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/reservationDash.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("/view/FXMLDocument.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
+        stage.setFullScreen(true);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();

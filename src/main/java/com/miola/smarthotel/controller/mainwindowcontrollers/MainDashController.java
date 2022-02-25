@@ -122,7 +122,7 @@ public class MainDashController {
     }
 
     private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentEmploye.getCurrentEmploye().getUserName()));
+        userInfo.setText(String.format("User : %s", CurrentEmploye.getCurrentEmploye().getUserName()));
     }
 
     private String getCalendarInformation() {

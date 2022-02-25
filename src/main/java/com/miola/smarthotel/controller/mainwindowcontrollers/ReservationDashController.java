@@ -95,11 +95,6 @@ public class ReservationDashController {
         updateTime.setText("Last update: " + CurrentTime.getTime());
         setDbInfo();
         setUserInfo();
-
-        for (Reservation r: reservationDao.getAll())
-        {
-            System.out.println(r);
-        }
     }
 
     private void setObList() {
@@ -187,29 +182,22 @@ public class ReservationDashController {
     }
 
     @FXML
-    void deleteVisit(ActionEvent event) throws IOException {
-//        ObservableList<Reservation> selectedRows = reservationTable.getSelectionModel().getSelectedItems();
-//        for (Reservation reservation : selectedRows) {
-//            reservationDao.delete(reservation.getId());
-//        }
-//        refreshWindow(event);
-    }
-
-    @FXML
     private void newWindow(ActionEvent event) throws IOException {
-        NewWindowController.getNewVisitWindow();
+        NewWindowController.getNewReservationWindow();
         if (UpdateStatus.isEmployeAdded()) {
             refreshWindow(event);
             UpdateStatus.setIsEmployeAdded(false);
         }
     }
 
-    private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentEmploye.getCurrentEmploye().getNom()));
+
+    private void setUserInfo()
+    {
+        userInfo.setText(String.format("User : %s", CurrentEmploye.getCurrentEmploye().getUserName()));
     }
 
     private void setDbInfo() {
-        stats.setText(String.format("Total reservations in database: %s", reservationDao.count()));
+        stats.setText(String.format("Total reservations in database : %s", reservationDao.count()));
     }
 
     @FXML
@@ -237,7 +225,16 @@ public class ReservationDashController {
         SceneController.getClientsScene(actionEvent);
     }
 
-    public void deleteReservation(ActionEvent event) {
+    @FXML
+    public void deleteReservation(ActionEvent event) throws IOException
+    {
+        ObservableList<Reservation> selectedRows = reservationTable.getSelectionModel().getSelectedItems();
+
+        for (Reservation reservation : selectedRows)
+        {
+            reservationDao.delete(reservation.getId());
+        }
+        refreshWindow(event);
     }
 
 

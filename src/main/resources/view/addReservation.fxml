@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Spinner?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="547.0" prefWidth="300.0" styleClass="new-window-border" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.popupwindowcontrollers.AddReservationController">
+    <children>
+        <VBox alignment="TOP_CENTER" layoutY="4.0" minWidth="250.0" prefHeight="511.0" prefWidth="300.0" spacing="10.0">
+            <children>
+                <Label text="NEW RESERVATION" textFill="#0071bc">
+                    <font>
+                        <Font name="Roboto Bold" size="18.0" />
+                    </font>
+                    <VBox.margin>
+                        <Insets bottom="25.0" top="5.0" />
+                    </VBox.margin>
+                </Label>
+            <TextField fx:id="personneNumber" alignment="CENTER" focusTraversable="false" promptText="Nombre Personne" />
+            <HBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="34.0" prefWidth="249.0" spacing="25.0">
+               <children>
+                  <Spinner fx:id="singleRoomNumber" editable="true" prefHeight="38.0" prefWidth="71.0" />
+                  <TextField alignment="CENTER" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="61.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="155.0" promptText="SINGLE_ROOM" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="34.0" prefWidth="249.0" spacing="25.0">
+               <children>
+                  <Spinner fx:id="twinForSoloUseNumber" prefHeight="38.0" prefWidth="71.0" />
+                  <TextField alignment="CENTER" disable="true" editable="false" layoutX="10.0" layoutY="10.0" maxHeight="61.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="155.0" promptText="TWIN_FOR_SOLO_USE" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="34.0" prefWidth="249.0" spacing="25.0">
+               <children>
+                  <Spinner fx:id="twinRoomNumber" prefHeight="38.0" prefWidth="71.0" />
+                  <TextField alignment="CENTER" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="61.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="155.0" promptText="TWIN_ROOM" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="34.0" prefWidth="249.0" spacing="25.0">
+               <children>
+                  <Spinner fx:id="DoubleRoomNumber" prefHeight="38.0" prefWidth="71.0" />
+                  <TextField alignment="CENTER" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="61.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="155.0" promptText="DOUBLE_ROOM" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="34.0" prefWidth="249.0" spacing="25.0">
+               <children>
+                  <Spinner fx:id="TripleRoomNulmber" prefHeight="38.0" prefWidth="71.0" />
+                  <TextField alignment="CENTER" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="61.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="155.0" promptText="TRIPLE_ROOM" />
+               </children>
+            </HBox>
+            <HBox alignment="TOP_CENTER" minHeight="-Infinity" prefHeight="34.0" prefWidth="249.0" spacing="25.0">
+               <children>
+                  <Spinner fx:id="QuadRoomNumber" prefHeight="38.0" prefWidth="71.0" />
+                  <TextField alignment="CENTER" disable="true" layoutX="10.0" layoutY="10.0" maxHeight="61.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="33.0" prefWidth="155.0" promptText="QUAD_ROOM" />
+               </children>
+            </HBox>
+                  <DatePicker fx:id="reservationDate" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" promptText="Enter reservation date">
+               <VBox.margin>
+                  <Insets bottom="20.0" />
+               </VBox.margin>
+            </DatePicker>
+                <AnchorPane prefHeight="31.0" prefWidth="249.0">
+                    <children>
+                        <Label fx:id="alertText" styleClass="alertText" />
+                    </children>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
+                </AnchorPane>
+                <HBox alignment="TOP_RIGHT" prefHeight="50.0" prefWidth="400.0" spacing="20.0">
+                    <children>
+                        <Button mnemonicParsing="false" onAction="#saveNewReservationToDb" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Suivant">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor></Button>
+                        <Button fx:id="cancelBtn" layoutX="129.0" layoutY="10.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="31.0" prefWidth="80.0" styleClass="cancelbutton" text="Cancel" textFill="#757575">
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                            <HBox.margin>
+                                <Insets right="1.0" />
+                            </HBox.margin>
+                        </Button>
+                    </children>
+                </HBox>
+            </children>
+            <padding>
+                <Insets left="25.0" right="25.0" top="25.0" />
+            </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+        </VBox>
+    </children>
+    <opaqueInsets>
+        <Insets />
+    </opaqueInsets>
+</AnchorPane>

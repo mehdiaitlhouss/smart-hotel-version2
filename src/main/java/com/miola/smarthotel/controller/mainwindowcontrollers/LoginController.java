@@ -38,21 +38,24 @@ public class LoginController {
     EmployeDao employeDao = new EmployeDao();  // crud du employe
 
     @FXML
-    private void initialize() {
-    close();
-}
+    private void initialize()
+    {
+        close();
+    }
 
     @FXML
     private void loginUser(ActionEvent event) throws IOException, InterruptedException {
         String user = userName.getText();
         String pass = password.getText();
 
-        if(!validFields()) {
+        if(!validFields())
+        {
             infoLine.setText("login and password can't be empty!");
             return;
         }
 
-        if (!validateLogin()) {
+        if (!validateLogin())
+        {
             infoLine.setText("User not found!");
             return;
         }
@@ -87,16 +90,19 @@ public class LoginController {
         return !userName.getText().isEmpty() && !password.getText().isEmpty();
     }
 
-    private boolean validateLogin() {
+    private boolean validateLogin()
+    {
         Employe empl = employeDao.getConnectedEmploye(userName.getText(), password.getText());
-        if (empl == null) {
+        if (empl == null)
+        {
             return false;
         }
         CurrentEmploye.setCurrentEmploye(empl);
         return true;
     }
 
-    private void close() {
+    private void close()
+    {
         exitBtn.setOnAction(SceneController::close);
     }
 }

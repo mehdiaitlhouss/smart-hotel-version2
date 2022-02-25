@@ -12,55 +12,90 @@ import java.util.ArrayList;
 
 public class ChambreDao implements Dao<Chambre>
 {
-
     @Override
     public boolean update(Chambre chambre) {
         return false;
     }
 
     @Override
-    public boolean delete(int chambre) {
+    public boolean delete(int id)
+    {
+        PreparedStatement ps = null;
+        int rs;
+        String sqlQuery = "DELETE FROM Chambre WHERE id = ?";
+        try
+        {
+            ps = BDSingleton.getConn().prepareStatement(sqlQuery);
+            ps.setInt(1, id);
+
+            if(ps.executeUpdate() != 1)
+            {
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean add(Chambre chambre)
+    {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        String sqlQuery = "INSERT INTO chambre(etage, idTypeChambre, idEtatChambre) VALUES (?, ?, ?)";
+
+        try
+        {
+            ps = BDSingleton.getConn().prepareStatement(sqlQuery);
+            ps.setInt(1, chambre.getEtage());
+            ps.setInt(2, chambre.getType().getId());
+            ps.setInt(3, chambre.getEtat().getId());
+
+            if(ps.executeUpdate() != 1)
+            {
+                return false;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return true;
+    }
+
+    @Override
+    public boolean creat (Chambre chambre)
+    {
         return false;
     }
 
     @Override
-    public boolean add(Chambre chambre) {
-        return false;
-    }
-
-    @Override
-    public boolean creat(Chambre chambre) {
-        return false;
-    }
-
-    @Override
-    public int count()
+    public int count ()
     {
         Statement stm = null;
         ResultSet rs = null;
         int count = 0;
 
-        try
-        {
+        try {
             stm = BDSingleton.getConn().createStatement();
             rs = stm.executeQuery("SELECT COUNT(*) FROM client");
 
-            if(rs.next())
-            {
+            if (rs.next()) {
                 count = rs.getInt(1);
             }
 
             rs.close();
-        }
-        catch(Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return count;
     }
 
     @Override
-    public Chambre get(int id) {
+    public Chambre get ( int id){
         return null;
     }
 
@@ -69,26 +104,25 @@ public class ChambreDao implements Dao<Chambre>
     {
         ArrayList<Chambre> chambres = new ArrayList<>();
         Chambre chambre = null;
-        PreparedStatement pstmt = null;
+        Statement s = null;
         ResultSet rs = null;
         String sqlQuery = "SELECT c.id AS id, etage, type, etat FROM chambre AS c " +
                             "INNER JOIN etatchambre AS e ON e.id = c.idEtatChambre " +
                             "INNER JOIN typechambre AS t ON t.id = c.idTypeChambre ";
 
-        try {
-            pstmt= BDSingleton.getConn().prepareStatement(sqlQuery);
-            rs = pstmt.executeQuery();
+        try
+        {
+            s = BDSingleton.getConn().createStatement();
+            rs = s.executeQuery(sqlQuery);
 
-            while (rs.next())
-            {
+            while (rs.next()) {
                 chambre = new Chambre(rs.getInt("id"),
-                                      TypeChambre.valueOf(rs.getString("type")),
-                                      rs.getInt("etage"),
-                                      EtatChambre.valueOf(rs.getString("etat")));
-                 chambres.add(chambre);
+                        TypeChambre.valueOf(rs.getString("type")),
+                        rs.getInt("etage"),
+                        EtatChambre.valueOf(rs.getString("etat")));
+                chambres.add(chambre);
             }
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return chambres;

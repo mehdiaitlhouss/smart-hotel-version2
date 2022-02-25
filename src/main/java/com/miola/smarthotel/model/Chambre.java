@@ -51,7 +51,7 @@ public class Chambre
         this.prixParjour = prixParjour;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 

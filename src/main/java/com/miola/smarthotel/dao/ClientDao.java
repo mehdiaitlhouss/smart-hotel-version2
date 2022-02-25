@@ -185,7 +185,8 @@ public class ClientDao implements Dao<Client>
                 clients.add(client);
             }
         }
-        catch(Exception e){
+        catch(Exception e)
+        {
             e.printStackTrace();
         }
         return clients;

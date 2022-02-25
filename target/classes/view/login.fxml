@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" styleClass="login-window" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.LoginController">
+<AnchorPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="login-window" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.LoginController">
     <children>
-        <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="890.0" spacing="30.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" spacing="30.0" style="-fx-background-color: #000000;" styleClass="sidebar">
             <children>
                 <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -23,8 +23,11 @@
                     <viewport>
                         <Rectangle2D />
                     </viewport>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
                 </ImageView>
-                <Label text="Pet Clinic CRM 1.1v" textFill="WHITE">
+                <Label text="Smart Hotel" textFill="WHITE">
                     <font>
                         <Font name="Roboto Regular" size="16.0" />
                     </font>
@@ -34,23 +37,23 @@
                         <Font name="Roboto Bold" size="30.0" />
                     </font>
                     <VBox.margin>
-                        <Insets top="80.0" />
+                        <Insets top="10.0" />
                     </VBox.margin>
                 </Label>
-                <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter username" styleClass="login-field" />
-                <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginUser" prefHeight="40.0" prefWidth="250.0" promptText="Enter password" styleClass="login-field">
+                <TextField fx:id="userName" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="250.0" promptText="Enter username" style="-fx-background-color: #000000;" styleClass="login-field" />
+                <PasswordField fx:id="password" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#loginUser" prefHeight="40.0" prefWidth="250.0" promptText="Enter password" style="-fx-background-color: #000000;" styleClass="login-field">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
                 </PasswordField>
                 <Label fx:id="infoLine" styleClass="infoLine" />
-                <Button fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loginUser" prefHeight="40.0" prefWidth="250.0" styleClass="login-button" text="Sign In" />
-                <Button fx:id="exitBtn" layoutX="330.0" layoutY="564.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" styleClass="exit-button" text="Exit" />
+                <Button fx:id="login" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#loginUser" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #000000;" styleClass="login-button" text="Sign In" />
+                <Button fx:id="exitBtn" layoutX="330.0" layoutY="564.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="40.0" prefWidth="250.0" style="-fx-background-color: #000000;" styleClass="exit-button" text="Exit" />
                 <Label fx:id="info2" layoutX="455.0" layoutY="519.0" styleClass="infoLine" />
             </children>
-            <padding>
-                <Insets bottom="50.0" top="50.0" />
-            </padding>
         </VBox>
     </children>
+   <opaqueInsets>
+      <Insets />
+   </opaqueInsets>
 </AnchorPane>

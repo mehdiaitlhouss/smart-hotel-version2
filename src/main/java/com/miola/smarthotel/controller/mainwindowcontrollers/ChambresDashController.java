@@ -164,11 +164,12 @@ public class ChambresDashController {
 
     @FXML
     private void deleteChambres(ActionEvent event) throws Exception {
-//        ObservableList<Chambre> selectedRows = chambreTable.getSelectionModel().getSelectedItems();
-//        for (Chambre Chambre : selectedRows) {
-//            chambreDao.deleteChambre(Chambre);
-//        }
-//        refreshScreen(event);
+        ObservableList<Chambre> selectedRows = chambreTable.getSelectionModel().getSelectedItems();
+        for (Chambre chambre : selectedRows)
+        {
+            chambreDao.delete(chambre.getId());
+        }
+        refreshScreen(event);
     }
 
     @FXML
@@ -181,7 +182,7 @@ public class ChambresDashController {
     }
 
     private void setUserInfo() {
-        userInfo.setText(String.format("User: %s", CurrentEmploye.getCurrentEmploye().getUserName()));
+        userInfo.setText(String.format("User : %s", CurrentEmploye.getCurrentEmploye().getUserName()));
     }
 
     private void setDbInfo() {

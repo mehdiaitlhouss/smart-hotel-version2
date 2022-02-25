@@ -184,7 +184,7 @@
                         <Insets left="5.0" top="5.0" />
                      </padding>
                   </Label>
-                  <Label fx:id="userInfo" layoutX="614.0" layoutY="28.0" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="99.0" styleClass="user-info" text="Demo" />
+                  <Label fx:id="userInfo" layoutX="496.0" layoutY="28.0" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="RIGHT_TO_LEFT" prefHeight="20.0" prefWidth="227.0" styleClass="user-info" text="Demo" />
                </children>
                <padding>
                   <Insets right="20.0" top="15.0" />

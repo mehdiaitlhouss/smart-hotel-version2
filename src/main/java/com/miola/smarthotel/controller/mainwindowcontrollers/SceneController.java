@@ -16,8 +16,8 @@ import java.io.IOException;
 /**
  * Code created by Andrius on 2020-09-29
  */
-public class SceneController {
-
+public class SceneController
+{
     private static double x;
     private static double y;
 
@@ -39,7 +39,8 @@ public class SceneController {
         changeScreen(event, ScenePath.EMPLOYES.getPath());
     }
 
-    public static void getChambresScene(ActionEvent event) throws IOException {
+    public static void getChambresScene(ActionEvent event) throws IOException
+    {
         changeScreen(event, ScenePath.CHAMBRES.getPath());
     }
 

@@ -13,8 +13,6 @@ import java.util.ArrayList;
  */
 public class EmployeDao implements Dao<Employe>
 {
-
-
     public Employe getConnectedEmploye(String userName, String password)
     {
         // methode lancer lors de la connexion (page login) possede comme entree l'userName et le password du employe
@@ -79,16 +77,14 @@ public class EmployeDao implements Dao<Employe>
 
     public Employe get(int id)
     {
-        // c'est l'id primaire de la table employe
-        // retourne un employe
         Employe employe = null;
-
         PreparedStatement pstmt;
         ResultSet rs = null;
         String sqlQuery = "SELECT e.idUser AS idUser, prenom, nom, cin, email, telephone, adresse, userName, password" +
                          " FROM employe AS e INNER JOIN user AS u ON e.idUser = u.id WHERE e.id = ?";
 
-        try {
+        try
+        {
             pstmt= BDSingleton.getConn().prepareStatement(sqlQuery);
             pstmt.setLong(1,id);
             rs = pstmt.executeQuery();

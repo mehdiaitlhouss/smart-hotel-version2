@@ -17,8 +17,27 @@ public class ReservationDao implements Dao<Reservation>
     }
 
     @Override
-    public boolean delete(int reservation) {
-        return false;
+    public boolean delete(int id)
+    {
+        PreparedStatement ps = null;
+        String sqlQuery = "DELETE FROM reservation WHERE id = ?";
+
+        try
+        {
+            ps = BDSingleton.getConn().prepareStatement(sqlQuery);
+            ps.setInt(1, id);
+
+            if(ps.executeUpdate() != 1)
+            {
+                return false;
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        return true;
     }
 
     @Override

@@ -15,12 +15,14 @@ import java.io.IOException;
 /**
  * Code created by Andrius on 2020-10-02
  */
-public class NewWindowController {
 
+public class NewWindowController
+{
     static double x;
     static double y;
 
-    public static void getNewPetWindow() throws IOException {
+    public static void getNewPetWindow() throws IOException
+    {
         getPopUpWindow(ScenePath.ADD_PET.getPath());
     }
 
@@ -37,11 +39,13 @@ public class NewWindowController {
         return stage;
     }
 
-    public static void getNewVisitWindow() throws IOException {
+    public static void getNewVisitWindow() throws IOException
+    {
         getPopUpWindow(ScenePath.ADD_VISIT.getPath());
     }
 
-    public static void getPopUpWindow(String path) throws IOException {
+    public static void getPopUpWindow(String path) throws IOException
+    {
         Stage stage = new Stage();
         Pane main = FXMLLoader.load(NewWindowController.class.getResource(path));
         controlDrag(main, stage);
@@ -70,17 +74,23 @@ public class NewWindowController {
         });
     }
 
-    public static void getNewClientWindow() throws IOException {
+    public static void getNewClientWindow() throws IOException
+    {
         getPopUpWindow(ScenePath.ADD_CLIENT.getPath());
     }
 
-    public static void getNewEmploye() throws IOException {
+    public static void getNewEmploye() throws IOException
+    {
         getPopUpWindow(ScenePath.ADD_EMPLOYE.getPath());
-
     }
 
-    public static void getNewChambreWindow() throws IOException {
+    public static void getNewChambreWindow() throws IOException
+    {
         getPopUpWindow(ScenePath.ADD_CHAMBRE.getPath());
+    }
 
+    public static void getNewReservationWindow() throws IOException
+    {
+        getPopUpWindow(ScenePath.ADD_RESERVATION.getPath());
     }
 }
