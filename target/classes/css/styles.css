@@ -273,7 +273,8 @@
 -fx-text-fill: #fc583f;
 }
 
-.login-window {
+.login-window
+{
 -fx-background-radius: 3;
 -fx-border-color: #d0d0d0;
 -fx-border-width: 5 10 5 5;
