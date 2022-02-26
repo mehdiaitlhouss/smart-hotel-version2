@@ -16,9 +16,9 @@
     <children>
         <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" spacing="30.0" style="-fx-background-color: #000000;" styleClass="sidebar">
             <children>
-                <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true">
+                <ImageView fitHeight="138.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/logopet.png" />
+                        <Image url="@../images/logo_new.png" />
                     </image>
                     <viewport>
                         <Rectangle2D />
@@ -27,11 +27,6 @@
                   <Insets top="20.0" />
                </VBox.margin>
                 </ImageView>
-                <Label text="Smart Hotel" textFill="WHITE">
-                    <font>
-                        <Font name="Roboto Regular" size="16.0" />
-                    </font>
-                </Label>
                 <Label fx:id="welcome" layoutX="430.0" layoutY="170.0" text="Login" textFill="WHITE">
                     <font>
                         <Font name="Roboto Bold" size="30.0" />

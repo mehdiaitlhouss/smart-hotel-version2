@@ -232,34 +232,41 @@ public class ClientDashController {
         SceneController.getEmployesScene(event);
     }
 
+    @FXML
     public void showIotScreens(ActionEvent event)
     {
     }
-
+    @FXML
     public void changeFullName(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
     }
 
+    @FXML
     public void changeCin(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
     }
 
+    @FXML
     public void changeEmail(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
     }
 
+    @FXML
     public void changeAdresse(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
     }
 
+    @FXML
     public void changeTelephone(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
     }
 
+    @FXML
     public void changeVille(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
     }
 
+    @FXML
     public void changePays(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
     }
