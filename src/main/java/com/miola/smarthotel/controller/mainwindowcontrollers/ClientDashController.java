@@ -20,6 +20,8 @@ import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ClientDashController
 {
@@ -233,14 +235,17 @@ public class ClientDashController
     }
 
     @FXML
-    void showEmployesScreens(ActionEvent event) throws IOException {
+    void showEmployesScreens(ActionEvent event) throws IOException
+    {
         SceneController.getEmployesScene(event);
     }
 
     @FXML
     public void showIotScreens(ActionEvent event)
     {
+
     }
+
     @FXML
     public void changeFullName(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
@@ -248,10 +253,10 @@ public class ClientDashController
         String[] fullName = null;
         String ss = "";
 
-        try
-        {
-            fullName = clientStringCellEditEvent.getNewValue().toString().split(" ");
+        fullName = clientStringCellEditEvent.getNewValue().toString().split(" ");
 
+        if(chkNamVldFnc(clientStringCellEditEvent.getNewValue().toString()))
+        {
             for (int i = 1; i < fullName.length; i++)
             {
                 ss += fullName[i] + " ";
@@ -260,46 +265,64 @@ public class ClientDashController
             selectedClient.setNom(fullName[0]);
             selectedClient.setPrenom(ss);
 
+            if(clientDao.update(selectedClient))
+            {
+                alertText.setText("Modification enregistrer");
+            }
+            else
+            {
+                alertText.setText("Modification Non enregistrer");
+            }
+
         }
-        catch(NumberFormatException e)
+        else
         {
             alertText.setText("Valeur Non Valide");
-            return;
         }
+    }
 
-        if(clientDao.update(selectedClient))
-        {
-            alertText.setText("Modification enregistrer");
-        }
+    public static boolean chkNamVldFnc(String namVar)
+    {
+        String namRegExpVar = "^[A-Z][a-z]{2,}(?: [A-Z][a-z]*)*$";
+
+        Pattern pVar = Pattern.compile(namRegExpVar);
+        Matcher mVar = pVar.matcher(namVar);
+        return mVar.matches();
     }
 
     @FXML
     public void changeCin(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
+
     }
 
     @FXML
     public void changeEmail(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
+
     }
 
     @FXML
     public void changeAdresse(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
+
     }
 
     @FXML
     public void changeTelephone(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
+
     }
 
     @FXML
     public void changeVille(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
+
     }
 
     @FXML
     public void changePays(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
+
     }
 }
