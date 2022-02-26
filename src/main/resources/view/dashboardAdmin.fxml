@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.MainDashController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.MainDashController">
    <children>
-      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" styleClass="sidebar">
          <children>
             <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER">
                <image>
@@ -28,7 +28,7 @@
                   <Rectangle2D />
                </viewport>
                <VBox.margin>
-                  <Insets bottom="20.0" left="35.0" right="20.0" top="35.0" />
+                  <Insets bottom="10.0" left="35.0" right="20.0" top="20.0" />
                </VBox.margin>
             </ImageView>
             <Label alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" styleClass="wtext" text="Pet Clinic CRM 1.1" textAlignment="CENTER">
@@ -42,9 +42,9 @@
                   <Font size="10.0" />
                </font>
             </Label>
-            <Button alignment="BASELINE_LEFT" defaultButton="true" graphicTextGap="8.0" layoutX="10.0" layoutY="211.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" text="Dashboard">
+            <Button alignment="BASELINE_LEFT" defaultButton="true" graphicTextGap="8.0" layoutX="10.0" layoutY="211.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" stylesheets="@../css/styles.css" text="Dashboard">
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
                <opaqueInsets>
                   <Insets />
@@ -59,14 +59,14 @@
                      </image>
                   </ImageView>
                </graphic>
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showReservationsScreen" prefHeight="50.0" text="Réservation">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="205.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showReservationsScreen" prefHeight="50.0" stylesheets="@../css/styles.css" text="Réservations">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -84,15 +84,15 @@
                   <Insets left="20.0" />
                </padding>
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" stylesheets="@../css/styles.css" text="Chambres">
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
                <graphic>
                   <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
@@ -108,7 +108,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" text="Clients">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showClientsScreen" prefHeight="50.0" stylesheets="@../css/styles.css" text="Clients">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -117,7 +117,7 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
                <padding>
                   <Insets left="20.0" />
@@ -126,7 +126,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showEmployesScreens" prefHeight="50.0" text="Employés">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showEmployesScreens" prefHeight="50.0" stylesheets="@../css/styles.css" text="Employés">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -135,7 +135,7 @@
                   </ImageView>
                </graphic>
                <VBox.margin>
-                  <Insets bottom="30.0" />
+                  <Insets bottom="10.0" />
                </VBox.margin>
                <padding>
                   <Insets left="20.0" />
@@ -144,7 +144,25 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button id="exitBtn" alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="365.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#exitProgram" prefHeight="50.0" styleClass="exitBtn" text="Exit">
+            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showIotScreens" prefHeight="50.0" stylesheets="@../css/styles.css" text="IOT">
+               <graphic>
+                  <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/cat-16.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
+            </Button>
+            <Button id="exitBtn" alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="365.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#exitProgram" prefHeight="50.0" styleClass="exitBtn" text="Exit">
                <graphic>
                   <ImageView fitHeight="14.0" fitWidth="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -158,14 +176,17 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
             </Button>
          </children>
       </VBox>
-      <VBox layoutX="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="750.0">
+      <VBox layoutX="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="850.0">
          <children>
-            <Pane layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="75.0" prefWidth="745.0" styleClass="header">
+            <Pane layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="75.0" prefWidth="844.0" styleClass="header">
                <VBox.margin>
-                  <Insets />
+                  <Insets right="20.0" />
                </VBox.margin>
                <children>
                   <Label id="title" fx:id="title" styleClass="title" text="Dashboard" textFill="#515151">
@@ -193,11 +214,11 @@
                   <Insets right="25.0" />
                </opaqueInsets>
             </Pane>
-            <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="200.0" spacing="5.0">
+            <HBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="829.0" spacing="5.0">
                <children>
-                  <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" styleClass="infoBlockVet">
+                  <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="127.0" styleClass="infoBlockVet">
                      <HBox.margin>
-                        <Insets bottom="20.0" left="25.0" right="20.0" top="20.0" />
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                      </HBox.margin>
                      <children>
                         <Label fx:id="reservationInfoBlockName" alignment="TOP_LEFT" layoutX="14.0" layoutY="14.0" text="Reservation" textFill="WHITE">
@@ -212,9 +233,9 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="40.0" layoutY="40.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="220.0" prefWidth="200.0" styleClass="infoBlockPet">
+                  <Pane layoutX="40.0" layoutY="40.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="123.0" styleClass="infoBlockPet">
                      <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                      </HBox.margin>
                      <children>
                         <Label fx:id="chambresInfoBlockName" layoutX="14.0" layoutY="14.0" text="Chambres" textFill="WHITE">
@@ -229,9 +250,9 @@
                         </Label>
                      </children>
                   </Pane>
-                  <Pane layoutX="300.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="200.0" prefWidth="200.0" styleClass="infoBlockVisit">
+                  <Pane layoutX="300.0" layoutY="10.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="123.0" styleClass="infoBlockVisit">
                      <HBox.margin>
-                        <Insets bottom="20.0" left="20.0" right="30.0" top="20.0" />
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
                      </HBox.margin>
                      <children>
                         <Label fx:id="employeInfoBlockName" alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Employes" textFill="WHITE">
@@ -246,12 +267,63 @@
                         </Label>
                      </children>
                   </Pane>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="131.0" styleClass="infoBlockVisit">
+                     <children>
+                        <Label fx:id="employeInfoBlockName1" alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Employes" textFill="WHITE">
+                           <font>
+                              <Font name="Roboto Black" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="employeNumber1" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="21.0" layoutY="37.0" text="1" textFill="#ffcdc3">
+                           <font>
+                              <Font name="Roboto Black" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="132.0" styleClass="infoBlockVisit">
+                     <children>
+                        <Label fx:id="employeInfoBlockName2" alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Employes" textFill="WHITE">
+                           <font>
+                              <Font name="Roboto Black" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="employeNumber2" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="21.0" layoutY="37.0" text="1" textFill="#ffcdc3">
+                           <font>
+                              <Font name="Roboto Black" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                     </HBox.margin>
+                  </Pane>
+                  <Pane nodeOrientation="LEFT_TO_RIGHT" prefHeight="110.0" prefWidth="128.0" styleClass="infoBlockVisit">
+                     <children>
+                        <Label fx:id="employeInfoBlockName3" alignment="CENTER" layoutX="14.0" layoutY="14.0" text="Employes" textFill="WHITE">
+                           <font>
+                              <Font name="Roboto Black" size="18.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="employeNumber3" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="21.0" layoutY="37.0" text="1" textFill="#ffcdc3">
+                           <font>
+                              <Font name="Roboto Black" size="48.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <HBox.margin>
+                        <Insets bottom="20.0" left="10.0" right="10.0" top="20.0" />
+                     </HBox.margin>
+                  </Pane>
                </children>
                <VBox.margin>
-                  <Insets top="10.0" />
+                  <Insets right="20.0" top="10.0" />
                </VBox.margin>
             </HBox>
-            <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="480.0" prefWidth="690.0">
+            <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="282.0" prefWidth="795.0">
               <columns>
                   <TableColumn fx:id="idClient" editable="false" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
                 <TableColumn id="date_col" fx:id="clientName" editable="false" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
@@ -260,13 +332,13 @@
                   <TableColumn fx:id="clientAdresse" editable="false" maxWidth="335.9999694824219" minWidth="75.33331298828125" prefWidth="234.66665649414062" resizable="false" text="ADDRESS" />
               </columns>
                <VBox.margin>
-                  <Insets bottom="10.0" left="25.0" right="25.0" />
+                  <Insets bottom="10.0" left="25.0" right="20.0" />
                </VBox.margin>
                <columnResizePolicy>
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
             </TableView>
-            <AnchorPane maxHeight="-Infinity" minHeight="-Infinity" prefHeight="50.0" prefWidth="750.0">
+            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="850.0">
                <children>
                   <Label fx:id="visitInfoText" alignment="TOP_LEFT" layoutX="25.0" layoutY="18.0" styleClass="statsline" text="Upcoming visits" textFill="#757575">
                      <font>
@@ -279,6 +351,9 @@
                      </cursor>
                   </Button>
                </children>
+               <VBox.margin>
+                  <Insets right="20.0" />
+               </VBox.margin>
             </AnchorPane>
          </children>
          <padding>

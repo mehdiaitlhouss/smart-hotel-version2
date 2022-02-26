@@ -13,8 +13,32 @@ import java.util.ArrayList;
 public class ChambreDao implements Dao<Chambre>
 {
     @Override
-    public boolean update(Chambre chambre) {
-        return false;
+    public boolean update(Chambre chambre)
+    {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        boolean tmp = true;
+
+        try
+        {
+            ps = BDSingleton.getConn().prepareStatement("UPDATE chambre SET etage = ?, idTypeChambre = ?, idEtatChambre = ? WHERE id = ?");
+            ps.setInt(1, chambre.getEtage());
+            ps.setInt(2, chambre.getType().getId());
+            ps.setInt(3, chambre.getEtat().getId());
+            ps.setInt(4, chambre.getId());
+
+            if(ps.executeUpdate() != 1)
+            {
+                tmp = false;
+            }
+
+            ps.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tmp;
     }
 
     @Override
@@ -32,6 +56,7 @@ public class ChambreDao implements Dao<Chambre>
             {
                 return false;
             }
+            ps.close();
         }
         catch (Exception e)
         {
@@ -60,6 +85,8 @@ public class ChambreDao implements Dao<Chambre>
                 return false;
             }
 
+            ps.close();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -86,8 +113,7 @@ public class ChambreDao implements Dao<Chambre>
             if (rs.next()) {
                 count = rs.getInt(1);
             }
-
-            rs.close();
+            stm.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -122,6 +148,7 @@ public class ChambreDao implements Dao<Chambre>
                         EtatChambre.valueOf(rs.getString("etat")));
                 chambres.add(chambre);
             }
+            s.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

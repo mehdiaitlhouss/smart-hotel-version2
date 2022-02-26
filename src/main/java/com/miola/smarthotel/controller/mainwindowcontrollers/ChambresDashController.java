@@ -12,6 +12,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.stage.Screen;
 
 import java.io.IOException;
@@ -20,7 +21,11 @@ import java.time.LocalDate;
 /**
  * Code created by Andrius on 2020-09-27
  */
-public class ChambresDashController {
+public class ChambresDashController
+{
+
+    @FXML
+    private Label alertText;
 
     @FXML
     private Label title; // titre de la fenetre reservation
@@ -50,22 +55,22 @@ public class ChambresDashController {
     private TableColumn<Chambre, Long> idColumn;
 
     @FXML
-    private TableColumn<Chambre, Integer> etageColumn;
+    private TableColumn<Chambre, String> etageColumn;
 
     @FXML
     private TableColumn<Chambre, String> typeColumn;
 
     @FXML
-    private TableColumn<Chambre, Integer> nombreLitColumn;
+    private TableColumn<Chambre, String> nombreLitColumn;
 
     @FXML
-    private TableColumn<Chambre, Integer> nombrePersonneColumn;
+    private TableColumn<Chambre, String> nombrePersonneColumn;
 
     @FXML
-    private TableColumn<Chambre, Double> prixParJourColumn;
+    private TableColumn<Chambre, String> prixParJourColumn;
 
     @FXML
-    private TableColumn<Chambre, EtatChambre> etatChambreColumn;
+    private TableColumn<Chambre, String> etatChambreColumn;
 
     ChambreDao chambreDao = new ChambreDao();
     ObservableList<Chambre> chambresObList = FXCollections.observableArrayList();
@@ -94,23 +99,15 @@ public class ChambresDashController {
 
     private void fillTable() {
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
-        etageColumn.setCellValueFactory(new PropertyValueFactory<>("etage"));
-        typeColumn.setCellValueFactory(new PropertyValueFactory<>("type"));
-        nombreLitColumn.setCellValueFactory(new PropertyValueFactory<>("nombreLit"));
-        nombrePersonneColumn.setCellValueFactory(new PropertyValueFactory<>("nombrePersonne"));
-        prixParJourColumn.setCellValueFactory(new PropertyValueFactory<>("prixParjour"));
-        etatChambreColumn.setCellValueFactory(new PropertyValueFactory<>("etat"));
-
-
-        /*ownerColumn.setCellFactory(TextFieldTableCell.forTableColumn());
+        etageColumn.setCellValueFactory(new PropertyValueFactory<>("etageString"));
+        typeColumn.setCellValueFactory(new PropertyValueFactory<>("typeString"));
+        nombreLitColumn.setCellValueFactory(new PropertyValueFactory<>("nombreLitString"));
+        nombrePersonneColumn.setCellValueFactory(new PropertyValueFactory<>("nombrePersonneString"));
+        prixParJourColumn.setCellValueFactory(new PropertyValueFactory<>("prixParjourString"));
+        etatChambreColumn.setCellValueFactory(new PropertyValueFactory<>("etatChambreString"));
+        etageColumn.setCellFactory(TextFieldTableCell.forTableColumn());
         typeColumn.setCellFactory(TextFieldTableCell.forTableColumn());
-        vaccineColumn.setCellFactory(col -> new TableCell<>() {
-            @Override
-            protected void updateItem(Boolean item, boolean empty) {
-                super.updateItem(item, empty);
-                setText(empty ? null : item ? "Yes" : "No");
-            }
-        });*/
+        etatChambreColumn.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     private void addTableSettings() {
@@ -215,5 +212,75 @@ public class ChambresDashController {
     @FXML
     void showEmployesScreen(ActionEvent event) throws IOException {
         SceneController.getEmployesScene(event);
+    }
+
+    public void showIotScreens(ActionEvent event)
+    {
+
+    }
+
+    @FXML
+    public void changeEtage(TableColumn.CellEditEvent<Chambre, String> chambreStringCellEditEvent)
+    {
+        Chambre selectedChambre = chambreTable.getSelectionModel().getSelectedItem();
+
+        try
+        {
+            selectedChambre.setEtage(Integer.parseInt(chambreStringCellEditEvent.getNewValue().toString()));
+        }
+        catch(NumberFormatException e)
+        {
+            alertText.setText("Valeur Non Valide");
+            return;
+        }
+
+        if(chambreDao.update(selectedChambre))
+        {
+            alertText.setText("Modification enregistrer");
+        }
+    }
+
+    @FXML
+    public void changeType(TableColumn.CellEditEvent<Chambre, String> chambreStringCellEditEvent)
+    {
+        Chambre selectedChambre = chambreTable.getSelectionModel().getSelectedItem();
+
+        try
+        {
+            selectedChambre.setType(TypeChambre.valueOf(chambreStringCellEditEvent.getNewValue().toString()));
+
+        }
+        catch(IllegalArgumentException e)
+        {
+            alertText.setText("Type Non Valide");
+            return;
+        }
+
+        if(chambreDao.update(selectedChambre))
+        {
+            alertText.setText("Modification enregistrer");
+        }
+    }
+
+    @FXML
+    public void changeEtate(TableColumn.CellEditEvent<Chambre, String> chambreStringCellEditEvent)
+    {
+        Chambre selectedChambre = chambreTable.getSelectionModel().getSelectedItem();
+
+        try
+        {
+            selectedChambre.setEtat(EtatChambre.valueOf(chambreStringCellEditEvent.getNewValue().toString()));
+
+        }
+        catch(IllegalArgumentException e)
+        {
+            alertText.setText("Etat Non Valide");
+            return;
+        }
+
+        if(chambreDao.update(selectedChambre))
+        {
+            alertText.setText("Modification enregistrer");
+        }
     }
 }

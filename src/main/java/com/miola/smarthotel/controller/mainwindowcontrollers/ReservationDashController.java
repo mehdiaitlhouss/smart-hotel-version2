@@ -13,16 +13,23 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.Time;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.sql.Date;
 
 /**
  * Code created by Andrius on 2020-09-27
  */
-public class ReservationDashController {
+public class ReservationDashController
+{
+    @FXML
+    private Label promptMessage;
 
     @FXML
     private Label title;
@@ -58,22 +65,22 @@ public class ReservationDashController {
     private TableView<Reservation> reservationTable;
 
     @FXML
-    private TableColumn<Reservation, Integer> reservationId;
+    private TableColumn<Reservation, String> reservationId;
 
     @FXML
-    private TableColumn<Reservation, Date> reservationDate;
+    private TableColumn<Reservation, String> reservationDate;
 
     @FXML
-    private TableColumn<Reservation, Time> reservationHeure;
+    private TableColumn<Reservation, String> reservationHeure;
 
     @FXML
-    private TableColumn<Reservation, Integer> reservationDuree;
+    private TableColumn<Reservation, String> reservationDuree;
 
     @FXML
-    private TableColumn<Reservation, Integer> reservationNombrePersonne;
+    private TableColumn<Reservation, String> reservationNombrePersonne;
 
     @FXML
-    private TableColumn<Reservation, EtatReservation> reservationEtat;
+    private TableColumn<Reservation, String> reservationEtat;
 
 
     ReservationDao reservationDao = new ReservationDao();
@@ -105,12 +112,16 @@ public class ReservationDashController {
     private void fillTable()
     {
         reservationId.setCellValueFactory(new PropertyValueFactory<>("id"));
-        reservationDate.setCellValueFactory(new PropertyValueFactory<>("dateReservation"));
-        reservationHeure.setCellValueFactory(new PropertyValueFactory<>("heureReservation"));
-        reservationDuree.setCellValueFactory(new PropertyValueFactory<>("dureeSejour"));
-        reservationNombrePersonne.setCellValueFactory(new PropertyValueFactory<>("nombrePersonne"));
-        reservationEtat.setCellValueFactory(new PropertyValueFactory<>("etat"));
-        //descriptionId.setCellFactory(TextFieldTableCell.forTableColumn());
+        reservationDate.setCellValueFactory(new PropertyValueFactory<>("dateReservationString"));
+        reservationHeure.setCellValueFactory(new PropertyValueFactory<>("heureReservationString"));
+        reservationDuree.setCellValueFactory(new PropertyValueFactory<>("dureeSejourString"));
+        reservationNombrePersonne.setCellValueFactory(new PropertyValueFactory<>("nombrePersonneString"));
+        reservationEtat.setCellValueFactory(new PropertyValueFactory<>("etatString"));
+        reservationDate.setCellFactory(TextFieldTableCell.forTableColumn());
+        reservationHeure.setCellFactory(TextFieldTableCell.forTableColumn());
+        reservationDuree.setCellFactory(TextFieldTableCell.forTableColumn());
+        reservationNombrePersonne.setCellFactory(TextFieldTableCell.forTableColumn());
+        reservationEtat.setCellFactory(TextFieldTableCell.forTableColumn());
     }
 
     private void addTableSettings() {
@@ -119,7 +130,8 @@ public class ReservationDashController {
         reservationTable.setItems(getSortedList());
     }
 
-    private SortedList<Reservation> getSortedList() {
+    private SortedList<Reservation> getSortedList()
+    {
         SortedList<Reservation> sortedList = new SortedList<>(getFilteredListByDates());
         sortedList.comparatorProperty().bind(reservationTable.comparatorProperty());
         return sortedList;
@@ -164,7 +176,8 @@ public class ReservationDashController {
         return filteredList;
     }
 
-    private void clearSearchResults() {
+    private void clearSearchResults()
+    {
         clearBtn.setOnAction(event -> {
             dateFrom.setValue(null);
             dateTo.setValue(null);
@@ -174,11 +187,24 @@ public class ReservationDashController {
     }
 
     @FXML
-    private void changeDescriptionCell(TableColumn.CellEditEvent editEvent) {
-        // il faut ajouter onEditCommit="#changeDescriptionCell" dans l'attrinue de la table
+    private void changeEtatReservationCell(TableColumn.CellEditEvent editEvent)
+    {
         Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
-       // reservation.set(editEvent.getNewValue().toString());
-        reservationDao.update(reservation);
+
+        try
+        {
+            reservation.setEtat(EtatReservation.valueOf(editEvent.getNewValue().toString()));
+        }
+        catch (IllegalArgumentException e)
+        {
+            promptMessage.setText("Etat non valide");
+            return;
+        }
+
+        if(reservationDao.update(reservation))
+        {
+            promptMessage.setText("Modification enregister");
+        }
     }
 
     @FXML
@@ -238,4 +264,99 @@ public class ReservationDashController {
     }
 
 
+    public void showIotScreens(ActionEvent event)
+    {
+    }
+
+    public void afficheReservationAction(ActionEvent event)
+    {
+    }
+
+    @FXML
+    public void changeDateReservationCell(TableColumn.CellEditEvent<Reservation, String> reservationDate)
+    {
+        Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
+        Date date = null;
+
+        try
+        {
+            date = Date.valueOf(reservationDate.getNewValue().toString());
+            reservation.setDateReservation(date);
+        }
+        catch (IllegalArgumentException e)
+        {
+            promptMessage.setText("Date non valide");
+            return;
+        }
+
+        if(reservationDao.update(reservation))
+        {
+            promptMessage.setText("Modification enregister");
+        }
+    }
+
+    @FXML
+    public void changeHeureReservationCell(TableColumn.CellEditEvent<Reservation, String> reservationTime)
+    {
+        Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
+        DateFormat formatter = new SimpleDateFormat("HH:mm:ss");
+
+        try
+        {
+            Time timeValue = new Time(formatter.parse(reservationTime.getNewValue().toString()).getTime());
+            reservation.setHeureReservation(timeValue);
+        }
+        catch (ParseException e)
+        {
+            promptMessage.setText("Time non valide");
+            return;
+        }
+
+        if(reservationDao.update(reservation))
+        {
+            promptMessage.setText("Modification enregister");
+        }
+    }
+
+    @FXML
+    public void changeDureeReservationCell(TableColumn.CellEditEvent<Reservation, String> reservationDuree)
+    {
+        Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
+
+        try
+        {
+            reservation.setDureeSejour(Integer.parseInt(reservationDuree.getNewValue().toString()));
+        }
+        catch (NumberFormatException e)
+        {
+            promptMessage.setText("Valeur non valide");
+            return;
+        }
+
+        if(reservationDao.update(reservation))
+        {
+            promptMessage.setText("Modification enregister");
+        }
+    }
+
+    @FXML
+    public void changeNombrePersonneReservationCell(TableColumn.CellEditEvent<Reservation, String> reservationNumberPerson)
+    {
+        Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
+
+        try
+        {
+            reservation.setNombrePersonne(Integer.parseInt(reservationNumberPerson.getNewValue().toString()));
+        }
+        catch (NumberFormatException e)
+        {
+            promptMessage.setText("valeur non valide");
+            return;
+        }
+
+        if(reservationDao.update(reservation))
+        {
+            promptMessage.setText("Modification enregister");
+        }
+    }
 }

@@ -2,7 +2,7 @@ package com.miola.smarthotel.model;
 
 public abstract class Employe extends User
 {
-    private long idEmploye; // l'id primaire de la table employe
+    private int idEmploye; // l'id primaire de la table employe
     private String userName;
     private String password;
 
@@ -19,7 +19,7 @@ public abstract class Employe extends User
         this.password = password;
     }
 
-    public Employe(long idEmploye, String prenom, String nom, String cin, String email, String telephone, String adresse, String userName, String password)
+    public Employe(int idEmploye, String prenom, String nom, String cin, String email, String telephone, String adresse, String userName, String password)
     {
         super(prenom, nom, cin, email, telephone, adresse);
         this.idEmploye = idEmploye;
@@ -27,11 +27,11 @@ public abstract class Employe extends User
         this.password = password;
     }
 
-    public long getIdEmploye() {
+    public int getIdEmploye() {
         return idEmploye;
     }
 
-    public void setIdEmploye(long idEmploye) {
+    public void setIdEmploye(int idEmploye) {
         this.idEmploye = idEmploye;
     }
 

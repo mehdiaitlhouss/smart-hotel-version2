@@ -16,9 +16,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="900.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.ClientDashController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.ClientDashController">
     <children>
-        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" styleClass="sidebar" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="150.0" styleClass="sidebar">
             <children>
                 <ImageView fitHeight="80.0" fitWidth="80.0" pickOnBounds="true" preserveRatio="true" VBox.vgrow="NEVER">
                     <image>
@@ -28,7 +28,7 @@
                         <Rectangle2D />
                     </viewport>
                     <VBox.margin>
-                        <Insets bottom="20.0" left="35.0" right="20.0" top="35.0" />
+                        <Insets bottom="10.0" left="35.0" right="20.0" top="20.0" />
                     </VBox.margin>
                 </ImageView>
                 <Label alignment="TOP_CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" styleClass="wtext" text="Pet Clinic CRM 1.1" textAlignment="CENTER">
@@ -44,7 +44,7 @@
                 </Label>
                 <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="211.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showDashboard" prefHeight="50.0" text="Dashboard">
                     <VBox.margin>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="10.0" />
                     </VBox.margin>
                     <opaqueInsets>
                         <Insets />
@@ -84,7 +84,7 @@
                         <Insets left="20.0" />
                     </padding>
                     <VBox.margin>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="10.0" />
                     </VBox.margin>
                     <cursor>
                         <Cursor fx:constant="HAND" />
@@ -92,7 +92,7 @@
                 </Button>
                 <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" text="Chambres">
                     <VBox.margin>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="10.0" />
                     </VBox.margin>
                     <graphic>
                         <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
@@ -114,7 +114,7 @@
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="10.0" />
                     </VBox.margin>
                     <padding>
                         <Insets left="20.0" />
@@ -132,7 +132,7 @@
                         </ImageView>
                     </graphic>
                     <VBox.margin>
-                        <Insets bottom="30.0" />
+                        <Insets bottom="10.0" />
                     </VBox.margin>
                     <padding>
                         <Insets left="20.0" />
@@ -140,6 +140,24 @@
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
+                </Button>
+                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showIotScreens" prefHeight="50.0" text="IOT">
+                    <graphic>
+                        <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@../images/cat-16.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="20.0" />
+                    </padding>
+                    <cursor>
+                        <Cursor fx:constant="HAND" />
+                    </cursor>
+                    <VBox.margin>
+                        <Insets bottom="10.0" />
+                    </VBox.margin>
                 </Button>
                 <Button id="exitBtn" fx:id="exitBtn" alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="365.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="exitBtn" text="Exit">
                     <graphic>
@@ -155,12 +173,15 @@
                     <cursor>
                         <Cursor fx:constant="HAND" />
                     </cursor>
+               <VBox.margin>
+                  <Insets bottom="10.0" />
+               </VBox.margin>
                 </Button>
             </children>
         </VBox>
-        <VBox layoutX="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="750.0">
+        <VBox layoutX="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="592.0" prefWidth="846.0">
             <children>
-                <Pane layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="745.0" styleClass="header">
+                <Pane layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="817.0" styleClass="header">
                     <VBox.margin>
                         <Insets />
                     </VBox.margin>
@@ -201,16 +222,16 @@
                         <Insets bottom="20.0" left="25.0" right="25.0" />
                     </VBox.margin>
                 </TextField>
-                <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="480.0" prefWidth="745.0">
+                <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="345.0" prefWidth="820.0">
                     <columns>
                         <TableColumn fx:id="idClient" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
-                        <TableColumn id="date_col" fx:id="clientName" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
-                        <TableColumn fx:id="clientCin" maxWidth="177.33326721191406" minWidth="38.666656494140625" prefWidth="62.000030517578125" resizable="false" text="CIN" />
-                        <TableColumn fx:id="clientEmail" maxWidth="263.99998474121094" minWidth="40.2222900390625" prefWidth="72.00001525878906" resizable="false" text="EMAIL" />
-                         <TableColumn fx:id="clientTelephone" minWidth="0.0" prefWidth="136.88885498046875" resizable="false" text="TELEPHONE" />
-                        <TableColumn fx:id="clientAdresse" maxWidth="335.9999694824219" minWidth="0.0" prefWidth="118.66671752929688" resizable="false" text="ADDRESS" />
-                  <TableColumn fx:id="clientsVille" minWidth="0.0" prefWidth="76.22216796875" resizable="false" text="VILLE" />
-                  <TableColumn fx:id="clientPays" minWidth="50.0" prefWidth="87.33331298828125" resizable="false" text="PAYS" />
+                        <TableColumn id="date_col" fx:id="clientName" maxWidth="153.55554580688477" minWidth="75.0" onEditCommit="#changeFullName" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
+                        <TableColumn fx:id="clientCin" maxWidth="177.33326721191406" minWidth="38.666656494140625" onEditCommit="#changeCin" prefWidth="62.000030517578125" resizable="false" text="CIN" />
+                        <TableColumn fx:id="clientEmail" maxWidth="263.99998474121094" minWidth="40.2222900390625" onEditCommit="#changeEmail" prefWidth="72.00001525878906" resizable="false" text="EMAIL" />
+                         <TableColumn fx:id="clientTelephone" minWidth="0.0" prefWidth="136.88885498046875" onEditCommit="#changeTelephone" resizable="false" text="TELEPHONE" />
+                        <TableColumn fx:id="clientAdresse" maxWidth="335.9999694824219" minWidth="0.0" onEditCommit="#changeAdresse" prefWidth="118.66671752929688" resizable="false" text="ADDRESS" />
+                  <TableColumn fx:id="clientsVille" minWidth="0.0" prefWidth="76.22216796875" onEditCommit="#changeVille" resizable="false" text="VILLE" />
+                  <TableColumn fx:id="clientPays" minWidth="50.0" prefWidth="87.33331298828125" onEditCommit="#changePays" resizable="false" text="PAYS" />
                     </columns>
                     <VBox.margin>
                         <Insets bottom="10.0" left="25.0" right="25.0" />
@@ -219,7 +240,7 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
                 </TableView>
-                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="745.0">
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="844.0">
                     <children>
                         <Button alignment="CENTER" layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Ajouter">
                             <cursor>

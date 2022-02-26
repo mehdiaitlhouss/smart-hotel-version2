@@ -214,4 +214,9 @@ public class EmployesDashController {
     void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getEmployesScene(event);
     }
+
+    public void showIotScreens(ActionEvent event)
+    {
+
+    }
 }

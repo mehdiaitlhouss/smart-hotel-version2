@@ -3,15 +3,19 @@ package com.miola.smarthotel.model;
 import com.miola.smarthotel.helpers.EtatReservation;
 
 import java.sql.Time;
-import java.util.Date;
+import java.sql.Date;
 
 public class Reservation
 {
     private int id;
     private Date dateReservation;
+    private String dateReservationString;
     private Time heureReservation;
+    private String heureReservationString;
     private int dureeSejour;
+    private String dureeSejourString;
     private int nombrePersonne;
+    private String nombrePersonneString;
     private Employe employe;
     private Client client;
     private EtatReservation etat;
@@ -37,6 +41,50 @@ public class Reservation
         this.client = client;
         this.etat = etat;
         this.etatString = etat.getEtat();
+        this.dateReservationString = dateReservation.toString();
+        this.heureReservationString = heureReservation.toString();
+        this.dureeSejourString = String.valueOf(dureeSejour);
+        this.nombrePersonneString = String.valueOf(nombrePersonne);
+    }
+
+    public String getDureeSejourString()
+    {
+        return dureeSejourString;
+    }
+
+    public void setDureeSejourString(String dureeSejourString)
+    {
+        this.dureeSejourString = dureeSejourString;
+    }
+
+    public String getNombrePersonneString()
+    {
+        return nombrePersonneString;
+    }
+
+    public void setNombrePersonneString(String nombrePersonneString)
+    {
+        this.nombrePersonneString = nombrePersonneString;
+    }
+
+    public String getDateReservationString()
+    {
+        return dateReservationString;
+    }
+
+    public void setDateReservationString(String dateReservationString)
+    {
+        this.dateReservationString = dateReservationString;
+    }
+
+    public String getHeureReservationString()
+    {
+        return heureReservationString;
+    }
+
+    public void setHeureReservationString(String heureReservationString)
+    {
+        this.heureReservationString = heureReservationString;
     }
 
     public Employe getEmploye() {

@@ -27,13 +27,8 @@
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="47.0" prefWidth="455.0" spacing="25.0">
                     <children>
-<<<<<<< HEAD
-                  <ComboBox fx:id="selectedEtage" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" prefWidth="216.0" promptText="Etage" />
-                  <ComboBox fx:id="selectedType" maxWidth="1.7976931348623157E308" minHeight="-Infinity" onAction="#setOtherFields" prefHeight="35.0" prefWidth="229.0" promptText="Type de chambre" />
-=======
                   <ComboBox fx:id="selectVille1" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" prefWidth="216.0" promptText="Etage" />
                   <ComboBox fx:id="selectVille11" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" prefWidth="229.0" promptText="Type de chambre" />
->>>>>>> origin/master
                     </children>
                 </HBox>
             <HBox prefHeight="20.0" prefWidth="456.0">
@@ -57,15 +52,9 @@
             </HBox>
                 <HBox alignment="TOP_CENTER" layoutX="35.0" layoutY="88.0" prefHeight="46.0" prefWidth="456.0" spacing="25.0">
                     <children>
-<<<<<<< HEAD
-                        <TextField fx:id="nombreLit" disable="true" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" prefWidth="138.0" promptText="Nombre de lit" />
-                        <TextField fx:id="nombrePersonne" disable="true" maxHeight="35.0" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="140.0" promptText="Nombre de personne " />
-                  <TextField fx:id="prixParJour" disable="true" maxHeight="35.0" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="140.0" promptText="prix par jour" />
-=======
                         <TextField fx:id="telephone" disable="true" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" prefWidth="138.0" promptText="Nombre de lit" />
                         <TextField fx:id="pays" disable="true" maxHeight="35.0" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="140.0" promptText="Nombre de personne " />
                   <TextField fx:id="pays1" disable="true" maxHeight="35.0" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="140.0" promptText="prix par jour" />
->>>>>>> origin/master
                     </children>
                 </HBox>
                 <HBox alignment="CENTER_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="51.0" prefWidth="456.0" spacing="20.0">

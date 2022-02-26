@@ -1,5 +1,5 @@
 .sidebar {
-    -fx-background-color: #253b5f;
+    -fx-background-color: #000000;
 }
 
 .infoBlockVet {
@@ -39,7 +39,7 @@
 }
 
 .button {
--fx-background-color: #253b5f;
+-fx-background-color: #000000;
 -fx-background-radius: 0;
 -fx-text-fill: #ffffff;
 -fx-font: 14px 'Open Sans';
@@ -75,7 +75,7 @@
 }
 
 .title {
--fx-text-fill: #253b5f;
+-fx-text-fill: #000000;
 -fx-font: 20px Roboto;
 -fx-font-weight: bold;
 }
@@ -157,7 +157,7 @@
 
 .table-view .column-header .label{
     -fx-alignment: CENTER_LEFT;
-    -fx-text-fill: #253b5f;
+    -fx-text-fill: #000000;
     -fx-padding: 10 0 10 10;
     -fx-font: 12px 'Open Sans';
     -fx-font-weight: bold;
@@ -197,7 +197,7 @@
 
 .main-window-border  {
 -fx-background-radius: 3;
--fx-border-color: #253b5f;
+-fx-border-color: #000000;
 -fx-border-width:5 5 5 0;
 }
 

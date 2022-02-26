@@ -21,8 +21,8 @@ import java.time.LocalDate;
 /**
  * Code created by Andrius on 2020-09-27
  */
-public class MainDashController {
-
+public class MainDashController
+{
     @FXML
     private Label title;
 
@@ -158,4 +158,7 @@ public class MainDashController {
         SceneController.close(event);
     }
 
+    public void showIotScreens(ActionEvent event)
+    {
+    }
 }

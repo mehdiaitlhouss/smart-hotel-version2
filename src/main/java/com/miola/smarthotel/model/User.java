@@ -37,6 +37,7 @@ public abstract class User
     private String email;
     private String telephone;
     private String adresse;
+    private String fullName;
 
     public User()
     {
@@ -52,6 +53,7 @@ public abstract class User
         this.email = email;
         this.telephone = telephone;
         this.adresse = adresse;
+        this.fullName = nom + " " + prenom;
     }
 
     public User(String prenom, String nom, String cin, String email, String telephone, String adresse)
@@ -62,9 +64,19 @@ public abstract class User
         this.email = email;
         this.telephone = telephone;
         this.adresse = adresse;
+        this.fullName = nom + " " + prenom;
     }
 
 
+    public String getFullName()
+    {
+        return fullName;
+    }
+
+    public void setFullName(String fullName)
+    {
+        this.fullName = fullName;
+    }
 
     public String getAdresse() {
         return adresse;

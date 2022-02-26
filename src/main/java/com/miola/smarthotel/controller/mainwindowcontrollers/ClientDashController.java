@@ -97,7 +97,7 @@ public class ClientDashController {
 
     private void fillTable() {
         idClient.setCellValueFactory(new PropertyValueFactory<>("idClient"));
-        clientName.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        clientName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         clientCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         clientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         clientAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
@@ -109,6 +109,11 @@ public class ClientDashController {
         clientCin.setCellFactory(TextFieldTableCell.forTableColumn());
         clientEmail.setCellFactory(TextFieldTableCell.forTableColumn());
         clientAdresse.setCellFactory(TextFieldTableCell.forTableColumn());
+        clientTelephone.setCellFactory(TextFieldTableCell.forTableColumn());
+        clientPays.setCellFactory(TextFieldTableCell.forTableColumn());
+        clientsVille.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
     }
 
     private void addTableSettings() {
@@ -225,5 +230,37 @@ public class ClientDashController {
     @FXML
     void showEmployesScreens(ActionEvent event) throws IOException {
         SceneController.getEmployesScene(event);
+    }
+
+    public void showIotScreens(ActionEvent event)
+    {
+    }
+
+    public void changeFullName(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
+    {
+    }
+
+    public void changeCin(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
+    {
+    }
+
+    public void changeEmail(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
+    {
+    }
+
+    public void changeAdresse(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
+    {
+    }
+
+    public void changeTelephone(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
+    {
+    }
+
+    public void changeVille(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
+    {
+    }
+
+    public void changePays(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
+    {
     }
 }
