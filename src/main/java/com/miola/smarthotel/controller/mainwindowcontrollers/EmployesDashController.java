@@ -8,18 +8,25 @@ import com.miola.smarthotel.helpers.*;
 import com.miola.smarthotel.model.Client;
 import com.miola.smarthotel.model.Employe;
 import com.miola.smarthotel.model.Veterinarian;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Code created by Andrius on 2020-09-27
@@ -68,6 +75,15 @@ public class EmployesDashController {
     EmployeDao employeDao = new EmployeDao();
     ObservableList<Employe> employesObList = FXCollections.observableArrayList();
 
+    Map<VBox,VBox> map = new HashMap<VBox,VBox>();
+    @FXML
+    VBox secondSubVBox;
+    @FXML
+    VBox secondSubMenuList;
+    @FXML
+    Button secondMenu;
+
+
     @FXML
     private void initialize() {
         setTexts();
@@ -75,6 +91,13 @@ public class EmployesDashController {
         fillTable();
         addTableSettings();
         exitBtn.setOnAction(SceneController::close);
+        addMenusToMap();
+        secondMenu.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                toolsSlider(secondSubVBox,secondSubMenuList);
+                removeOtherMenus(secondSubVBox);
+            }
+        });
     }
 
     private void setTexts() {
@@ -218,5 +241,49 @@ public class EmployesDashController {
     public void showIotScreens(ActionEvent event)
     {
 
+    }
+    public void addMenusToMap() {
+        addMenusToMapImpl();
+    }
+
+    private void addMenusToMapImpl() {
+
+        map.put(secondSubVBox, secondSubMenuList);
+
+        for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
+            entry.getKey().getChildren().remove(entry.getValue());
+        }
+    }
+
+    public void toolsSlider(VBox menu,VBox subMenu){
+        toolsSliderImpl(menu,subMenu);
+    }
+
+    private void toolsSliderImpl(VBox menu,VBox subMenu) {
+        if(menu.getChildren().contains(subMenu)){
+            final FadeTransition transition = new FadeTransition(Duration.millis(500), menu);
+            transition.setFromValue(0.5);
+            transition.setToValue(1);
+            transition.setInterpolator(Interpolator.EASE_IN);
+            menu.getChildren().remove(subMenu);
+            transition.play();
+        }else{
+            final FadeTransition transition = new FadeTransition(Duration.millis(500), menu);
+            transition.setFromValue(0.5);
+            transition.setToValue(1);
+            transition.setInterpolator(Interpolator.EASE_IN);
+            menu.getChildren().add(subMenu);
+            transition.play();
+        }
+    }
+
+    public void removeOtherMenus(VBox menu){
+        removeOtherMenusImpl(menu);
+    }
+    private void removeOtherMenusImpl(VBox menu) {
+        for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
+            if(!entry.getKey().equals(menu))
+                entry.getKey().getChildren().remove(entry.getValue());
+        }
     }
 }

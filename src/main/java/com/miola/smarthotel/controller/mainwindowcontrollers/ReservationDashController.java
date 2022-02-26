@@ -4,16 +4,21 @@ import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowControlle
 import com.miola.smarthotel.dao.ReservationDao;
 import com.miola.smarthotel.helpers.*;
 import com.miola.smarthotel.model.Reservation;
+import javafx.animation.FadeTransition;
+import javafx.animation.Interpolator;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.sql.Time;
@@ -22,6 +27,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.sql.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Code created by Andrius on 2020-09-27
@@ -82,6 +89,14 @@ public class ReservationDashController
     @FXML
     private TableColumn<Reservation, String> reservationEtat;
 
+    Map<VBox,VBox> map = new HashMap<VBox,VBox>();
+    @FXML
+    VBox secondSubVBox;
+    @FXML
+    VBox secondSubMenuList;
+    @FXML
+    Button secondMenu;
+
 
     ReservationDao reservationDao = new ReservationDao();
     ObservableList<Reservation> reservationObList = FXCollections.observableArrayList();
@@ -94,6 +109,13 @@ public class ReservationDashController
         addTableSettings();
         clearSearchResults();
         exitBtn.setOnAction(SceneController::close);
+        addMenusToMap();
+        secondMenu.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                toolsSlider(secondSubVBox,secondSubMenuList);
+                removeOtherMenus(secondSubVBox);
+            }
+        });
     }
 
     private void setTexts() {
@@ -357,6 +379,50 @@ public class ReservationDashController
         if(reservationDao.update(reservation))
         {
             promptMessage.setText("Modification enregister");
+        }
+    }
+    public void addMenusToMap() {
+        addMenusToMapImpl();
+    }
+
+    private void addMenusToMapImpl() {
+
+        map.put(secondSubVBox, secondSubMenuList);
+
+        for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
+            entry.getKey().getChildren().remove(entry.getValue());
+        }
+    }
+
+    public void toolsSlider(VBox menu,VBox subMenu){
+        toolsSliderImpl(menu,subMenu);
+    }
+
+    private void toolsSliderImpl(VBox menu,VBox subMenu) {
+        if(menu.getChildren().contains(subMenu)){
+            final FadeTransition transition = new FadeTransition(Duration.millis(500), menu);
+            transition.setFromValue(0.5);
+            transition.setToValue(1);
+            transition.setInterpolator(Interpolator.EASE_IN);
+            menu.getChildren().remove(subMenu);
+            transition.play();
+        }else{
+            final FadeTransition transition = new FadeTransition(Duration.millis(500), menu);
+            transition.setFromValue(0.5);
+            transition.setToValue(1);
+            transition.setInterpolator(Interpolator.EASE_IN);
+            menu.getChildren().add(subMenu);
+            transition.play();
+        }
+    }
+
+    public void removeOtherMenus(VBox menu){
+        removeOtherMenusImpl(menu);
+    }
+    private void removeOtherMenusImpl(VBox menu) {
+        for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
+            if(!entry.getKey().equals(menu))
+                entry.getKey().getChildren().remove(entry.getValue());
         }
     }
 }
