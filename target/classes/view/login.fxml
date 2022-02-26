@@ -12,9 +12,9 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" styleClass="login-window" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.LoginController">
+<AnchorPane cache="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" styleClass="login-window" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.LoginController">
     <children>
-        <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" spacing="30.0" style="-fx-background-color: #000000;" styleClass="sidebar">
+        <VBox alignment="TOP_CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" spacing="30.0" style="-fx-background-color: #000000;" styleClass="sidebar">
             <children>
                 <ImageView fitHeight="138.0" fitWidth="174.0" pickOnBounds="true" preserveRatio="true">
                     <image>
@@ -24,7 +24,7 @@
                         <Rectangle2D />
                     </viewport>
                <VBox.margin>
-                  <Insets top="20.0" />
+                  <Insets top="80.0" />
                </VBox.margin>
                 </ImageView>
                 <Label fx:id="welcome" layoutX="430.0" layoutY="170.0" text="Login" textFill="WHITE">

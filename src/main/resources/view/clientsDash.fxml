@@ -12,6 +12,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -228,10 +229,10 @@
                         <TableColumn id="date_col" fx:id="clientName" maxWidth="153.55554580688477" minWidth="75.0" onEditCommit="#changeFullName" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
                         <TableColumn fx:id="clientCin" maxWidth="177.33326721191406" minWidth="38.666656494140625" onEditCommit="#changeCin" prefWidth="62.000030517578125" resizable="false" text="CIN" />
                         <TableColumn fx:id="clientEmail" maxWidth="263.99998474121094" minWidth="40.2222900390625" onEditCommit="#changeEmail" prefWidth="72.00001525878906" resizable="false" text="EMAIL" />
-                         <TableColumn fx:id="clientTelephone" minWidth="0.0" prefWidth="136.88885498046875" onEditCommit="#changeTelephone" resizable="false" text="TELEPHONE" />
+                         <TableColumn fx:id="clientTelephone" minWidth="0.0" onEditCommit="#changeTelephone" prefWidth="136.88885498046875" resizable="false" text="TELEPHONE" />
                         <TableColumn fx:id="clientAdresse" maxWidth="335.9999694824219" minWidth="0.0" onEditCommit="#changeAdresse" prefWidth="118.66671752929688" resizable="false" text="ADDRESS" />
-                  <TableColumn fx:id="clientsVille" minWidth="0.0" prefWidth="76.22216796875" onEditCommit="#changeVille" resizable="false" text="VILLE" />
-                  <TableColumn fx:id="clientPays" minWidth="50.0" prefWidth="87.33331298828125" onEditCommit="#changePays" resizable="false" text="PAYS" />
+                  <TableColumn fx:id="clientsVille" minWidth="0.0" onEditCommit="#changeVille" prefWidth="76.22216796875" resizable="false" text="VILLE" />
+                  <TableColumn fx:id="clientPays" minWidth="50.0" onEditCommit="#changePays" prefWidth="87.33331298828125" resizable="false" text="PAYS" />
                     </columns>
                     <VBox.margin>
                         <Insets bottom="10.0" left="25.0" right="25.0" />
@@ -240,23 +241,32 @@
                   <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                </columnResizePolicy>
                 </TableView>
-                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="844.0">
-                    <children>
-                        <Button alignment="CENTER" layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Ajouter">
+            <HBox prefHeight="33.0" prefWidth="841.0" spacing="20.0">
+               <children>
+                        <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="110.0" styleClass="addbutton" text="Ajouter">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
                         </Button>
-                        <Button layoutX="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteClient" prefHeight="31.0" prefWidth="80.0" styleClass="deletebutton" text="Delete">
+                  <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="110.0" styleClass="addbutton" text="Consulter">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="110.0" styleClass="savebutton" text="Refresh">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></Button>
-                        <Button layoutX="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Refresh">
+                        <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteClient" prefHeight="31.0" prefWidth="110.0" styleClass="deletebutton" text="Delete">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></Button>
-                    </children>
-                </AnchorPane>
+                  <Label fx:id="alertText" prefHeight="33.0" prefWidth="377.0" styleClass="alertText" />
+               </children>
+            </HBox>
             </children>
             <padding>
                 <Insets right="5.0" top="5.0" />

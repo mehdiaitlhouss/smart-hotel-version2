@@ -6,6 +6,7 @@ import com.miola.smarthotel.helpers.CurrentEmploye;
 import com.miola.smarthotel.helpers.CurrentTime;
 import com.miola.smarthotel.helpers.SceneName;
 import com.miola.smarthotel.helpers.UpdateStatus;
+import com.miola.smarthotel.model.Chambre;
 import com.miola.smarthotel.model.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,7 +21,11 @@ import javafx.scene.control.cell.TextFieldTableCell;
 import java.io.IOException;
 import java.time.LocalDate;
 
-public class ClientDashController {
+public class ClientDashController
+{
+    @FXML
+    private Label alertText;
+
     @FXML
     private Label title;
 
@@ -239,6 +244,33 @@ public class ClientDashController {
     @FXML
     public void changeFullName(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
+        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
+        String[] fullName = null;
+        String ss = "";
+
+        try
+        {
+            fullName = clientStringCellEditEvent.getNewValue().toString().split(" ");
+
+            for (int i = 1; i < fullName.length; i++)
+            {
+                ss += fullName[i] + " ";
+            }
+
+            selectedClient.setNom(fullName[0]);
+            selectedClient.setPrenom(ss);
+
+        }
+        catch(NumberFormatException e)
+        {
+            alertText.setText("Valeur Non Valide");
+            return;
+        }
+
+        if(clientDao.update(selectedClient))
+        {
+            alertText.setText("Modification enregistrer");
+        }
     }
 
     @FXML

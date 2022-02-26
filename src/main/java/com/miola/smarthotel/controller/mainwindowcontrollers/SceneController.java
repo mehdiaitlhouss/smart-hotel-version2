@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -58,6 +59,8 @@ public class SceneController
         controlDrag(stage);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setTitle("SMART HOTEL");
+        Image image = new Image(SceneController.class.getResource("/images/logo.png").toExternalForm());
+        stage.getIcons().add(image);
         stage.setScene(scene);
         stage.show();
     }
