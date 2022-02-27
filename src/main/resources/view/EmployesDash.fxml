@@ -152,7 +152,7 @@
                         </Button>
                         <VBox fx:id="secondSubMenuList" styleClass="subVBox">
                             <children>
-                                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="subMenu" text="température">
+                                <Button fx:id="buttonTemp" alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="subMenu" text="température">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
@@ -171,7 +171,7 @@
                                     </cursor>
 
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="subMenu" text="Eclairage">
+                                <Button fx:id="buttonEcl" alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="subMenu" text="Eclairage">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>

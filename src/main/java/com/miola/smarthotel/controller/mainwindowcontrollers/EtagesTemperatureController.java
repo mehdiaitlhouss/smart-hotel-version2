@@ -31,7 +31,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class EtagesTemperatureController
-{
+{   @FXML public Button buttonEcl;
     @FXML public Button etage6;
     @FXML public Button etage5;
     @FXML public Button etage4;
@@ -68,6 +68,15 @@ public class EtagesTemperatureController
             public void handle(ActionEvent event) {
                 toolsSlider(secondSubVBox,secondSubMenuList);
                 removeOtherMenus(secondSubVBox);
+            }
+        });
+        buttonEcl.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                try {
+                    SceneController.getEtagesEclairagesScene(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -174,5 +183,10 @@ public class EtagesTemperatureController
         }
         NewWindowController.getTemperaturesWindow();
 
+    }
+
+    @FXML
+    void showClientsScreen(ActionEvent event) throws IOException {
+        SceneController.getClientsScene(event);
     }
 }
