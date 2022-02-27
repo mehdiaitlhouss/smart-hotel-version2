@@ -30,8 +30,6 @@ import java.util.Map;
  */
 public class MainDashController
 {
-
-
     @FXML
     private Label title;
 

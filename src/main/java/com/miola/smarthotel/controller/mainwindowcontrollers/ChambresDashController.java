@@ -344,6 +344,7 @@ public class ChambresDashController
     public void removeOtherMenus(VBox menu){
         removeOtherMenusImpl(menu);
     }
+
     private void removeOtherMenusImpl(VBox menu) {
         for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
             if(!entry.getKey().equals(menu))

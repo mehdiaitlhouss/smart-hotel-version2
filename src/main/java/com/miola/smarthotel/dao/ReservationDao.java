@@ -73,16 +73,12 @@ public class ReservationDao implements Dao<Reservation>
     }
 
     @Override
-    public boolean creat(Reservation reservation) {
-        return false;
-    }
-
-    @Override
     public int count()
     {
         Statement statement = null;
         ResultSet rs = null;
         int count = 0;
+
         try
         {
             statement = BDSingleton.getConn().createStatement();

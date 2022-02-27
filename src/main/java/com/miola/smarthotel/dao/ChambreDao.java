@@ -94,12 +94,6 @@ public class ChambreDao implements Dao<Chambre>
     }
 
     @Override
-    public boolean creat (Chambre chambre)
-    {
-        return false;
-    }
-
-    @Override
     public int count ()
     {
         Statement stm = null;
@@ -108,7 +102,7 @@ public class ChambreDao implements Dao<Chambre>
 
         try {
             stm = BDSingleton.getConn().createStatement();
-            rs = stm.executeQuery("SELECT COUNT(*) FROM client");
+            rs = stm.executeQuery("SELECT COUNT(*) FROM chambre");
 
             if (rs.next()) {
                 count = rs.getInt(1);

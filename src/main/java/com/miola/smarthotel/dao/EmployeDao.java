@@ -8,17 +8,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/**
- * Code created by Andrius on 2020-10-08
- */
 public class EmployeDao implements Dao<Employe>
 {
     public Employe getConnectedEmploye(String userName, String password)
     {
-        // methode lancer lors de la connexion (page login) possede comme entree l'userName et le password du employe
-        // et retourne soit l'admin ou le receptionniste depande en fait la diffrence d'apres le type de l'employe de la table
-        // employe dans la base de donne
-
         Employe employe = null;
 
         PreparedStatement pstmt;
@@ -65,15 +58,13 @@ public class EmployeDao implements Dao<Employe>
             {
                 System.err.println("user not found");
             }
-            rs.close();
+            pstmt.close();
         }
         catch(Exception e){
             e.printStackTrace();
         }
         return employe;
     }
-
-
 
     public Employe get(int id)
     {
@@ -86,7 +77,7 @@ public class EmployeDao implements Dao<Employe>
         try
         {
             pstmt= BDSingleton.getConn().prepareStatement(sqlQuery);
-            pstmt.setLong(1,id);
+            pstmt.setInt(1, id);
             rs = pstmt.executeQuery();
 
             if (rs.next())
@@ -102,7 +93,7 @@ public class EmployeDao implements Dao<Employe>
                     employe.setIdUser(rs.getInt("idUser"));
                     employe.setIdEmploye(id);
             }
-            rs.close();
+            pstmt.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -138,7 +129,7 @@ public class EmployeDao implements Dao<Employe>
                 employe.setIdEmploye(rs.getInt("idEmploye"));
                     employes.add(employe);
             }
-            rs.close();
+            pstmt.close();
         }
         catch(Exception e){
             e.printStackTrace();
@@ -147,23 +138,125 @@ public class EmployeDao implements Dao<Employe>
     }
 
     @Override
-    public boolean update(Employe employe) {
-        return false;
+    public boolean update(Employe employe)
+    {
+        PreparedStatement ps;
+        ResultSet rs = null;
+        boolean tmp = false;
+
+        try
+        {
+            ps= BDSingleton.getConn().prepareStatement("UPDATE employe SET userName = ?, password = ? WHERE id = ?");
+            ps.setString(1, employe.getUserName());
+            ps.setString(2, employe.getPassword());
+            ps.setInt(3, employe.getIdEmploye());
+
+            if(ps.executeUpdate() == 1)
+            {
+                ps= BDSingleton.getConn().prepareStatement("UPDATE user SET prenom = ?,nom = ?,cin = ?,email = ?,telephone = ?,adresse = ? WHERE id = ?");
+                ps.setString(1, employe.getPrenom());
+                ps.setString(2, employe.getNom());
+                ps.setString(3, employe.getCin());
+                ps.setString(4, employe.getEmail());
+                ps.setString(5, employe.getTelephone());
+                ps.setString(6, employe.getAdresse());
+                ps.setInt(7, employe.getIdUser());
+
+                if(ps.executeUpdate() == 1)
+                {
+                    tmp = true;
+                }
+            }
+            ps.close();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+        }
+        return tmp;
     }
 
     @Override
-    public boolean delete(int employe) {
-        return false;
+    public boolean delete(int id)
+    {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        boolean tmp = true;
+
+        try
+        {
+            ps = BDSingleton.getConn().prepareStatement("DELETE FROM employe WHERE idUser = ?");
+            ps.setInt(1, id);
+
+            if(ps.executeUpdate() != 1)
+            {
+                tmp = false;
+            }
+
+            ps = BDSingleton.getConn().prepareStatement("DELETE FROM user WHERE id = ?");
+            ps.setInt(1, id);
+
+            if(ps.executeUpdate() != 1)
+            {
+                tmp = false;
+            }
+
+            ps.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tmp;
     }
 
     @Override
-    public boolean add(Employe employe) {
-        return false;
-    }
+    public boolean add(Employe employe)
+    {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int id;
+        boolean tmp = true;
 
-    @Override
-    public boolean creat(Employe employe) {
-        return false;
+        try
+        {
+            ps = BDSingleton.getConn().prepareStatement("INSERT INTO user(nom, prenom, email, cin, telephone, adresse) VALUES(?, ?, ?, ?, ?, ?)",Statement.RETURN_GENERATED_KEYS);
+            ps.setString(1,employe.getNom());
+            ps.setString(2,employe.getPrenom());
+            ps.setString(3,employe.getEmail());
+            ps.setString(4,employe.getCin());
+            ps.setString(5,employe.getTelephone());
+            ps.setString(6,employe.getAdresse());
+
+            if(ps.executeUpdate() != 1)
+            {
+                System.out.println("user non inserer");
+                tmp = false;
+            }
+
+            rs = ps.getGeneratedKeys();
+
+            if(rs.next())
+            {
+                id = rs.getInt(1);
+
+                ps = BDSingleton.getConn().prepareStatement("INSERT INTO employe(idUser, userName, password) VALUES(?,?,?)");
+
+                ps.setInt(1, id);
+                ps.setString(2,employe.getUserName());
+                ps.setString(3, employe.getPassword());
+
+                if(ps.executeUpdate() != 1)
+                {
+                    System.out.println("employe non inserer");
+                    tmp = false;
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tmp;
     }
 
     public int count()

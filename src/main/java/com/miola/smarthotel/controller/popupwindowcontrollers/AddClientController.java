@@ -58,7 +58,6 @@ public class AddClientController {
         stage.close();
     }
 
-
     @FXML
     private void saveNewClient(ActionEvent event)
     {
@@ -127,14 +126,13 @@ public class AddClientController {
 
         return true;
     }
-    private void delayWindowClose(ActionEvent event) {
+    private void delayWindowClose(ActionEvent event)
+    {
         PauseTransition delay = new PauseTransition(Duration.seconds(1));
         delay.setOnFinished(event2 -> closeWindow(event));
         delay.play();
     }
-
 }
-
 
 /*
    JSONParser jsonParser = new JSONParser();

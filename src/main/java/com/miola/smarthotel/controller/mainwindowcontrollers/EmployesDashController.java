@@ -1,13 +1,9 @@
 package com.miola.smarthotel.controller.mainwindowcontrollers;
 
 import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
-import com.miola.smarthotel.dao.ClientDao;
 import com.miola.smarthotel.dao.EmployeDao;
-import com.miola.smarthotel.dao.VetDao;
 import com.miola.smarthotel.helpers.*;
-import com.miola.smarthotel.model.Client;
 import com.miola.smarthotel.model.Employe;
-import com.miola.smarthotel.model.Veterinarian;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.collections.FXCollections;
@@ -32,6 +28,9 @@ import java.util.Map;
  * Code created by Andrius on 2020-09-27
  */
 public class EmployesDashController {
+
+    @FXML
+    private Label alertText;
 
     @FXML
     private Label title;
@@ -61,7 +60,10 @@ public class EmployesDashController {
     private TableColumn<Employe, Long> idEmploye;
 
     @FXML
-    private TableColumn<Employe, String> employeName;
+    private TableColumn<Employe, String> employePrenom;
+
+    @FXML
+    private TableColumn<Employe, String> employeNom;
 
     @FXML
     private TableColumn<Employe, String> employeCin;
@@ -76,13 +78,15 @@ public class EmployesDashController {
     ObservableList<Employe> employesObList = FXCollections.observableArrayList();
 
     Map<VBox,VBox> map = new HashMap<VBox,VBox>();
+
     @FXML
     VBox secondSubVBox;
+
     @FXML
     VBox secondSubMenuList;
+
     @FXML
     Button secondMenu;
-
 
     @FXML
     private void initialize() {
@@ -115,11 +119,13 @@ public class EmployesDashController {
 
     private void fillTable() {
         idEmploye.setCellValueFactory(new PropertyValueFactory<>("idEmploye"));
-        employeName.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        employeNom.setCellValueFactory(new PropertyValueFactory<>("nom"));
+        employePrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
         employeCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         employeEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         employeAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        employeName.setCellFactory(TextFieldTableCell.forTableColumn());
+        employeNom.setCellFactory(TextFieldTableCell.forTableColumn());
+        employePrenom.setCellFactory(TextFieldTableCell.forTableColumn());
         employeCin.setCellFactory(TextFieldTableCell.forTableColumn());
         employeEmail.setCellFactory(TextFieldTableCell.forTableColumn());
         employeAdresse.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -161,34 +167,6 @@ public class EmployesDashController {
     }
 
     @FXML
-    private void changeNameCell(TableColumn.CellEditEvent<Client, String> editEvent) {
-        Employe selectedVet = employesTable.getSelectionModel().getSelectedItem();
-        selectedVet.setNom(editEvent.getNewValue().toString());
-        // clientDao.updateVet(selectedVet);
-    }
-
-    @FXML
-    private void changeLastNameCell(TableColumn.CellEditEvent<Client, String> editEvent) {
-        Employe selectedVet = employesTable.getSelectionModel().getSelectedItem();
-        selectedVet.setNom(editEvent.getNewValue().toString());
-        // clientDao.updateVet(selectedVet);
-    }
-
-    @FXML
-    private void changeSpecCell(TableColumn.CellEditEvent<Client, String> editEvent) {
-        Employe selectedVet = employesTable.getSelectionModel().getSelectedItem();
-        selectedVet.setNom(editEvent.getNewValue().toString());
-        // clientDao.updateVet(selectedVet);
-    }
-
-    @FXML
-    private void changeAddressCell(TableColumn.CellEditEvent<Client, String> editEvent) {
-        Employe selectedVet = employesTable.getSelectionModel().getSelectedItem();
-        selectedVet.setNom(editEvent.getNewValue().toString());
-        //  clientDao.updateVet(selectedVet);
-    }
-
-    @FXML
     private void newWindow(ActionEvent event) throws IOException {
         NewWindowController.getNewEmploye();
         if(UpdateStatus.isEmployeAdded())
@@ -196,15 +174,6 @@ public class EmployesDashController {
             refreshScreen(event);
             UpdateStatus.setIsEmployeAdded(false);
         }
-    }
-
-    @FXML
-    void deleteVets(ActionEvent event) throws IOException {
-        ObservableList<Employe> selectedRows = employesTable.getSelectionModel().getSelectedItems();
-        for (Employe emp : selectedRows) {
-            //    clientDao.deleteVet(vet);
-        }
-        refreshScreen(event);
     }
 
     private void setUserInfo() {
@@ -229,19 +198,23 @@ public class EmployesDashController {
     void showChambresScreen(ActionEvent event) throws IOException {
         SceneController.getChambresScene(event);
     }
+
     @FXML
     void showClientsScreen(ActionEvent event) throws IOException {
         SceneController.getClientsScene(event);
     }
+
     @FXML
     void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getEmployesScene(event);
     }
 
+    @FXML
     public void showIotScreens(ActionEvent event)
     {
 
     }
+
     public void addMenusToMap() {
         addMenusToMapImpl();
     }
@@ -285,5 +258,97 @@ public class EmployesDashController {
             if(!entry.getKey().equals(menu))
                 entry.getKey().getChildren().remove(entry.getValue());
         }
+    }
+
+    @FXML
+    public void changePrenom(TableColumn.CellEditEvent cellEditEvent)
+    {
+        Employe selectedEmploye = employesTable.getSelectionModel().getSelectedItem();
+        selectedEmploye.setPrenom(cellEditEvent.getNewValue().toString());
+        if(employeDao.update(selectedEmploye))
+        {
+            alertText.setText("Modification Enregistrer");
+        }
+        else
+        {
+            alertText.setText("Modification Non Enregistrer");
+        }
+    }
+
+    @FXML
+    public void changeCin(TableColumn.CellEditEvent<Employe, String> cellEditEvent)
+    {
+        Employe selectedEmploye = employesTable.getSelectionModel().getSelectedItem();
+        selectedEmploye.setCin(cellEditEvent.getNewValue().toString());
+        if(employeDao.update(selectedEmploye))
+        {
+            alertText.setText("Modification Enregistrer");
+        }
+        else
+        {
+            alertText.setText("Modification Non Enregistrer");
+        }
+    }
+
+    @FXML
+    public void changeName(TableColumn.CellEditEvent cellEditEvent)
+    {
+        Employe selectedEmploye = employesTable.getSelectionModel().getSelectedItem();
+        selectedEmploye.setNom(cellEditEvent.getNewValue().toString());
+        if(employeDao.update(selectedEmploye))
+        {
+            alertText.setText("Modification Enregistrer");
+        }
+        else
+        {
+            alertText.setText("Modification Non Enregistrer");
+        }
+    }
+
+    @FXML
+    public void changeEmail(TableColumn.CellEditEvent<Employe, String> cellEditEvent)
+    {
+        Employe selectedEmploye = employesTable.getSelectionModel().getSelectedItem();
+        selectedEmploye.setEmail(cellEditEvent.getNewValue().toString());
+        if(employeDao.update(selectedEmploye))
+        {
+            alertText.setText("Modification Enregistrer");
+        }
+        else
+        {
+            alertText.setText("Modification Non Enregistrer");
+        }
+    }
+
+    @FXML
+    public void changeAdresse(TableColumn.CellEditEvent<Employe, String> cellEditEvent)
+    {
+        Employe selectedEmploye = employesTable.getSelectionModel().getSelectedItem();
+        selectedEmploye.setAdresse(cellEditEvent.getNewValue().toString());
+        if(employeDao.update(selectedEmploye))
+        {
+            alertText.setText("Modification Enregistrer");
+        }
+        else
+        {
+            alertText.setText("Modification Non Enregistrer");
+        }
+    }
+
+    @FXML
+    public void consultEmploye(ActionEvent event)
+    {
+
+    }
+
+    @FXML
+    public void deleteEmploye(ActionEvent event) throws IOException
+    {
+        ObservableList<Employe> selectedRows = employesTable.getSelectionModel().getSelectedItems();
+        for (Employe employe : selectedRows)
+        {
+            employeDao.delete(employe.getIdEmploye());
+        }
+        refreshScreen(event);
     }
 }

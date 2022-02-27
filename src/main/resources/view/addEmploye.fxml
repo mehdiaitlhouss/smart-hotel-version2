@@ -36,7 +36,7 @@
                     <children>
                         <TextField fx:id="telephone" maxHeight="35.0" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="35.0" prefWidth="138.0" promptText="Téléphone" />
                         <TextField fx:id="username" maxHeight="35.0" minHeight="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="35.0" prefWidth="140.0" promptText="Username" />
-                  <PasswordField prefHeight="34.0" prefWidth="142.0" promptText="Password" />
+                  <PasswordField fx:id="password" prefHeight="34.0" prefWidth="142.0" promptText="Password" />
                     </children>
                 </HBox>
                 <HBox alignment="TOP_CENTER" prefHeight="45.0" prefWidth="487.0" spacing="25.0">
