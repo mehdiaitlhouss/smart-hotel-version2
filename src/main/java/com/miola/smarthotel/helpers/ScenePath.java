@@ -20,7 +20,11 @@ public enum ScenePath
     ADD_CLIENT("/view/addClient.fxml"),
     ADD_EMPLOYE("/view/addEmploye.fxml"),
     ADD_CHAMBRE("/view/addChambre.fxml"),
-    ADD_RESERVATION("/view/addReservation.fxml");
+    ADD_RESERVATION("/view/addReservation.fxml"),
+    ETAGES_TEMPERATURES("/view/etagesTemperature.fxml"),
+    TEMPERATURES("/view/Temperature.fxml"),
+    ECLAIRAGES("/view/Eclairage.fxml"),
+    ETAGES_ECLAIRAGES("/view/etagesEclairage.fxml");
 
     private final String path;
 
