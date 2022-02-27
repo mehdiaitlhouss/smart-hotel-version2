@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.EtagesTemperatureController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.EtagesEclairageController">
     <children>
         <VBox minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="150.0" styleClass="sidebar">
             <children>
@@ -149,7 +149,7 @@
                         </Button>
                         <VBox fx:id="secondSubMenuList" styleClass="subVBox">
                             <children>
-                                <Button alignment="BASELINE_LEFT" defaultButton="true" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="subMenu" text="température">
+                                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="subMenu" text="température">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
@@ -168,7 +168,7 @@
                                     </cursor>
 
                                 </Button>
-                                <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="subMenu" text="Eclairage">
+                                <Button alignment="BASELINE_LEFT" defaultButton="true" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="50.0" styleClass="subMenu" text="Eclairage">
                                     <VBox.margin>
                                         <Insets />
                                     </VBox.margin>
@@ -222,7 +222,7 @@
                         <Insets />
                     </VBox.margin>
                     <children>
-                        <Label id="title" fx:id="title" layoutX="-2.0" layoutY="-16.0" prefHeight="55.0" prefWidth="171.0" styleClass="title" text="Température" textFill="#515151">
+                        <Label id="title" fx:id="title" layoutX="-2.0" layoutY="-16.0" prefHeight="55.0" prefWidth="171.0" styleClass="title" text="Eclairage" textFill="#515151">
                             <font>
                                 <Font name="Roboto Regular" size="18.0" />
                             </font>
@@ -244,100 +244,100 @@
                         <Insets left="15.0" top="15.0" />
                     </padding>
                 </Pane>
-            <Pane prefHeight="592.0" prefWidth="841.0">
-               <children>
-                  <Pane layoutX="76.0" layoutY="106.0">
-                     <children>
-                        <Button fx:id="etage1" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" onAction="#clickEtage" styleClass="button2" />
-                        <Label alignment="CENTER" layoutX="-6.0" layoutY="146.0" prefHeight="17.0" prefWidth="174.0" text="Etage" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="116.0" fitWidth="110.0" layoutX="30.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/A.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0">
-                     <children>
-                        <Button fx:id="etage2"  onAction="#clickEtage" mnemonicParsing="false"  opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="116.0" fitWidth="108.0" layoutX="35.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/B.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="71.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
-                     <children>
-                        <Button fx:id="etage4"  onAction="#clickEtage" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
-                        <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="116.0" fitWidth="108.0" layoutX="35.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/D.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="316.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
-                     <children>
-                        <Button fx:id="etage5"  onAction="#clickEtage" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ImageView  fitHeight="116.0" fitWidth="110.0" layoutX="36.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/E.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="559.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
-                     <children>
-                        <Button fx:id="etage6"  onAction="#clickEtage" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="135.0" fitWidth="117.0" layoutX="28.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/F.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-                  <Pane layoutX="559.0" layoutY="106.0" prefHeight="190.0" prefWidth="174.0">
-                     <children>
-                        <Button fx:id="etage3" onAction="#clickEtage" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
-                        <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
-                           <font>
-                              <Font name="Arial Bold" size="13.0" />
-                           </font>
-                        </Label>
-                        <ImageView fitHeight="125.0" fitWidth="117.0" layoutX="29.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/C.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </Pane>
-               </children>
-            </Pane>
+                <Pane prefHeight="592.0" prefWidth="841.0">
+                    <children>
+                        <Pane layoutX="76.0" layoutY="106.0">
+                            <children>
+                                <Button fx:id="etage1" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" onAction="#clickEtage" styleClass="button2" />
+                                <Label alignment="CENTER" layoutX="-6.0" layoutY="146.0" prefHeight="17.0" prefWidth="174.0" text="Etage" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="116.0" fitWidth="110.0" layoutX="30.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/A.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="316.0" layoutY="106.0" prefHeight="202.0" prefWidth="179.0">
+                            <children>
+                                <Button fx:id="etage2"  onAction="#clickEtage" mnemonicParsing="false"  opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                                <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="116.0" fitWidth="108.0" layoutX="35.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/B.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="71.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+                            <children>
+                                <Button fx:id="etage4"  onAction="#clickEtage" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                                <Label alignment="CENTER" layoutX="3.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="116.0" fitWidth="108.0" layoutX="35.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/D.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="316.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+                            <children>
+                                <Button fx:id="etage5"  onAction="#clickEtage" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                                <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ImageView  fitHeight="116.0" fitWidth="110.0" layoutX="36.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/E.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="559.0" layoutY="354.0" prefHeight="202.0" prefWidth="179.0">
+                            <children>
+                                <Button fx:id="etage6"  onAction="#clickEtage" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                                <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="135.0" fitWidth="117.0" layoutX="28.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/F.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                        <Pane layoutX="559.0" layoutY="106.0" prefHeight="190.0" prefWidth="174.0">
+                            <children>
+                                <Button fx:id="etage3" onAction="#clickEtage" mnemonicParsing="false" opacity="0.7" prefHeight="190.0" prefWidth="168.0" styleClass="button2" />
+                                <Label alignment="CENTER" layoutX="1.0" layoutY="146.0" prefHeight="17.0" prefWidth="168.0" text="Etage" textFill="WHITE">
+                                    <font>
+                                        <Font name="Arial Bold" size="13.0" />
+                                    </font>
+                                </Label>
+                                <ImageView fitHeight="125.0" fitWidth="117.0" layoutX="29.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="@../images/C.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </Pane>
+                    </children>
+                </Pane>
             </children>
             <padding>
                 <Insets right="5.0" top="5.0" />

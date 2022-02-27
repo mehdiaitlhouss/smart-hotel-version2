@@ -48,6 +48,13 @@ public class SceneController
     public static void getClientsScene(ActionEvent event) throws IOException {
         changeScreen(event, ScenePath.CLIENTS.getPath());
     }
+    public static void getEtagesTemperaturesScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.ETAGES_TEMPERATURES.getPath());
+    }
+
+    public static void getEtagesEclairagesScene(ActionEvent event) throws IOException {
+        changeScreen(event, ScenePath.ETAGES_ECLAIRAGES.getPath());
+    }
 
     public static void getSearchScene(ActionEvent event) throws IOException {
         changeScreen(event, ScenePath.SEARCH.getPath());

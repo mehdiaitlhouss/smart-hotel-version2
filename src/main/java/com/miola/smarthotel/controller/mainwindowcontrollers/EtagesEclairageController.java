@@ -1,25 +1,14 @@
 package com.miola.smarthotel.controller.mainwindowcontrollers;
 
 import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
-import com.miola.smarthotel.dao.ChambreDao;
-import com.miola.smarthotel.dao.ClientDao;
-import com.miola.smarthotel.helpers.*;
-import com.miola.smarthotel.model.Chambre;
-import com.miola.smarthotel.model.Client;
+import com.miola.smarthotel.helpers.CurrentEmploye;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
-import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
 
@@ -27,12 +16,10 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
-public class EtagesTemperatureController
-{
-    @FXML public Button etage6;
+public class EtagesEclairageController {
+    @FXML
+    public Button etage6;
     @FXML public Button etage5;
     @FXML public Button etage4;
     @FXML public Button etage2;
@@ -49,7 +36,7 @@ public class EtagesTemperatureController
     private Label userInfo;
 
 
-     public static int nrEtage;
+    public static int nrEtage;
     Map<VBox,VBox> map = new HashMap<VBox,VBox>();
     @FXML
     VBox secondSubVBox;
@@ -172,7 +159,7 @@ public class EtagesTemperatureController
         }else {
             System.out.println("not found");
         }
-        NewWindowController.getTemperaturesWindow();
+        NewWindowController.getEclairagesWindow();
 
     }
 }

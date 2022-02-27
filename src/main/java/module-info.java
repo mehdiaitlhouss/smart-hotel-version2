@@ -15,8 +15,9 @@ module com.miola.smarthotel
         requires java.persistence;
         requires org.hibernate.orm.core;
         requires java.sql;
+            requires com.jfoenix;
 
-        opens com.miola.smarthotel to javafx.fxml;
+            opens com.miola.smarthotel to javafx.fxml;
         exports com.miola.smarthotel;
         opens com.miola.smarthotel.controller.mainwindowcontrollers to javafx.fxml;
         exports com.miola.smarthotel.controller.mainwindowcontrollers;

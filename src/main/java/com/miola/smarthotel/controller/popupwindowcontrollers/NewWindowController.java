@@ -93,4 +93,12 @@ public class NewWindowController
     {
         getPopUpWindow(ScenePath.ADD_RESERVATION.getPath());
     }
+    public static void getTemperaturesWindow() throws IOException
+    {
+        getPopUpWindow(ScenePath.TEMPERATURES.getPath());
+    }
+    public static void getEclairagesWindow() throws IOException
+    {
+        getPopUpWindow(ScenePath.ECLAIRAGES.getPath());
+    }
 }
