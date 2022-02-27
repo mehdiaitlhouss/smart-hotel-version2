@@ -32,6 +32,9 @@ import java.util.regex.Pattern;
 
 public class ClientDashController
 {
+    @FXML private Button buttonTemp;
+
+    @FXML private Button buttonEcl;
 
     @FXML
     private Label alertText;
@@ -61,9 +64,6 @@ public class ClientDashController
     private TableView<Client> clientTable;
 
     @FXML
-    private TableColumn<Client, String> clientPrenom;
-
-    @FXML
     private TableColumn<Client, Long> idClient;
 
     @FXML
@@ -91,13 +91,10 @@ public class ClientDashController
     ObservableList<Client> clientsObList = FXCollections.observableArrayList();
 
     Map<VBox,VBox> map = new HashMap<VBox,VBox>();
-
     @FXML
     VBox secondSubVBox;
-
     @FXML
     VBox secondSubMenuList;
-
     @FXML
     Button secondMenu;
 
@@ -117,6 +114,25 @@ public class ClientDashController
                 removeOtherMenus(secondSubVBox);
             }
         });
+        buttonTemp.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                try {
+                    SceneController.getEtagesTemperaturesScene(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        buttonEcl.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                try {
+                    SceneController.getEtagesEclairagesScene(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     private void setTexts() {
@@ -134,8 +150,7 @@ public class ClientDashController
 
     private void fillTable() {
         idClient.setCellValueFactory(new PropertyValueFactory<>("idClient"));
-        clientName.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        clientPrenom.setCellValueFactory(new PropertyValueFactory<>("prenom"));
+        clientName.setCellValueFactory(new PropertyValueFactory<>("fullName"));
         clientCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
         clientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
         clientAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
@@ -143,7 +158,6 @@ public class ClientDashController
         clientPays.setCellValueFactory(new PropertyValueFactory<>("pays"));
         clientsVille.setCellValueFactory(new PropertyValueFactory<>("ville"));
 
-        clientPrenom.setCellFactory(TextFieldTableCell.forTableColumn());
         clientName.setCellFactory(TextFieldTableCell.forTableColumn());
         clientCin.setCellFactory(TextFieldTableCell.forTableColumn());
         clientEmail.setCellFactory(TextFieldTableCell.forTableColumn());
@@ -151,6 +165,8 @@ public class ClientDashController
         clientTelephone.setCellFactory(TextFieldTableCell.forTableColumn());
         clientPays.setCellFactory(TextFieldTableCell.forTableColumn());
         clientsVille.setCellFactory(TextFieldTableCell.forTableColumn());
+
+
     }
 
     private void addTableSettings() {
@@ -190,8 +206,35 @@ public class ClientDashController
     }
 
     @FXML
-    private void newWindow(ActionEvent event) throws IOException
-    {
+    private void changeNameCell(TableColumn.CellEditEvent<Client, String> editEvent) {
+        Client selectedVet = clientTable.getSelectionModel().getSelectedItem();
+        selectedVet.setNom(editEvent.getNewValue().toString());
+       // clientDao.updateVet(selectedVet);
+    }
+
+    @FXML
+    private void changeLastNameCell(TableColumn.CellEditEvent<Client, String> editEvent) {
+        Client selectedVet = clientTable.getSelectionModel().getSelectedItem();
+        selectedVet.setNom(editEvent.getNewValue().toString());
+       // clientDao.updateVet(selectedVet);
+    }
+
+    @FXML
+    private void changeSpecCell(TableColumn.CellEditEvent<Client, String> editEvent) {
+        Client selectedVet = clientTable.getSelectionModel().getSelectedItem();
+        selectedVet.setNom(editEvent.getNewValue().toString());
+       // clientDao.updateVet(selectedVet);
+    }
+
+    @FXML
+    private void changeAddressCell(TableColumn.CellEditEvent<Client, String> editEvent) {
+        Client selectedVet = clientTable.getSelectionModel().getSelectedItem();
+        selectedVet.setNom(editEvent.getNewValue().toString());
+      //  clientDao.updateVet(selectedVet);
+    }
+
+    @FXML
+    private void newWindow(ActionEvent event) throws IOException {
         NewWindowController.getNewClientWindow();
         if(UpdateStatus.isClientAdded())
         {
@@ -201,8 +244,7 @@ public class ClientDashController
     }
 
     @FXML
-    void deleteClient(ActionEvent event) throws IOException
-    {
+    void deleteClient(ActionEvent event) throws IOException {
         ObservableList<Client> selectedRows = clientTable.getSelectionModel().getSelectedItems();
         for (Client client : selectedRows)
         {
@@ -211,36 +253,30 @@ public class ClientDashController
         refreshScreen(event);
     }
 
-    private void setUserInfo()
-    {
+    private void setUserInfo() {
         userInfo.setText(String.format("User : %s", CurrentEmploye.getCurrentEmploye().getUserName()));
     }
 
-    private void setDbInfo()
-    {
+    private void setDbInfo() {
         stats.setText(String.format("Total client in database: %s", clientDao.count()));
     }
 
     @FXML
-    void showDashboard(ActionEvent event) throws IOException
-    {
+    void showDashboard(ActionEvent event) throws IOException {
         SceneController.getAdminMainScene(event);
     }
 
     @FXML
-    void refreshScreen(ActionEvent event) throws IOException
-    {
+    void refreshScreen(ActionEvent event) throws IOException {
         SceneController.getClientsScene(event);
     }
 
     @FXML
-     void showChambresScreen(ActionEvent event) throws IOException
-    {
+     void showChambresScreen(ActionEvent event) throws IOException {
         SceneController.getChambresScene(event);
     }
     @FXML
-    void showReservationsScreen(ActionEvent event) throws IOException
-    {
+    void showReservationsScreen(ActionEvent event) throws IOException {
         SceneController.getReservationsScene(event);
     }
 
@@ -257,121 +293,90 @@ public class ClientDashController
     }
 
     @FXML
-    public void changeCin(TableColumn.CellEditEvent<Client, String> cellEditEvent)
+    public void changeFullName(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
         Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
-        selectedClient.setAdresse(cellEditEvent.getNewValue().toString());
+        String[] fullName = null;
+        String ss = "";
 
-        if(clientDao.update(selectedClient))
+        fullName = clientStringCellEditEvent.getNewValue().toString().split(" ");
+
+        if(chkNamVldFnc(clientStringCellEditEvent.getNewValue().toString()))
         {
-            alertText.setText("Modification Enregistrer");
+            for (int i = 1; i < fullName.length; i++)
+            {
+                ss += fullName[i] + " ";
+            }
+
+            selectedClient.setNom(fullName[0]);
+            selectedClient.setPrenom(ss);
+
+            if(clientDao.update(selectedClient))
+            {
+                alertText.setText("Modification enregistrer");
+            }
+            else
+            {
+                alertText.setText("Modification Non enregistrer");
+            }
+
         }
         else
         {
-            alertText.setText("Modification Non Enregistrer");
+            alertText.setText("Valeur Non Valide");
         }
+    }
+
+    public static boolean chkNamVldFnc(String namVar)
+    {
+        String namRegExpVar = "^[A-Z][a-z]{2,}(?: [A-Z][a-z]*)*$";
+
+        Pattern pVar = Pattern.compile(namRegExpVar);
+        Matcher mVar = pVar.matcher(namVar);
+        return mVar.matches();
     }
 
     @FXML
-    public void changeEmail(TableColumn.CellEditEvent<Client, String> cellEditEvent)
+    public void changeCin(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
-        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
 
-        selectedClient.setEmail(cellEditEvent.getNewValue().toString());
-
-        if(clientDao.update(selectedClient))
-        {
-            alertText.setText("Modification Enregistrer");
-        }
-        else
-        {
-            alertText.setText("Modification Non Enregistrer");
-        }
     }
 
     @FXML
-    public void changeAdresse(TableColumn.CellEditEvent<Client, String> cellEditEvent)
+    public void changeEmail(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
-        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
-        selectedClient.setAdresse(cellEditEvent.getNewValue().toString());
 
-        if(clientDao.update(selectedClient))
-        {
-            alertText.setText("Modification Enregistrer");
-        }
-        else
-        {
-            alertText.setText("Modification Non Enregistrer");
-        }
-    }
-
-    public static boolean isValidMobileNo(String str)
-    {
-        Pattern ptrn = Pattern.compile("(0/91)?[7-9][0-9]{9}");
-        Matcher match = ptrn.matcher(str);
-        return (match.find() && match.group().equals(str));
     }
 
     @FXML
-    public void changeTelephone(TableColumn.CellEditEvent<Client, String> cellEditEvent)
+    public void changeAdresse(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
-        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
 
-        selectedClient.setTelephone(cellEditEvent.getNewValue().toString());
-
-        if(clientDao.update(selectedClient))
-        {
-            alertText.setText("Modification Enregistrer");
-        }
-        else
-        {
-            alertText.setText("Modification Non Enregistrer");
-        }
     }
 
     @FXML
-    public void changeVille(TableColumn.CellEditEvent<Client, String> cellEditEvent)
+    public void changeTelephone(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
-        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
 
-        selectedClient.setVille(cellEditEvent.getNewValue().toString());
-
-        if(clientDao.update(selectedClient))
-        {
-            alertText.setText("Modification Enregistrer");
-        }
-        else
-        {
-            alertText.setText("Modification Non Enregistrer");
-        }
     }
 
     @FXML
-    public void changePays(TableColumn.CellEditEvent<Client, String> cellEditEvent)
+    public void changeVille(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
-        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
 
-        selectedClient.setPays(cellEditEvent.getNewValue().toString());
-
-        if(clientDao.update(selectedClient))
-        {
-            alertText.setText("Modification Enregistrer");
-        }
-        else
-        {
-            alertText.setText("Modification Non Enregistrer");
-        }
     }
 
-
-    public void addMenusToMap()
+    @FXML
+    public void changePays(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
     {
+
+    }
+    public void addMenusToMap() {
         addMenusToMapImpl();
     }
 
+    private void addMenusToMapImpl() {
 
-    private void addMenusToMapImpl()
-    {
         map.put(secondSubVBox, secondSubMenuList);
 
         for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
@@ -379,15 +384,11 @@ public class ClientDashController
         }
     }
 
-
-    public void toolsSlider(VBox menu,VBox subMenu)
-    {
+    public void toolsSlider(VBox menu,VBox subMenu){
         toolsSliderImpl(menu,subMenu);
     }
 
-
-    private void toolsSliderImpl(VBox menu,VBox subMenu)
-    {
+    private void toolsSliderImpl(VBox menu,VBox subMenu) {
         if(menu.getChildren().contains(subMenu)){
             final FadeTransition transition = new FadeTransition(Duration.millis(500), menu);
             transition.setFromValue(0.5);
@@ -399,54 +400,19 @@ public class ClientDashController
             final FadeTransition transition = new FadeTransition(Duration.millis(500), menu);
             transition.setFromValue(0.5);
             transition.setToValue(1);
-
             transition.setInterpolator(Interpolator.EASE_IN);
             menu.getChildren().add(subMenu);
             transition.play();
         }
     }
 
-    public void removeOtherMenus(VBox menu)
-    {
+    public void removeOtherMenus(VBox menu){
         removeOtherMenusImpl(menu);
     }
-
-    private void removeOtherMenusImpl(VBox menu)
-    {
+    private void removeOtherMenusImpl(VBox menu) {
         for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
             if(!entry.getKey().equals(menu))
                 entry.getKey().getChildren().remove(entry.getValue());
-        }
-    }
-
-    @FXML
-    public void changeNom(TableColumn.CellEditEvent cellEditEvent)
-    {
-        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
-        selectedClient.setNom(cellEditEvent.getNewValue().toString());
-
-        if(clientDao.update(selectedClient))
-        {
-            alertText.setText("Modification Enregistrer");
-        }
-        else
-        {
-            alertText.setText("Modification Non Enregistrer");
-        }
-    }
-
-    @FXML
-    public void changePrenom(TableColumn.CellEditEvent cellEditEvent)
-    {
-        Client selectedClient = clientTable.getSelectionModel().getSelectedItem();
-        selectedClient.setPrenom(cellEditEvent.getNewValue().toString());
-        if(clientDao.update(selectedClient))
-        {
-            alertText.setText("Modification Enregistrer");
-        }
-        else
-        {
-            alertText.setText("Modification Non Enregistrer");
         }
     }
 }

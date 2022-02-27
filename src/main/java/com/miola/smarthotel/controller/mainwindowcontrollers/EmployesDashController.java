@@ -29,6 +29,10 @@ import java.util.Map;
  */
 public class EmployesDashController {
 
+    @FXML private Button buttonTemp;
+
+    @FXML private Button buttonEcl;
+
     @FXML
     private Label alertText;
 
@@ -100,6 +104,25 @@ public class EmployesDashController {
             public void handle(ActionEvent event) {
                 toolsSlider(secondSubVBox,secondSubMenuList);
                 removeOtherMenus(secondSubVBox);
+            }
+        });
+        buttonTemp.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                try {
+                    SceneController.getEtagesTemperaturesScene(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        buttonEcl.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                try {
+                    SceneController.getEtagesEclairagesScene(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }

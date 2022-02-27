@@ -18,6 +18,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EtagesEclairageController {
+    @FXML Button buttonTemp;
     @FXML
     public Button etage6;
     @FXML public Button etage5;
@@ -55,6 +56,15 @@ public class EtagesEclairageController {
             public void handle(ActionEvent event) {
                 toolsSlider(secondSubVBox,secondSubMenuList);
                 removeOtherMenus(secondSubVBox);
+            }
+        });
+        buttonTemp.setOnAction(new EventHandler<ActionEvent>() {
+            public void handle(ActionEvent event) {
+                try {
+                    SceneController.getEtagesTemperaturesScene(event);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
     }
@@ -161,5 +171,10 @@ public class EtagesEclairageController {
         }
         NewWindowController.getEclairagesWindow();
 
+    }
+
+    @FXML
+    void showClientsScreen(ActionEvent event) throws IOException {
+        SceneController.getClientsScene(event);
     }
 }
