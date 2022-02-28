@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#click" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.ItemTemperatureController">
+<AnchorPane onMousePressed="#click" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.itemwindowcontroller.ItemTemperatureController">
     <children>
         <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="215.0" prefWidth="225.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <children>

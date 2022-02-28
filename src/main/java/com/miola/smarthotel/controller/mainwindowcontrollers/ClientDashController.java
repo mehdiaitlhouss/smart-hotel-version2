@@ -415,4 +415,12 @@ public class ClientDashController
                 entry.getKey().getChildren().remove(entry.getValue());
         }
     }
+
+    public void changeNom(TableColumn.CellEditEvent<Client, String> clientStringCellEditEvent)
+    {
+    }
+
+    public void changePrenom(TableColumn.CellEditEvent cellEditEvent)
+    {
+    }
 }

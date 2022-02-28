@@ -104,4 +104,8 @@ public class SceneController
         stage.close();
     }
 
+    public static void getEclairageScene(ActionEvent event, String s) throws IOException
+    {
+        changeScreen(event, ScenePath.ECLAIRAGES.getPath());
+    }
 }

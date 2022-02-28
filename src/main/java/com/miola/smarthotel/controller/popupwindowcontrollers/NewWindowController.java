@@ -1,5 +1,6 @@
 package com.miola.smarthotel.controller.popupwindowcontrollers;
 
+import com.miola.smarthotel.controller.mainwindowcontrollers.SceneController;
 import com.miola.smarthotel.helpers.ScenePath;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -100,5 +101,15 @@ public class NewWindowController
     public static void getEclairagesWindow() throws IOException
     {
         getPopUpWindow(ScenePath.ECLAIRAGES.getPath());
+    }
+
+    public static void getNewConsultReservationWindow() throws IOException
+    {
+        getPopUpWindow(ScenePath.CONSULT_RESERVATION.getPath());
+    }
+
+    public static void getNewConsultChambreWindow() throws IOException
+    {
+        getPopUpWindow(ScenePath.CONSULT_CHAMBRE.getPath());
     }
 }

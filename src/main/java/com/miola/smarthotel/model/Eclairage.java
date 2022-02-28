@@ -1,6 +1,7 @@
 package com.miola.smarthotel.model;
 
-public class Eclairage {
+public class Eclairage
+{
     private int idEcl;
     private int position;
     private int etage;

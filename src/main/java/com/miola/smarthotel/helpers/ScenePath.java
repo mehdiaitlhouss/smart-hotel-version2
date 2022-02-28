@@ -24,7 +24,13 @@ public enum ScenePath
     ETAGES_TEMPERATURES("/view/etagesTemperature.fxml"),
     TEMPERATURES("/view/Temperature.fxml"),
     ECLAIRAGES("/view/Eclairage.fxml"),
-    ETAGES_ECLAIRAGES("/view/etagesEclairage.fxml");
+    ETAGES_ECLAIRAGES("/view/etagesEclairage.fxml"),
+    ITEM_ECLAIRAGE("/view/itemEclairage.fxml"),
+    CONSULT_RESERVATION("/view/consultReservationDash.fxml"),
+    ITEM_CONSULTATION_RESRVATION("/view/itemConsultationReservation.fxml"),
+    CONSULT_CHAMBRE("/view/consultChambreDash.fxml"),
+    ITEM_CONSULTATION_CHAMBRE("/view/itemConsultationChambre.fxml");
+
 
     private final String path;
 

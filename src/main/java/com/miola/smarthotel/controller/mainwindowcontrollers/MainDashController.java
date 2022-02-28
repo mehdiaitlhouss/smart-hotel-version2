@@ -7,29 +7,67 @@ import com.miola.smarthotel.helpers.SceneName;
 import com.miola.smarthotel.model.Client;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Random;
+import java.util.ResourceBundle;
 
 /**
  * Code created by Andrius on 2020-09-27
  */
+
 public class MainDashController
 {
+    @FXML
+    private PieChart pieChartClimat;
+
+    @FXML
+    private PieChart pieChartChambres;
+
+    @FXML
+    private PieChart pieChartLampes;
+
+    @FXML
+    private Label clientNumber;
+
+    @FXML
+    private Label climatNumber;
+
+    @FXML
+    private Label lampeNumber;
+
+    @FXML
+    private Label reservationEnAttenteNumber;
+
+    @FXML
+    private Label reservationValideNumber;
+
+    @FXML
+    private Label reservationPayeeNumber;
+
+    @FXML
+    private Label reservationReserveeeNumber;
 
     @FXML
     private Button buttonTemp;
@@ -43,19 +81,10 @@ public class MainDashController
     private Label date;
 
     @FXML
-    private Label reservationInfoBlockName;
-
-    @FXML
     private Label reservationNumber;
 
     @FXML
-    private Label chambresInfoBlockName;
-
-    @FXML
     private Label chambresNumber;
-
-    @FXML
-    private Label employeInfoBlockName;
 
     @FXML
     private Label employeNumber;
@@ -64,40 +93,55 @@ public class MainDashController
     private Label userInfo;
 
     @FXML
-    private TableView<Client> clientTable;
-
-    @FXML
-    private TableColumn<Client, Integer> idClient;
-
-    @FXML
-    private TableColumn<Client, String> clientName;
-
-    @FXML
-    private TableColumn<Client, String> clientCin;
-
-    @FXML
-    private TableColumn<Client, String> clientEmail;
-
-    @FXML
-    private TableColumn<Client, String> clientAdresse;
-
-    @FXML
-    private Label visitInfoText;
-
-    ClientDao clientDao = new ClientDao();
-
-    Map<VBox,VBox> map = new HashMap<VBox,VBox>();
-    @FXML
     VBox secondSubVBox;
+
     @FXML
     VBox secondSubMenuList;
+
     @FXML
     Button secondMenu;
 
     @FXML
+    private Circle shpActive;
+
+    Random r = new Random();
+    Map<VBox,VBox> map = new HashMap<VBox,VBox>();
+    ClientDao clientDao = new ClientDao();
+    ChambreDao chambreDao = new ChambreDao();
+
+    private void loadPieChartClimat(PieChart pieChart)
+    {
+        ObservableList<PieChart.Data> data =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Active", r.nextInt(50)),
+                        new PieChart.Data("Desactive", r.nextInt(50))
+                );
+        pieChart.setData(data);
+    }
+
+    private void loadPieChartChambre(PieChart pieChart)
+    {
+        ObservableList<PieChart.Data> data =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Reserver", chambreDao.countReservedChambre()),
+                        new PieChart.Data("Reserver", chambreDao.countNonReservedChambre())
+                );
+        pieChart.setData(data);
+    }
+
+    private void loadPieChartLampes(PieChart pieChart)
+    {
+        ObservableList<PieChart.Data> data =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Active", r.nextInt(50)),
+                        new PieChart.Data("Desactive", r.nextInt(50))
+                );
+        pieChart.setData(data);
+    }
+
+    @FXML
     private void initialize() {
         setTexts();
-        fillTableWithData();
         addMenusToMap();
         secondMenu.setOnAction(new EventHandler<ActionEvent>() {
             public void handle(ActionEvent event) {
@@ -125,7 +169,22 @@ public class MainDashController
                 }
             }
         });
+        loadPieChartChambre(pieChartChambres);
+        loadPieChartClimat(pieChartClimat);
+        loadPieChartLampes(pieChartLampes);
 
+        Timeline timeline = new Timeline(new KeyFrame(Duration.seconds(10), event -> {
+            loadPieChartChambre(pieChartChambres);
+            loadPieChartClimat(pieChartClimat);
+            loadPieChartLampes(pieChartLampes);
+            reservationEnAttenteNumber.setText(String.valueOf(r.nextInt(11)));
+            reservationPayeeNumber.setText(String.valueOf(r.nextInt(10)));
+            reservationReserveeeNumber.setText(String.valueOf(r.nextInt(15)));
+            reservationValideNumber.setText(String.valueOf(r.nextInt(20)));
+
+        }));
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.play();
     }
 
     private void setTexts() {
@@ -134,28 +193,10 @@ public class MainDashController
         reservationNumber.setText(getNumberOfReservations());
         chambresNumber.setText(getNumberOfChambres());
         employeNumber.setText(getNumberOfEmployes());
-        reservationInfoBlockName.setText("Upcoming Reservation");
-        chambresInfoBlockName.setText("Chambres in DB");
-        employeInfoBlockName.setText("Employes in DB");
-        visitInfoText.setText(getCalendarInformation());
+        clientNumber.setText(String.valueOf(new ClientDao().count()));
+        climatNumber.setText("100");
+        lampeNumber.setText("150");
         setUserInfo();
-    }
-
-    private void fillTableWithData()
-    {
-        idClient.setCellValueFactory(new PropertyValueFactory<>("idClient"));
-        clientName.setCellValueFactory(new PropertyValueFactory<>("nom"));
-        clientCin.setCellValueFactory(new PropertyValueFactory<>("cin"));
-        clientEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
-        clientAdresse.setCellValueFactory(new PropertyValueFactory<>("adresse"));
-        clientTable.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
-        clientTable.setItems(getVisitObservableList());
-    }
-
-    private ObservableList<Client> getVisitObservableList() {
-        ObservableList<Client> clients = FXCollections.observableArrayList();
-        clients.addAll(clientDao.getAll());
-        return clients;
     }
 
     private String getNumberOfReservations() {
@@ -170,12 +211,9 @@ public class MainDashController
         return String.valueOf(new EmployeDao().count());
     }
 
-    private void setUserInfo() {
-        userInfo.setText(String.format("User : %s", CurrentEmploye.getCurrentEmploye().getUserName()));
-    }
-
-    private String getCalendarInformation() {
-        return String.format("Upcoming visits in next 14 days. Last update: %s", CurrentTime.getTime());
+    private void setUserInfo()
+    {
+        userInfo.setText(String.format("User : %s %s", CurrentEmploye.getCurrentEmploye().getNom(), CurrentEmploye.getCurrentEmploye().getPrenom()));
     }
 
     @FXML
@@ -198,17 +236,8 @@ public class MainDashController
     }
 
     @FXML
-    void refreshWindow(ActionEvent event) throws IOException {
-        SceneController.getAdminMainScene(event);
-    }
-
-    @FXML
     void exitProgram(ActionEvent event) {
         SceneController.close(event);
-    }
-
-    public void showIotScreens(ActionEvent event)
-    {
     }
 
     public void addMenusToMap() {
@@ -249,6 +278,7 @@ public class MainDashController
     public void removeOtherMenus(VBox menu){
         removeOtherMenusImpl(menu);
     }
+
     private void removeOtherMenusImpl(VBox menu) {
         for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
             if(!entry.getKey().equals(menu))

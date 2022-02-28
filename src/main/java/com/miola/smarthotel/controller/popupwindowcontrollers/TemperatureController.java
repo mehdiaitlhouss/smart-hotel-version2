@@ -1,7 +1,7 @@
 package com.miola.smarthotel.controller.popupwindowcontrollers;
 
 import com.miola.smarthotel.controller.mainwindowcontrollers.EtagesTemperatureController;
-import com.miola.smarthotel.controller.mainwindowcontrollers.ItemTemperatureController;
+import com.miola.smarthotel.controller.itemwindowcontroller.ItemTemperatureController;
 import com.miola.smarthotel.dao.MyListener;
 import com.miola.smarthotel.dao.TemperatureDao;
 import com.miola.smarthotel.model.Temperature;

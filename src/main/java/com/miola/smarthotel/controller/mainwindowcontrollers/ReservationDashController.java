@@ -104,6 +104,7 @@ public class ReservationDashController
     @FXML
     private Button secondMenu;
 
+    public static Reservation selectedRowTmp;
 
     ReservationDao reservationDao = new ReservationDao();
     ObservableList<Reservation> reservationObList = FXCollections.observableArrayList();
@@ -503,5 +504,12 @@ public class ReservationDashController
             if(!entry.getKey().equals(menu))
                 entry.getKey().getChildren().remove(entry.getValue());
         }
+    }
+
+    public void consulterReservation(ActionEvent event) throws IOException
+    {
+        Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
+        selectedRowTmp = reservation;
+        NewWindowController.getNewConsultReservationWindow();
     }
 }

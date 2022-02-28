@@ -18,6 +18,7 @@ public class Chambre
     private String etageString;
     private EtatChambre etat;
     private String etatChambreString;
+    private String imagePath;
 
     public Chambre(int id, TypeChambre type, int etage, EtatChambre etat)
     {
@@ -34,6 +35,7 @@ public class Chambre
         this.prixParjourString = String.valueOf(type.getPrixParJour());
         this.etageString = String.valueOf(etage);
         this.etatChambreString = etat.toString();
+        this.imagePath = type.getImagePath();
     }
 
     public Chambre() {

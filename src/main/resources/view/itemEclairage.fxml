@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane onMousePressed="#click" prefHeight="235.0" prefWidth="255.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.mainwindowcontrollers.ItemEclairageController">
+<AnchorPane onMousePressed="#click" prefHeight="235.0" prefWidth="255.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.itemwindowcontroller.ItemEclairageController">
     <children>
         <VBox alignment="TOP_CENTER" layoutX="63.0" layoutY="8.0" prefHeight="235.0" prefWidth="249.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
             <children>
@@ -33,7 +33,7 @@
                 </HBox>
                 <ImageView fx:id="img" fitHeight="142.0" fitWidth="121.0" pickOnBounds="true" preserveRatio="true">
                     <image>
-                        <Image url="@../images/LampeOn.png" />
+                        <Image url="@../images/lampeOn.png" />
                     </image>
                 </ImageView>
             </children>

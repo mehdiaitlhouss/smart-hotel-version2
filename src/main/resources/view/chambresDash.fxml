@@ -262,7 +262,7 @@
                   <Insets bottom="20.0" left="25.0" right="25.0" />
                </VBox.margin>
             </TextField>
-            <TableView fx:id="chambreTable" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="325.0" prefWidth="700.0">
+            <TableView fx:id="chambreTable" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="325.0" prefWidth="700.0" stylesheets="@../css/styles.css">
               <columns>
                 <TableColumn fx:id="idColumn" maxWidth="50.0" minWidth="50.0" prefWidth="50.0" resizable="false" text="ID" />
                 <TableColumn fx:id="etageColumn" maxWidth="76.6666374206543" minWidth="50.0" onEditCommit="#changeEtage" prefWidth="76.6666374206543" resizable="false" text="ETAGE" />
@@ -281,7 +281,7 @@
             </TableView>
             <HBox prefHeight="21.0" prefWidth="840.0" spacing="20.0">
                <children>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Ajouter">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="AJOUTER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -289,11 +289,16 @@
                         <Insets left="25.0" />
                      </HBox.margin>
                   </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteChambres" prefHeight="31.0" prefWidth="128.0" styleClass="deletebutton" text="Supprimer">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#consultChambre" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="CONSULTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="128.0" styleClass="savebutton" text="ACTUALISER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="128.0" styleClass="savebutton" text="Actualiser">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteChambres" prefHeight="31.0" prefWidth="128.0" styleClass="deletebutton" text="SUPPRIMER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>

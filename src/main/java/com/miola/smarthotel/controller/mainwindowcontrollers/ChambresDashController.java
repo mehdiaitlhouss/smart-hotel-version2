@@ -28,11 +28,14 @@ import java.util.Map;
 /**
  * Code created by Andrius on 2020-09-27
  */
+
 public class ChambresDashController
 {
-    @FXML private Button buttonTemp;
+    @FXML
+    private Button buttonTemp;
 
-    @FXML private Button buttonEcl;
+    @FXML
+    private Button buttonEcl;
 
     @FXML
     private Label alertText;
@@ -81,6 +84,8 @@ public class ChambresDashController
 
     @FXML
     private TableColumn<Chambre, String> etatChambreColumn;
+
+    public static Chambre chambreSelectionnerTmp;
 
     ChambreDao chambreDao = new ChambreDao();
     ObservableList<Chambre> chambresObList = FXCollections.observableArrayList();
@@ -188,20 +193,6 @@ public class ChambresDashController
                     } else return chambre.getType().toString().contains(lowerCaseFilter);
                 }));
         return filteredList;
-    }
-
-    @FXML
-    private void changeOwnerCell(TableColumn.CellEditEvent<Chambre, String> editEvent) {
-//        Chambre selectedChambre = chambreTable.getSelectionModel().getSelectedItem();
-//        selectedChambre.setOwnerName(editEvent.getNewValue());
-//        chambreDao.updateChambre(selectedChambre);
-    }
-
-    @FXML
-    private void changeTypeCell(TableColumn.CellEditEvent<Chambre, String> editEvent) {
-//        Chambre selectedChambre = chambreTable.getSelectionModel().getSelectedItem();
-//        selectedChambre.setRace(editEvent.getNewValue());
-//        chambreDao.updateChambre(selectedChambre);
     }
 
     @FXML
@@ -372,5 +363,12 @@ public class ChambresDashController
             if(!entry.getKey().equals(menu))
                 entry.getKey().getChildren().remove(entry.getValue());
         }
+    }
+
+    public void consultChambre(ActionEvent event) throws IOException
+    {
+        Chambre selectedChambre = chambreTable.getSelectionModel().getSelectedItem();
+        chambreSelectionnerTmp = selectedChambre;
+        NewWindowController.getNewConsultChambreWindow();
     }
 }
