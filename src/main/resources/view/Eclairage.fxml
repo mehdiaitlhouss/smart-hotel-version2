@@ -22,10 +22,10 @@
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
-                <VBox prefHeight="660.0" prefWidth="449.0" styleClass="right-bar" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
+                <VBox prefHeight="660.0" prefWidth="449.0" styleClass="right-bar" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
                     <children>
                         <Pane prefHeight="0.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="580.0" prefWidth="403.0" stylesheets="@../css/styles.css">
+                        <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="580.0" prefWidth="403.0" stylesheets="@../css/style.css">
                             <VBox.margin>
                                 <Insets left="50.0" right="50.0" />
                             </VBox.margin>
@@ -75,7 +75,7 @@
                                         <Separator prefHeight="0.0" prefWidth="118.0" />
                                     </children>
                                 </HBox>
-                                <Button mnemonicParsing="false" onAction="#updateEclairage" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../css/styles.css" text="Enregistrer" textFill="#828282">
+                                <Button mnemonicParsing="false" onAction="#updateEclairage" prefHeight="41.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../css/style.css" text="Enregistrer" textFill="#828282">
                                     <VBox.margin>
                                         <Insets bottom="20.0" top="30.0" />
                                     </VBox.margin>
@@ -98,7 +98,7 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" VBox.vgrow="ALWAYS">
                             <children>
-                                <ScrollPane fx:id="scroll" prefHeight="650.0" prefWidth="862.0" styleClass="transparent" stylesheets="@../css/styles.css">
+                                <ScrollPane fx:id="scroll" prefHeight="650.0" prefWidth="862.0" styleClass="transparent" stylesheets="@../css/style.css">
                                     <content>
                                         <GridPane fx:id="grid" prefHeight="0.0" prefWidth="0.0">
                                             <rowConstraints>

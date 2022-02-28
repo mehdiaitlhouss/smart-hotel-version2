@@ -1,7 +1,3 @@
-
-
-
-
 .combo-box
 {
     -fx-background-color : #141124;
@@ -17,7 +13,7 @@
 .combo-box:pressed
 {
     -fx-background-color : #141124;
-    -fx-border-color:  #FFFF;
+    -fx-border-cdolor:  #FFFF;
     -fx-border-radius: 30;
 }
 

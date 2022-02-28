@@ -79,7 +79,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" stylesheets="@../css/styles.css" text="Chambres">
+            <Button fx:id="chambresButton" alignment="BASELINE_LEFT" graphicTextGap="8.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showChambresScreen" prefHeight="50.0" stylesheets="@../css/styles.css" text="Chambres">
                <VBox.margin>
                   <Insets bottom="10.0" />
                </VBox.margin>
@@ -115,7 +115,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showEmployesScreens" prefHeight="50.0" stylesheets="@../css/styles.css" text="Employés">
+            <Button fx:id="employeButton" alignment="BASELINE_LEFT" graphicTextGap="8.0" layoutX="10.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#showEmployesScreens" prefHeight="50.0" stylesheets="@../css/styles.css" text="Employés">
                <graphic>
                   <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                      <image>

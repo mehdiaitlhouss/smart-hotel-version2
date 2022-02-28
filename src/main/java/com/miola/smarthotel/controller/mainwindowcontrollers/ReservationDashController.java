@@ -3,6 +3,7 @@ package com.miola.smarthotel.controller.mainwindowcontrollers;
 import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
 import com.miola.smarthotel.dao.ReservationDao;
 import com.miola.smarthotel.helpers.*;
+import com.miola.smarthotel.model.Receptionniste;
 import com.miola.smarthotel.model.Reservation;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
@@ -35,6 +36,10 @@ import java.util.Map;
  */
 public class ReservationDashController
 {
+    @FXML private Button employeButton;
+
+    @FXML private Button chambresButton;
+
     @FXML
     private Button buttonTemp;
 
@@ -140,6 +145,11 @@ public class ReservationDashController
                 }
             }
         });
+
+        if(CurrentEmploye.getCurrentEmploye() instanceof Receptionniste){
+            employeButton.setDisable(true);
+            chambresButton.setDisable(true);
+        }
     }
 
     private void setTexts() {

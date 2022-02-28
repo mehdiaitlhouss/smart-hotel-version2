@@ -2,6 +2,7 @@ package com.miola.smarthotel.controller.mainwindowcontrollers;
 
 import com.miola.smarthotel.controller.popupwindowcontrollers.NewWindowController;
 import com.miola.smarthotel.helpers.CurrentEmploye;
+import com.miola.smarthotel.model.Receptionniste;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.event.ActionEvent;
@@ -18,6 +19,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EtagesEclairageController {
+    @FXML private Button employeButton;
+
+    @FXML private Button chambresButton;
+
     @FXML Button buttonTemp;
     @FXML
     public Button etage6;
@@ -67,6 +72,11 @@ public class EtagesEclairageController {
                 }
             }
         });
+        if(CurrentEmploye.getCurrentEmploye() instanceof Receptionniste){
+            employeButton.setDisable(true);
+            chambresButton.setDisable(true);
+        }
+
     }
 
     private void setTexts() {

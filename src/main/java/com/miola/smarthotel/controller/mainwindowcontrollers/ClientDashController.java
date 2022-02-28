@@ -8,6 +8,7 @@ import com.miola.smarthotel.helpers.SceneName;
 import com.miola.smarthotel.helpers.UpdateStatus;
 import com.miola.smarthotel.model.Chambre;
 import com.miola.smarthotel.model.Client;
+import com.miola.smarthotel.model.Receptionniste;
 import javafx.animation.FadeTransition;
 import javafx.animation.Interpolator;
 import javafx.collections.FXCollections;
@@ -32,6 +33,11 @@ import java.util.regex.Pattern;
 
 public class ClientDashController
 {
+
+    @FXML private Button employeButton;
+
+    @FXML private Button chambresButton;
+
     @FXML private Button buttonTemp;
 
     @FXML private Button buttonEcl;
@@ -133,6 +139,11 @@ public class ClientDashController
                 }
             }
         });
+
+        if(CurrentEmploye.getCurrentEmploye() instanceof Receptionniste){
+            employeButton.setDisable(true);
+            chambresButton.setDisable(true);
+        }
     }
 
     private void setTexts() {

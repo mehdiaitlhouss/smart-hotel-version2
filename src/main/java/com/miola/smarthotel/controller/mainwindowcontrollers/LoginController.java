@@ -69,15 +69,10 @@ public class LoginController {
                 /*
                 ici la place pour faire la diffrenece entre l'admin et le recep
                  */
-
-                if(CurrentEmploye.getCurrentEmploye() instanceof Admin)
-                {
+                
                     SceneController.getAdminMainScene(event);
-                }
-                else
-                {
-                    SceneController.getRecepMainScene(event);
-                }
+
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
