@@ -49,31 +49,6 @@ public class AddChambreController
         selectedType.setItems(list2);
     }
 
-      private boolean validateInputs()
-      {
-//        if (vetFirstName.getText().equals(""))
-//        {
-//            alertText.setText("*You must add first name!");
-//            return false;
-//        }
-//
-//        if (vetLastName.getText().equals("")) {
-//            alertText.setText("*You must add last name!");
-//            return false;
-//        }
-//
-//        if (vetSpeciality.getText().equals("")) {
-//            alertText.setText("*You must add speciality!");
-//            return false;
-//        }
-//
-//        if (vetAddress.getText().equals("")) {
-//            alertText.setText("*You must add address!");
-//            return false;
-//        }
-          return true;
-      }
-
     private Chambre createChambreFromInput()
     {
         Chambre chambre = new Chambre();
@@ -99,15 +74,13 @@ public class AddChambreController
     @FXML
     public void saveNewChambre(ActionEvent event) throws IOException
     {
-        if (validateInputs()) {
-            Chambre chambre = createChambreFromInput();
-            boolean isSaved = new ChambreDao().add(chambre);
-            if (isSaved)
-            {
-                UpdateStatus.setIsChambreAdded(true);
-                alertText.setText("Chambre is added!");
-                delayWindowClose(event);
-            }
+        Chambre chambre = createChambreFromInput();
+        boolean isSaved = new ChambreDao().add(chambre);
+        if (isSaved)
+        {
+            UpdateStatus.setIsChambreAdded(true);
+            alertText.setText("Chambre is added!");
+            delayWindowClose(event);
         }
     }
 

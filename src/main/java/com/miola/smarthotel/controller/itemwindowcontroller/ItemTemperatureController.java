@@ -1,4 +1,4 @@
-package com.miola.smarthotel.controller.mainwindowcontrollers;
+package com.miola.smarthotel.controller.itemwindowcontroller;
 
 import com.miola.smarthotel.dao.MyListener;
 import com.miola.smarthotel.model.Temperature;

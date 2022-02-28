@@ -20,6 +20,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.VBox;
 import javafx.util.Duration;
+import javafx.util.StringConverter;
 
 import java.io.IOException;
 import java.sql.Time;
@@ -28,12 +29,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.sql.Date;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Code created by Andrius on 2020-09-27
- */
 public class ReservationDashController
 {
     @FXML private Button employeButton;
@@ -99,20 +98,72 @@ public class ReservationDashController
     @FXML
     private TableColumn<Reservation, String> reservationEtat;
 
-    Map<VBox,VBox> map = new HashMap<VBox,VBox>();
-    @FXML
-    VBox secondSubVBox;
-    @FXML
-    VBox secondSubMenuList;
-    @FXML
-    Button secondMenu;
+    private Map<VBox,VBox> map = new HashMap<VBox,VBox>();
 
+    @FXML
+    private VBox secondSubVBox;
+
+    @FXML
+    private VBox secondSubMenuList;
+
+    @FXML
+    private Button secondMenu;
+
+    public static Reservation selectedRowTmp;
 
     ReservationDao reservationDao = new ReservationDao();
     ObservableList<Reservation> reservationObList = FXCollections.observableArrayList();
 
     @FXML
-    private void initialize() {
+    private void initialize()
+    {
+        String pattern = "yyyy-MM-dd";
+        dateFrom.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        });
+
+        dateTo.setConverter(new StringConverter<LocalDate>() {
+            DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(pattern);
+
+            @Override
+            public String toString(LocalDate date) {
+                if (date != null) {
+                    return dateFormatter.format(date);
+                } else {
+                    return "";
+                }
+            }
+
+            @Override
+            public LocalDate fromString(String string) {
+                if (string != null && !string.isEmpty()) {
+                    return LocalDate.parse(string, dateFormatter);
+                } else {
+                    return null;
+                }
+            }
+        });
+
+
+
         setTexts();
         setObList();
         fillTable();
@@ -211,7 +262,8 @@ public class ReservationDashController
         return filteredItems;
     }
 
-    private FilteredList<Reservation> getFilteredListByString() {
+    private FilteredList<Reservation> getFilteredListByString()
+    {
         FilteredList<Reservation> filteredList = new FilteredList<>(reservationObList, b -> true);
         searchBar.textProperty().addListener((observable, oldValue, newValue) ->
                 filteredList.setPredicate(reservation -> {
@@ -221,13 +273,13 @@ public class ReservationDashController
 
                     String lowerCaseFilter = newValue.toLowerCase();
 
-                    if (reservation.getDateReservation().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    if (reservation.getDureeSejourString().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (reservation.getDateReservation().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (reservation.getEtatString().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else if (reservation.getDateReservation().toString().toLowerCase().contains(lowerCaseFilter)) {
+                    } else if (reservation.getNombrePersonneString().toLowerCase().contains(lowerCaseFilter)) {
                         return true;
-                    } else return reservation.getDateReservation().toString().contains(lowerCaseFilter);
+                    } else return String.valueOf(reservation.getId()).toLowerCase().contains(lowerCaseFilter);
                 }));
         return filteredList;
     }
@@ -415,12 +467,14 @@ public class ReservationDashController
             promptMessage.setText("Modification enregister");
         }
     }
-    public void addMenusToMap() {
+
+    public void addMenusToMap()
+    {
         addMenusToMapImpl();
     }
 
-    private void addMenusToMapImpl() {
-
+    private void addMenusToMapImpl()
+    {
         map.put(secondSubVBox, secondSubMenuList);
 
         for (Map.Entry<VBox,VBox> entry : map.entrySet()) {
@@ -428,11 +482,13 @@ public class ReservationDashController
         }
     }
 
-    public void toolsSlider(VBox menu,VBox subMenu){
+    public void toolsSlider(VBox menu,VBox subMenu)
+    {
         toolsSliderImpl(menu,subMenu);
     }
 
-    private void toolsSliderImpl(VBox menu,VBox subMenu) {
+    private void toolsSliderImpl(VBox menu,VBox subMenu)
+    {
         if(menu.getChildren().contains(subMenu)){
             final FadeTransition transition = new FadeTransition(Duration.millis(500), menu);
             transition.setFromValue(0.5);
@@ -458,5 +514,12 @@ public class ReservationDashController
             if(!entry.getKey().equals(menu))
                 entry.getKey().getChildren().remove(entry.getValue());
         }
+    }
+
+    public void consulterReservation(ActionEvent event) throws IOException
+    {
+        Reservation reservation = reservationTable.getSelectionModel().getSelectedItem();
+        selectedRowTmp = reservation;
+        NewWindowController.getNewConsultReservationWindow();
     }
 }

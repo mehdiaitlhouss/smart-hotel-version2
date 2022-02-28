@@ -313,7 +313,7 @@
                      <HBox.margin>
                         <Insets left="25.0" />
                      </HBox.margin></Button>
-                  <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#afficheReservationAction" prefHeight="31.0" prefWidth="98.0" styleClass="addbutton" text="CONSULTER" />
+                  <Button alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#consulterReservation" prefHeight="31.0" prefWidth="98.0" styleClass="addbutton" text="CONSULTER" />
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteReservation" prefHeight="31.0" prefWidth="92.0" styleClass="deletebutton" text="SUPPRIMER" />
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshWindow" prefHeight="31.0" prefWidth="97.0" styleClass="savebutton" text="ACTUALISER" />
                   <Label fx:id="promptMessage" prefHeight="31.0" prefWidth="382.0" styleClass="alertText" />

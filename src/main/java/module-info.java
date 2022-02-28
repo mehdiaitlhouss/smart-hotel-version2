@@ -26,5 +26,7 @@ module com.miola.smarthotel
 
         opens com.miola.smarthotel.controller.popupwindowcontrollers to javafx.fxml;
         exports com.miola.smarthotel.controller.popupwindowcontrollers;
+            exports com.miola.smarthotel.controller.itemwindowcontroller;
+            opens com.miola.smarthotel.controller.itemwindowcontroller to javafx.fxml;
 
         }

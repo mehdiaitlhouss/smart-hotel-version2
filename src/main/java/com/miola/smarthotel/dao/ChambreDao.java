@@ -72,6 +72,7 @@ public class ChambreDao implements Dao<Chambre>
         PreparedStatement ps = null;
         ResultSet rs = null;
         String sqlQuery = "INSERT INTO chambre(etage, idTypeChambre, idEtatChambre) VALUES (?, ?, ?)";
+        boolean tmp = true;
 
         try
         {
@@ -82,21 +83,16 @@ public class ChambreDao implements Dao<Chambre>
 
             if(ps.executeUpdate() != 1)
             {
-                return false;
+                tmp = false;
             }
 
             ps.close();
 
-        } catch (Exception e) {
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
-        return true;
-    }
-
-    @Override
-    public boolean creat (Chambre chambre)
-    {
-        return false;
+        return tmp;
     }
 
     @Override
@@ -108,7 +104,7 @@ public class ChambreDao implements Dao<Chambre>
 
         try {
             stm = BDSingleton.getConn().createStatement();
-            rs = stm.executeQuery("SELECT COUNT(*) FROM client");
+            rs = stm.executeQuery("SELECT COUNT(*) FROM chambre");
 
             if (rs.next()) {
                 count = rs.getInt(1);
@@ -121,8 +117,34 @@ public class ChambreDao implements Dao<Chambre>
     }
 
     @Override
-    public Chambre get ( int id){
-        return null;
+    public Chambre get(int id)
+    {
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        Chambre chambre = null;
+
+        try
+        {
+            ps = BDSingleton.getConn().prepareStatement("SELECT c.id AS id, etage, type, etat FROM chambre AS c " +
+                    "INNER JOIN etatchambre AS e ON e.id = c.idEtatChambre " +
+                    "INNER JOIN typechambre AS t ON t.id = c.idTypeChambre WHERE c.id = ?");
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+
+            if(rs.next())
+            {
+                chambre = new Chambre(rs.getInt("id"),
+                        TypeChambre.valueOf(rs.getString("type")),
+                        rs.getInt("etage"),
+                        EtatChambre.valueOf(rs.getString("etat")));
+            }
+            ps.close();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        return chambre;
     }
 
     @Override
@@ -153,5 +175,45 @@ public class ChambreDao implements Dao<Chambre>
             e.printStackTrace();
         }
         return chambres;
+    }
+
+    public int countReservedChambre()
+    {
+        Statement stm = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        try {
+            stm = BDSingleton.getConn().createStatement();
+            rs = stm.executeQuery("SELECT COUNT(*) FROM chambre WHERE idEtatChambre = 1");
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+            stm.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
+    public int countNonReservedChambre()
+    {
+        Statement stm = null;
+        ResultSet rs = null;
+        int count = 0;
+
+        try {
+            stm = BDSingleton.getConn().createStatement();
+            rs = stm.executeQuery("SELECT COUNT(*) FROM chambre WHERE idEtatChambre = 2");
+
+            if (rs.next()) {
+                count = rs.getInt(1);
+            }
+            stm.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
     }
 }

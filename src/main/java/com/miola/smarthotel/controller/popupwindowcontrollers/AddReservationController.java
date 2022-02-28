@@ -60,6 +60,7 @@ public class AddReservationController {
         DoubleRoomNumber.setValueFactory(valueFactory4);
         TripleRoomNulmber.setValueFactory(valueFactory5);
         QuadRoomNumber.setValueFactory(valueFactory6);
+
     }
 
     @FXML

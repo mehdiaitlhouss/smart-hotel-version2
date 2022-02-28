@@ -12,6 +12,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -218,7 +219,7 @@
                 </Button>
             </children>
         </VBox>
-        <VBox layoutX="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="595.0" prefWidth="845.0">
+        <VBox layoutX="150.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="845.0">
             <children>
                 <Pane layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="815.0" styleClass="header">
                     <VBox.margin>
@@ -261,13 +262,14 @@
                   <Insets bottom="20.0" left="25.0" right="25.0" />
                </VBox.margin>
             </TextField>
-                <TableView fx:id="employesTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="351.0" prefWidth="815.0">
+                <TableView fx:id="employesTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="406.0" prefWidth="789.0">
                     <columns>
                         <TableColumn fx:id="idEmploye" editable="false" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
-                        <TableColumn id="date_col" fx:id="employeName" editable="false" maxWidth="153.55554580688477" minWidth="75.0" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
-                        <TableColumn fx:id="employeCin" editable="false" maxWidth="177.33326721191406" minWidth="38.666656494140625" prefWidth="88.66665649414062" resizable="false" text="CIN" />
-                        <TableColumn fx:id="employeEmail" editable="false" maxWidth="263.99998474121094" minWidth="40.2222900390625" prefWidth="213.33335876464844" resizable="false" text="EMAIL" />
-                        <TableColumn fx:id="employeAdresse" editable="false" maxWidth="335.9999694824219" minWidth="75.33331298828125" prefWidth="234.66665649414062" resizable="false" text="ADDRESS" />
+                        <TableColumn id="date_col" fx:id="employeNom" editable="false" maxWidth="153.55554580688477" minWidth="75.0" onEditCommit="#changeName" prefWidth="78.6666374206543" resizable="false" text="NOM" />
+                  <TableColumn fx:id="employePrenom" onEditCommit="#changePrenom" prefWidth="94.00003814697266" resizable="false" text="PRENOM" />
+                        <TableColumn fx:id="employeCin" editable="false" maxWidth="177.33326721191406" minWidth="38.666656494140625" onEditCommit="#changeCin" prefWidth="88.66665649414062" resizable="false" text="CIN" />
+                        <TableColumn fx:id="employeEmail" editable="false" maxWidth="289.3332824707031" minWidth="40.2222900390625" onEditCommit="#changeEmail" prefWidth="243.33328247070312" resizable="false" text="EMAIL" />
+                        <TableColumn fx:id="employeAdresse" editable="false" maxWidth="335.9999694824219" minWidth="75.33331298828125" onEditCommit="#changeAdresse" prefWidth="243.3333740234375" resizable="false" text="ADDRESS" />
                     </columns>
                     <VBox.margin>
                         <Insets bottom="10.0" left="25.0" right="25.0" />
@@ -276,23 +278,32 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                     </columnResizePolicy>
                 </TableView>
-            <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="843.0">
+            <HBox prefHeight="32.0" prefWidth="840.0" spacing="20.0">
                <children>
-                  <Button alignment="CENTER" layoutX="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="128.0" styleClass="addbutton" text="Ajouter">
+                  <Button alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#newWindow" prefHeight="31.0" prefWidth="110.0" styleClass="addbutton" text="AJOUTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="25.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#consultEmploye" prefHeight="31.0" prefWidth="110.0" styleClass="savebutton" text="CONSULTER">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="110.0" styleClass="savebutton" text="ACTUALISER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button layoutX="534.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteVets" prefHeight="31.0" prefWidth="96.0" styleClass="deletebutton" text="Supprimer">
+                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#deleteEmploye" prefHeight="31.0" prefWidth="110.0" styleClass="deletebutton" text="SUPPRIMER">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button layoutX="640.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#refreshScreen" prefHeight="31.0" prefWidth="80.0" styleClass="savebutton" text="Actualiser">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
+                  <Label fx:id="alertText" prefHeight="32.0" prefWidth="371.0" styleClass="alertText" />
                </children>
-            </AnchorPane>
+            </HBox>
             </children>
          <padding>
             <Insets right="5.0" top="5.0" />

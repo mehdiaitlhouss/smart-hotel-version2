@@ -18,16 +18,15 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="660.0" prefWidth="1315.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.popupwindowcontrollers.TemperatureController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.miola.smarthotel.controller.popupwindowcontrollers.TemperatureController">
     <children>
         <BorderPane layoutX="6.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
             <left>
                 <VBox prefHeight="200.0" prefWidth="435.0" styleClass="right-bar" stylesheets="@../css/styles.css" BorderPane.alignment="CENTER">
                     <children>
-                        <Pane prefHeight="0.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
-                        <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="535.0" prefWidth="100.0" stylesheets="@../css/styles.css">
+                        <VBox fx:id="chosenFruitCard" alignment="CENTER" prefHeight="580.0" prefWidth="403.0" stylesheets="@../css/styles.css">
                             <VBox.margin>
-                                <Insets left="50.0" right="50.0" />
+                                <Insets left="50.0" right="50.0" top="10.0" />
                             </VBox.margin>
                             <children>
                                 <HBox prefHeight="60.0" prefWidth="335.0">
@@ -78,7 +77,7 @@
                                         <Separator prefHeight="0.0" prefWidth="118.0" />
                                     </children>
                                 </HBox>
-                                <Button mnemonicParsing="false" onAction="#updateTemperature" prefHeight="50.0" prefWidth="270.0" styleClass="add-btn" stylesheets="@../css/styles.css" text="Enregistrer" textFill="#828282">
+                                <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#updateTemperature" prefHeight="30.0" prefWidth="270.0" styleClass="button2" stylesheets="@../css/styles.css" text="Enregistrer" textFill="#828282">
                                     <VBox.margin>
                                         <Insets bottom="20.0" top="30.0" />
                                     </VBox.margin>
@@ -92,7 +91,10 @@
                                 <String fx:value="shadow" />
                             </styleClass>
                         </VBox>
-                        <Pane prefHeight="57.0" prefWidth="435.0" VBox.vgrow="ALWAYS" />
+                        <Pane prefHeight="22.0" prefWidth="435.0" VBox.vgrow="ALWAYS">
+                     <children>
+                        <Button layoutX="52.0" layoutY="15.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="327.0" styleClass="deletebutton" text="Button" />
+                     </children></Pane>
                     </children>
                 </VBox>
             </left>

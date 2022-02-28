@@ -1,4 +1,4 @@
-package com.miola.smarthotel.controller.mainwindowcontrollers;
+package com.miola.smarthotel.controller.itemwindowcontroller;
 
 import com.miola.smarthotel.dao.MyListenerEclairage;
 import com.miola.smarthotel.model.Eclairage;
@@ -8,7 +8,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class ItemEclairageController {
+public class ItemEclairageController
+{
     @FXML
     private Label position;
 
@@ -18,22 +19,23 @@ public class ItemEclairageController {
     @FXML
     private ImageView img;
 
+    private Eclairage eclairage;
+
+    private MyListenerEclairage myListenerEclairage;
+
     @FXML
     private void click(MouseEvent mouseEvent) {
         myListenerEclairage.onClickListener(eclairage);
     }
 
-    private Eclairage eclairage;
-    private MyListenerEclairage myListenerEclairage;
-
-    public void setData(Eclairage eclairage, MyListenerEclairage myListenerEclairage) {
+    public void setData(Eclairage eclairage, MyListenerEclairage myListenerEclairage)
+    {
         this.eclairage = eclairage;
         this.myListenerEclairage = myListenerEclairage;
         position.setText("Position "+Integer.toString(eclairage.getPosition()));
-        String etat =eclairage.getIsOpen()==0 ?"OFF":"ON";
+        String etat = eclairage.getIsOpen() == 0 ? "OFF" : "ON";
         etatLampe.setText(etat);
         Image image = new Image(getClass().getResourceAsStream(eclairage.getImgSrc()));
         img.setImage(image);
-
     }
 }

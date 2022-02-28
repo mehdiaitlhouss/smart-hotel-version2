@@ -265,13 +265,14 @@
                 <TableView fx:id="clientTable" editable="true" fixedCellSize="60.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" prefHeight="345.0" prefWidth="820.0">
                     <columns>
                         <TableColumn fx:id="idClient" maxWidth="-Infinity" minWidth="40.0" prefWidth="50.0" resizable="false" text="ID" />
-                        <TableColumn id="date_col" fx:id="clientName" maxWidth="153.55554580688477" minWidth="75.0" onEditCommit="#changeFullName" prefWidth="96.00001907348633" resizable="false" text="FULL NAME" />
-                        <TableColumn fx:id="clientCin" maxWidth="177.33326721191406" minWidth="38.666656494140625" onEditCommit="#changeCin" prefWidth="62.000030517578125" resizable="false" text="CIN" />
-                        <TableColumn fx:id="clientEmail" maxWidth="263.99998474121094" minWidth="40.2222900390625" onEditCommit="#changeEmail" prefWidth="72.00001525878906" resizable="false" text="EMAIL" />
-                         <TableColumn fx:id="clientTelephone" minWidth="0.0" onEditCommit="#changeTelephone" prefWidth="136.88885498046875" resizable="false" text="TELEPHONE" />
-                        <TableColumn fx:id="clientAdresse" maxWidth="335.9999694824219" minWidth="0.0" onEditCommit="#changeAdresse" prefWidth="118.66671752929688" resizable="false" text="ADDRESS" />
-                  <TableColumn fx:id="clientsVille" minWidth="0.0" onEditCommit="#changeVille" prefWidth="76.22216796875" resizable="false" text="VILLE" />
-                  <TableColumn fx:id="clientPays" minWidth="50.0" onEditCommit="#changePays" prefWidth="87.33331298828125" resizable="false" text="PAYS" />
+                        <TableColumn id="date_col" fx:id="clientName" maxWidth="153.55554580688477" minWidth="66.66666793823242" onEditCommit="#changeNom" prefWidth="90.66667556762695" resizable="false" text="NOM" />
+                  <TableColumn fx:id="clientPrenom" minWidth="0.0" onEditCommit="#changePrenom" prefWidth="93.99993896484375" resizable="false" text="PRENOM" />
+                        <TableColumn fx:id="clientCin" maxWidth="177.33326721191406" minWidth="20.66668701171875" onEditCommit="#changeCin" prefWidth="56.00004577636719" resizable="false" text="CIN" />
+                        <TableColumn fx:id="clientEmail" maxWidth="263.99998474121094" minWidth="40.2222900390625" onEditCommit="#changeEmail" prefWidth="101.33328247070312" resizable="false" text="EMAIL" />
+                         <TableColumn fx:id="clientTelephone" minWidth="0.0" onEditCommit="#changeTelephone" prefWidth="102.6666259765625" resizable="false" text="TELEPHONE" />
+                        <TableColumn fx:id="clientAdresse" maxWidth="335.9999694824219" minWidth="0.0" onEditCommit="#changeAdresse" prefWidth="163.33340454101562" resizable="false" text="ADDRESS" />
+                  <TableColumn fx:id="clientsVille" minWidth="0.0" onEditCommit="#changeVille" prefWidth="68.66668701171875" resizable="false" text="VILLE" />
+                  <TableColumn fx:id="clientPays" minWidth="50.0" onEditCommit="#changePays" prefWidth="72.66668701171875" resizable="false" text="PAYS" />
                     </columns>
                     <VBox.margin>
                         <Insets bottom="10.0" left="25.0" right="25.0" />

@@ -10,14 +10,42 @@ import java.util.ArrayList;
 
 public class ClientDao implements Dao<Client>
 {
-    public boolean creat(Client c)
-    {
-        return false;
-    }
-
     public boolean update(Client client)
     {
-        return false;
+        PreparedStatement ps;
+        ResultSet rs = null;
+        boolean tmp = false;
+
+        try
+        {
+            ps= BDSingleton.getConn().prepareStatement("UPDATE client SET pays = ?, ville = ? WHERE id = ?");
+            ps.setString(1, client.getPays());
+            ps.setString(2, client.getVille());
+            ps.setInt(3, client.getIdClient());
+
+            if(ps.executeUpdate() == 1)
+            {
+                ps= BDSingleton.getConn().prepareStatement("UPDATE user SET prenom = ?,nom = ?,cin = ?,email = ?,telephone = ?,adresse = ? WHERE id = ?");
+                ps.setString(1, client.getPrenom());
+                ps.setString(2, client.getNom());
+                ps.setString(3, client.getCin());
+                ps.setString(4, client.getEmail());
+                ps.setString(5, client.getTelephone());
+                ps.setString(6, client.getAdresse());
+                ps.setInt(7, client.getIdUser());
+
+                if(ps.executeUpdate() == 1)
+                {
+                    tmp = true;
+                }
+            }
+            ps.close();
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+        return tmp;
     }
 
     public boolean delete(int id) // id de user
@@ -55,6 +83,7 @@ public class ClientDao implements Dao<Client>
         PreparedStatement ps = null;
         ResultSet rs = null;
         int id;
+        boolean tmp = true;
 
         try
         {
@@ -69,7 +98,7 @@ public class ClientDao implements Dao<Client>
             if(ps.executeUpdate() != 1)
             {
                 System.out.println("user non inserer");
-                return false;
+                tmp = false;
             }
 
             rs = ps.getGeneratedKeys();
@@ -87,7 +116,7 @@ public class ClientDao implements Dao<Client>
                if(ps.executeUpdate() != 1)
                {
                    System.out.println("client non inserer");
-                   return false;
+                   tmp = false;
                }
             }
         }
@@ -95,7 +124,7 @@ public class ClientDao implements Dao<Client>
         {
             e.printStackTrace();
         }
-        return true;
+        return tmp;
     }
 
     public int count()
